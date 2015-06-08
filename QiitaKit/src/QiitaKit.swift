@@ -7,3 +7,14 @@
 //
 
 import Foundation
+import APIKit
+
+public class QiitaKit {
+    
+    let api: API
+    
+    public init(baseURL: String) {
+        self.api = API(baseURL: baseURL)
+    }
+    
+}
