@@ -10,6 +10,8 @@
 		D924E1E01B25E1970025C5E9 /* QiitaKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D924E1DF1B25E1970025C5E9 /* QiitaKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D924E1E61B25E1970025C5E9 /* QiitaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1DA1B25E1970025C5E9 /* QiitaKit.framework */; };
 		D924E1ED1B25E1970025C5E9 /* QiitaKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E1EC1B25E1970025C5E9 /* QiitaKitTests.swift */; };
+		D924E1F81B25E2560025C5E9 /* QiitaKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E1F71B25E2560025C5E9 /* QiitaKit.swift */; };
+		D924E1F91B25E2560025C5E9 /* QiitaKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E1F71B25E2560025C5E9 /* QiitaKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,7 @@
 		D924E1E51B25E1970025C5E9 /* QiitaKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QiitaKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D924E1EB1B25E1970025C5E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D924E1EC1B25E1970025C5E9 /* QiitaKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaKitTests.swift; sourceTree = "<group>"; };
+		D924E1F71B25E2560025C5E9 /* QiitaKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QiitaKit.swift; path = src/QiitaKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,7 @@
 		D924E1DC1B25E1970025C5E9 /* QiitaKit */ = {
 			isa = PBXGroup;
 			children = (
+				D924E1F61B25E2060025C5E9 /* src */,
 				D924E1DF1B25E1970025C5E9 /* QiitaKit.h */,
 				D924E1DD1B25E1970025C5E9 /* Supporting Files */,
 			);
@@ -100,6 +104,14 @@
 				D924E1EB1B25E1970025C5E9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D924E1F61B25E2060025C5E9 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				D924E1F71B25E2560025C5E9 /* QiitaKit.swift */,
+			);
+			name = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D924E1F81B25E2560025C5E9 /* QiitaKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D924E1ED1B25E1970025C5E9 /* QiitaKitTests.swift in Sources */,
+				D924E1F91B25E2560025C5E9 /* QiitaKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +337,7 @@
 		D924E1F11B25E1970025C5E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -332,12 +347,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		D924E1F21B25E1970025C5E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
