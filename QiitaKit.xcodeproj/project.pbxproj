@@ -20,6 +20,28 @@
 		D924E2041B25E5380025C5E9 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FD1B25E5380025C5E9 /* BrightFutures.framework */; };
 		D924E2051B25E5380025C5E9 /* LoggingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FE1B25E5380025C5E9 /* LoggingKit.framework */; };
 		D924E2061B25E5380025C5E9 /* LoggingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FE1B25E5380025C5E9 /* LoggingKit.framework */; };
+		D924E2141B260A3B0025C5E9 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2091B260A3B0025C5E9 /* AccessToken.swift */; };
+		D924E2151B260A3B0025C5E9 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2091B260A3B0025C5E9 /* AccessToken.swift */; };
+		D924E2161B260A3B0025C5E9 /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20A1B260A3B0025C5E9 /* AuthenticatedUser.swift */; };
+		D924E2171B260A3B0025C5E9 /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20A1B260A3B0025C5E9 /* AuthenticatedUser.swift */; };
+		D924E2181B260A3B0025C5E9 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20B1B260A3B0025C5E9 /* Comment.swift */; };
+		D924E2191B260A3B0025C5E9 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20B1B260A3B0025C5E9 /* Comment.swift */; };
+		D924E21A1B260A3B0025C5E9 /* ExpandedTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20C1B260A3B0025C5E9 /* ExpandedTemplate.swift */; };
+		D924E21B1B260A3B0025C5E9 /* ExpandedTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20C1B260A3B0025C5E9 /* ExpandedTemplate.swift */; };
+		D924E21C1B260A3B0025C5E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20D1B260A3B0025C5E9 /* Item.swift */; };
+		D924E21D1B260A3B0025C5E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20D1B260A3B0025C5E9 /* Item.swift */; };
+		D924E21E1B260A3B0025C5E9 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20E1B260A3B0025C5E9 /* Project.swift */; };
+		D924E21F1B260A3B0025C5E9 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20E1B260A3B0025C5E9 /* Project.swift */; };
+		D924E2201B260A3B0025C5E9 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20F1B260A3B0025C5E9 /* Tag.swift */; };
+		D924E2211B260A3B0025C5E9 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20F1B260A3B0025C5E9 /* Tag.swift */; };
+		D924E2221B260A3B0025C5E9 /* Tagging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2101B260A3B0025C5E9 /* Tagging.swift */; };
+		D924E2231B260A3B0025C5E9 /* Tagging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2101B260A3B0025C5E9 /* Tagging.swift */; };
+		D924E2241B260A3B0025C5E9 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2111B260A3B0025C5E9 /* Team.swift */; };
+		D924E2251B260A3B0025C5E9 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2111B260A3B0025C5E9 /* Team.swift */; };
+		D924E2261B260A3B0025C5E9 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2121B260A3B0025C5E9 /* Template.swift */; };
+		D924E2271B260A3B0025C5E9 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2121B260A3B0025C5E9 /* Template.swift */; };
+		D924E2281B260A3B0025C5E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2131B260A3B0025C5E9 /* User.swift */; };
+		D924E2291B260A3B0025C5E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2131B260A3B0025C5E9 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +66,17 @@
 		D924E1FC1B25E5380025C5E9 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		D924E1FD1B25E5380025C5E9 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
 		D924E1FE1B25E5380025C5E9 /* LoggingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoggingKit.framework; path = Carthage/Build/iOS/LoggingKit.framework; sourceTree = "<group>"; };
+		D924E2091B260A3B0025C5E9 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		D924E20A1B260A3B0025C5E9 /* AuthenticatedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedUser.swift; sourceTree = "<group>"; };
+		D924E20B1B260A3B0025C5E9 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		D924E20C1B260A3B0025C5E9 /* ExpandedTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandedTemplate.swift; sourceTree = "<group>"; };
+		D924E20D1B260A3B0025C5E9 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		D924E20E1B260A3B0025C5E9 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		D924E20F1B260A3B0025C5E9 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		D924E2101B260A3B0025C5E9 /* Tagging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tagging.swift; sourceTree = "<group>"; };
+		D924E2111B260A3B0025C5E9 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		D924E2121B260A3B0025C5E9 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		D924E2131B260A3B0025C5E9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,14 +185,27 @@
 			isa = PBXGroup;
 			children = (
 			);
-			path = Endpoint;
+			name = Endpoint;
+			path = src/Endpoint;
 			sourceTree = "<group>";
 		};
 		D924E2081B25E5FE0025C5E9 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				D924E2091B260A3B0025C5E9 /* AccessToken.swift */,
+				D924E20A1B260A3B0025C5E9 /* AuthenticatedUser.swift */,
+				D924E20B1B260A3B0025C5E9 /* Comment.swift */,
+				D924E20C1B260A3B0025C5E9 /* ExpandedTemplate.swift */,
+				D924E20D1B260A3B0025C5E9 /* Item.swift */,
+				D924E20E1B260A3B0025C5E9 /* Project.swift */,
+				D924E20F1B260A3B0025C5E9 /* Tag.swift */,
+				D924E2101B260A3B0025C5E9 /* Tagging.swift */,
+				D924E2111B260A3B0025C5E9 /* Team.swift */,
+				D924E2121B260A3B0025C5E9 /* Template.swift */,
+				D924E2131B260A3B0025C5E9 /* User.swift */,
 			);
-			path = Entity;
+			name = Entity;
+			path = src/Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,7 +315,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D924E2201B260A3B0025C5E9 /* Tag.swift in Sources */,
 				D924E1F81B25E2560025C5E9 /* QiitaKit.swift in Sources */,
+				D924E21A1B260A3B0025C5E9 /* ExpandedTemplate.swift in Sources */,
+				D924E2161B260A3B0025C5E9 /* AuthenticatedUser.swift in Sources */,
+				D924E2141B260A3B0025C5E9 /* AccessToken.swift in Sources */,
+				D924E21C1B260A3B0025C5E9 /* Item.swift in Sources */,
+				D924E21E1B260A3B0025C5E9 /* Project.swift in Sources */,
+				D924E2261B260A3B0025C5E9 /* Template.swift in Sources */,
+				D924E2281B260A3B0025C5E9 /* User.swift in Sources */,
+				D924E2181B260A3B0025C5E9 /* Comment.swift in Sources */,
+				D924E2241B260A3B0025C5E9 /* Team.swift in Sources */,
+				D924E2221B260A3B0025C5E9 /* Tagging.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,8 +334,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D924E2291B260A3B0025C5E9 /* User.swift in Sources */,
+				D924E2191B260A3B0025C5E9 /* Comment.swift in Sources */,
+				D924E2171B260A3B0025C5E9 /* AuthenticatedUser.swift in Sources */,
 				D924E1ED1B25E1970025C5E9 /* QiitaKitTests.swift in Sources */,
 				D924E1F91B25E2560025C5E9 /* QiitaKit.swift in Sources */,
+				D924E21D1B260A3B0025C5E9 /* Item.swift in Sources */,
+				D924E21B1B260A3B0025C5E9 /* ExpandedTemplate.swift in Sources */,
+				D924E2211B260A3B0025C5E9 /* Tag.swift in Sources */,
+				D924E2151B260A3B0025C5E9 /* AccessToken.swift in Sources */,
+				D924E2251B260A3B0025C5E9 /* Team.swift in Sources */,
+				D924E2271B260A3B0025C5E9 /* Template.swift in Sources */,
+				D924E21F1B260A3B0025C5E9 /* Project.swift in Sources */,
+				D924E2231B260A3B0025C5E9 /* Tagging.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

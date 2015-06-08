@@ -9,8 +9,13 @@
 import Foundation
 import APIKit
 
+/**
+*  <#Description#>
+*/
 public class QiitaKit {
     
+    /// aaa
+    /// bbb
     let api: API
     
     public init(baseURL: String) {
