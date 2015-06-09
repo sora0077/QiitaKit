@@ -39,7 +39,7 @@ extension GetAuthenticatedUser: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {

@@ -13,7 +13,11 @@ import APIKit
 *  指定されたアクセストークンを失効させ、それ以降利用できないようにします。
 */
 public class DeleteAccessToken {
-    public init() {
+    
+    public let access_token: String
+    
+    public init(access_token: String) {
+        self.access_token = access_token
     }
 }
 
@@ -39,7 +43,7 @@ extension DeleteAccessToken: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {
