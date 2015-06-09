@@ -13,7 +13,11 @@ import APIKit
 *  タグのフォローを外します。
 */
 public class UnfollowTag {
-    public init() {
+    
+    public let tag_id: String
+    
+    public init(tag_id: String) {
+        self.tag_id = tag_id
     }
 }
 
@@ -27,7 +31,7 @@ extension UnfollowTag: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/tags/:tag_id/following"
+        return "/api/v2/tags/\(tag_id)/following"
     }
 
     public var headers: [String: AnyObject]? {
@@ -39,7 +43,7 @@ extension UnfollowTag: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {

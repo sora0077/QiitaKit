@@ -13,7 +13,11 @@ import APIKit
 *  タグを取得します。
 */
 public class GetTag {
-    public init() {
+    
+    public let tag_id: String
+    
+    public init(tag_id: String) {
+        self.tag_id = tag_id
     }
 }
 
@@ -27,7 +31,7 @@ extension GetTag: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/tags/:tag_id"
+        return "/api/v2/tags/\(tag_id)"
     }
 
     public var headers: [String: AnyObject]? {
@@ -39,7 +43,7 @@ extension GetTag: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {
