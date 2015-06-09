@@ -13,7 +13,11 @@ import APIKit
 *  コメントを削除します。
 */
 public class DeleteComment {
-    public init() {
+    
+    public let comment_id: String
+    
+    public init(comment_id: String) {
+        self.comment_id = comment_id
     }
 }
 
@@ -27,7 +31,7 @@ extension DeleteComment: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/comments/:comment_id"
+        return "/api/v2/comments/\(comment_id)"
     }
 
     public var headers: [String: AnyObject]? {
@@ -39,7 +43,7 @@ extension DeleteComment: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {

@@ -13,12 +13,15 @@ import APIKit
 *  投稿に対してコメントを投稿します。
 */
 public class CreateItemComment {
+    
+    public let item_id: String
     /// コメントの内容を表すMarkdown形式の文字列
     /// example: # Example
     /// 
     public let body: String
 
-    public init(body: String) {
+    public init(item_id: String, body: String) {
+        self.item_id = item_id
         self.body = body
     }
 }
@@ -33,7 +36,7 @@ extension CreateItemComment: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/items/:item_id/comments"
+        return "/api/v2/items/\(item_id)/comments"
     }
 
     public var headers: [String: AnyObject]? {
@@ -41,7 +44,9 @@ extension CreateItemComment: RequestToken {
     }
 
     public var parameters: [String: AnyObject]? {
-        return nil
+        return [
+            "body": body
+        ]
     }
 
     public var encoding: RequestEncoding {

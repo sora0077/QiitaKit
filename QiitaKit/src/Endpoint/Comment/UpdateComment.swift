@@ -13,12 +13,15 @@ import APIKit
 *  コメントを更新します。
 */
 public class UpdateComment {
+    
+    public let comment_id: String
     /// コメントの内容を表すMarkdown形式の文字列
     /// example: # Example
     /// 
     public let body: String
 
-    public init(body: String) {
+    public init(comment_id: String, body: String) {
+        self.comment_id = comment_id
         self.body = body
     }
 }
@@ -33,7 +36,7 @@ extension UpdateComment: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/comments/:comment_id"
+        return "/api/v2/comments/\(comment_id)"
     }
 
     public var headers: [String: AnyObject]? {
@@ -45,7 +48,7 @@ extension UpdateComment: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {

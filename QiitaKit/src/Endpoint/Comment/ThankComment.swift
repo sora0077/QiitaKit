@@ -13,7 +13,11 @@ import APIKit
 *  コメントにThankを付けます。
 */
 public class ThankComment {
-    public init() {
+    
+    public let comment_id: String
+    
+    public init(comment_id: String) {
+        self.comment_id = comment_id
     }
 }
 
@@ -27,7 +31,7 @@ extension ThankComment: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/comments/:comment_id/thank"
+        return "/api/v2/comments/\(comment_id)/thank"
     }
 
     public var headers: [String: AnyObject]? {
@@ -39,7 +43,7 @@ extension ThankComment: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {

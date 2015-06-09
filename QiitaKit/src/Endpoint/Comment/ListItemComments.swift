@@ -13,7 +13,11 @@ import APIKit
 *  投稿に付けられたコメント一覧を投稿日時の降順で取得します。
 */
 public class ListItemComments {
-    public init() {
+    
+    public let item_id: String
+    
+    public init(item_id: String) {
+        self.item_id = item_id
     }
 }
 
@@ -27,7 +31,7 @@ extension ListItemComments: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/items/:item_id/comments"
+        return "/api/v2/items/\(item_id)/comments"
     }
 
     public var headers: [String: AnyObject]? {
@@ -39,7 +43,7 @@ extension ListItemComments: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {
