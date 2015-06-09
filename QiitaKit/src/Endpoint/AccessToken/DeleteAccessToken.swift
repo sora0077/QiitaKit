@@ -16,3 +16,46 @@ public class DeleteAccessToken {
     public init() {
     }
 }
+
+extension DeleteAccessToken: RequestToken {
+
+    public typealias Response = AccessToken
+    public typealias SerializedType = [String: AnyObject]
+
+    public var method: HTTPMethod {
+        return .DELETE
+    }
+
+    public var URL: String {
+        return "/api/v2/access_tokens/:access_token"
+    }
+
+    public var headers: [String: AnyObject]? {
+        return nil
+    }
+
+    public var parameters: [String: AnyObject]? {
+        return nil
+    }
+
+    public var encoding: RequestEncoding {
+        return .URL
+    }
+
+    public var resonseEncoding: ResponseEncoding {
+        return .JSON(.AllowFragments)
+    }
+}
+
+extension DeleteAccessToken {
+    
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+        
+        let accessToken = AccessToken(
+            client_id: object["client_id"] as! String,
+            scopes: object["scopes"] as! Array<String>,
+            token: object["token"] as! String
+        )
+        return Result(accessToken)
+    }
+}

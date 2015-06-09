@@ -28,3 +28,45 @@ public class CreateTagging {
         self.versions = versions
     }
 }
+
+extension CreateTagging: RequestToken {
+
+    public typealias Response = Tagging
+    public typealias SerializedType = [String: AnyObject]
+
+    public var method: HTTPMethod {
+        return .POST
+    }
+
+    public var URL: String {
+        return "/api/v2/items/:item_id/taggings"
+    }
+
+    public var headers: [String: AnyObject]? {
+        return nil
+    }
+
+    public var parameters: [String: AnyObject]? {
+        return nil
+    }
+
+    public var encoding: RequestEncoding {
+        return .URL
+    }
+
+    public var resonseEncoding: ResponseEncoding {
+        return .JSON(.AllowFragments)
+    }
+}
+
+extension CreateTagging {
+    
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+        
+        let tagging = Tagging(
+            name: object["name"] as! String,
+            versions: object["versions"] as! Array<String>
+        )
+        return Result(tagging)
+    }
+}

@@ -34,3 +34,51 @@ public class CreateExpandedTemplate {
         self.title = title
     }
 }
+
+extension CreateExpandedTemplate: RequestToken {
+
+    public typealias Response = ExpandedTemplate
+    public typealias SerializedType = [String: AnyObject]
+
+    public var method: HTTPMethod {
+        return .POST
+    }
+
+    public var URL: String {
+        return "/api/v2/expanded_templates"
+    }
+
+    public var headers: [String: AnyObject]? {
+        return nil
+    }
+
+    public var parameters: [String: AnyObject]? {
+        return [
+            "body": body,
+            "tags": tags.map({ ["name": $0.name, "versions": $0.versions] }),
+            "title": title
+        ]
+    }
+
+    public var encoding: RequestEncoding {
+        return .JSON
+    }
+
+    public var resonseEncoding: ResponseEncoding {
+        return .JSON(.AllowFragments)
+    }
+}
+
+extension CreateExpandedTemplate {
+    
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+        
+        let expanded_tags = object["expanded_tags"] as! [[String: AnyObject]]
+        let expandedTemplate = ExpandedTemplate(
+            expanded_body: object["expanded_body"] as! String,
+            expanded_tags: expanded_tags.map({ Tagging(name: $0["name"] as! String, versions: $0["versions"] as! [String]) }),
+            expanded_title: object["expanded_title"] as! String
+        )
+        return Result(expandedTemplate)
+    }
+}

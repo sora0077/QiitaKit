@@ -16,3 +16,48 @@ public class ListTeams {
     public init() {
     }
 }
+
+extension ListTeams: RequestToken {
+
+    public typealias Response = [Team]
+    public typealias SerializedType = [[String: AnyObject]]
+
+    public var method: HTTPMethod {
+        return .GET
+    }
+
+    public var URL: String {
+        return "/api/v2/teams"
+    }
+
+    public var headers: [String: AnyObject]? {
+        return nil
+    }
+
+    public var parameters: [String: AnyObject]? {
+        return nil
+    }
+
+    public var encoding: RequestEncoding {
+        return .URL
+    }
+
+    public var resonseEncoding: ResponseEncoding {
+        return .JSON(.AllowFragments)
+    }
+}
+
+extension ListTeams {
+    
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+        
+        let teams = object.map { object in
+            Team(
+                active: object["active"] as! Bool,
+                id: object["id"] as! String,
+                name: object["name"] as! String
+            )
+        }
+        return Result(teams)
+    }
+}

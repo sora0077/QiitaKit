@@ -34,3 +34,50 @@ public class CreateAccessToken {
         self.code = code
     }
 }
+
+extension CreateAccessToken: RequestToken {
+
+    public typealias Response = AccessToken
+    public typealias SerializedType = [String: AnyObject]
+
+    public var method: HTTPMethod {
+        return .POST
+    }
+
+    public var URL: String {
+        return "/api/v2/access_tokens"
+    }
+
+    public var headers: [String: AnyObject]? {
+        return nil
+    }
+
+    public var parameters: [String: AnyObject]? {
+        return [
+            "client_id": client_id,
+            "client_secret": client_secret,
+            "code": code
+        ]
+    }
+
+    public var encoding: RequestEncoding {
+        return .JSON
+    }
+
+    public var resonseEncoding: ResponseEncoding {
+        return .JSON(.AllowFragments)
+    }
+}
+
+extension CreateAccessToken {
+    
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+        
+        let accessToken = AccessToken(
+            client_id: object["client_id"] as! String,
+            scopes: object["scopes"] as! Array<String>,
+            token: object["token"] as! String
+        )
+        return Result(accessToken)
+    }
+}

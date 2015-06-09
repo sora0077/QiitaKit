@@ -28,3 +28,49 @@ public class ListUserFollowingTags {
         self.per_page = per_page
     }
 }
+
+extension ListUserFollowingTags: RequestToken {
+    
+    public typealias Response = [Tag]
+    public typealias SerializedType = [[String: AnyObject]]
+
+    public var method: HTTPMethod {
+        return .GET
+    }
+
+    public var URL: String {
+        return "/api/v2/users/:user_id/following_tags"
+    }
+
+    public var headers: [String: AnyObject]? {
+        return nil
+    }
+
+    public var parameters: [String: AnyObject]? {
+        return nil
+    }
+
+    public var encoding: RequestEncoding {
+        return .URL
+    }
+
+    public var resonseEncoding: ResponseEncoding {
+        return .JSON(.AllowFragments)
+    }
+}
+
+extension ListUserFollowingTags {
+    
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+        
+        let tags = object.map { object in
+            Tag(
+                followers_count: object["followers_count"] as! Int,
+                icon_url: object["icon_url"] as? String,
+                id: object["id"] as! String,
+                items_count: object["items_count"] as! Int
+            )
+        }
+        return Result(tags)
+    }
+}
