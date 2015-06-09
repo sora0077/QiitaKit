@@ -13,7 +13,11 @@ import APIKit
 *  投稿をストックします。
 */
 public class StockItem {
-    public init() {
+    
+    public let item_id: String
+    
+    public init(item_id: String) {
+        self.item_id = item_id
     }
 }
 
@@ -27,7 +31,7 @@ extension StockItem: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/items/:item_id/stock"
+        return "/api/v2/items/\(item_id)/stock"
     }
 
     public var headers: [String: AnyObject]? {
@@ -39,7 +43,7 @@ extension StockItem: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {

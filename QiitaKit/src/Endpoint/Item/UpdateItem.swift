@@ -13,6 +13,8 @@ import APIKit
 *  投稿を更新します。
 */
 public class UpdateItem {
+    
+    public let item_id: String
     /// Markdown形式の本文
     /// example: # Example
     /// 
@@ -36,7 +38,8 @@ public class UpdateItem {
     /// 
     public let title: String
 
-    public init(body: String, coediting: Bool, `private`: Bool, tags: Array<Tagging>, title: String) {
+    public init(item_id: String, body: String, coediting: Bool, `private`: Bool, tags: Array<Tagging>, title: String) {
+        self.item_id = item_id
         self.body = body
         self.coediting = coediting
         self.`private` = `private`
@@ -63,11 +66,17 @@ extension UpdateItem: RequestToken {
     }
 
     public var parameters: [String: AnyObject]? {
-        return nil
+        return [
+            "body": body,
+            "coediting": coediting,
+            "private": `private`,
+            "tags": tags.map({ ["name": $0.name, "versions": $0.versions] }),
+            "title": title
+        ]
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {
