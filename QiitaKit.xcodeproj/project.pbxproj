@@ -542,6 +542,7 @@
 				D924E1F21B25E1970025C5E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D924E1F31B25E1970025C5E9 /* Build configuration list for PBXNativeTarget "QiitaKitTests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +551,7 @@
 				D924E1F51B25E1970025C5E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

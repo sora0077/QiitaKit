@@ -30,7 +30,7 @@ public struct Template {
 
     /// 変数を展開した状態のタグ一覧
     /// example: [{"name"=>"MTG/2000/01/01", "versions"=>["0.0.1"]}]
-    public let expanded_tags: Array
+    public let expanded_tags: Array<Tagging>
 
     /// 変数を展開した状態のタイトル
     /// example: Weekly MTG on 2015/06/03
@@ -38,7 +38,7 @@ public struct Template {
 
     /// タグ一覧
     /// example: [{"name"=>"MTG/%{Year}/%{month}/%{day}", "versions"=>["0.0.1"]}]
-    public let tags: Array
+    public let tags: Array<Tagging>
 
     /// 生成される投稿のタイトルの雛形
     /// example: Weekly MTG on %{Year}/%{month}/%{day}

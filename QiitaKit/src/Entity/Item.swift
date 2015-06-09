@@ -36,7 +36,7 @@ public struct Item {
 
     /// 投稿に付いたタグ一覧
     /// example: [{"name"=>"Ruby", "versions"=>["0.0.1"]}]
-    public let tags: Array<Dictionary<String, AnyObject>>
+    public let tags: Array<Tagging>
 
     /// 投稿のタイトル
     /// example: Example title
