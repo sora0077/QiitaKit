@@ -13,7 +13,11 @@ import APIKit
 *  プロジェクトを返します。
 */
 public class GetProject {
-    public init() {
+    
+    public let project_id: String
+    
+    public init(project_id: String) {
+        self.project_id = project_id
     }
 }
 
@@ -27,7 +31,7 @@ extension GetProject: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/projects/:project_id"
+        return "/api/v2/projects/\(project_id)"
     }
 
     public var headers: [String: AnyObject]? {
@@ -39,7 +43,7 @@ extension GetProject: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {

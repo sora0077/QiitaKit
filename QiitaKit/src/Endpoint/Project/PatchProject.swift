@@ -13,6 +13,9 @@ import APIKit
 *  プロジェクトを更新します。
 */
 public class PatchProject {
+    
+    public let project_id: String
+    
     /// このプロジェクトが進行中かどうか
     /// 
     public let archived: Bool
@@ -30,9 +33,10 @@ public class PatchProject {
     /// 投稿に付いたタグ一覧
     /// example: [{"name"=>"Ruby", "versions"=>["0.0.1"]}]
     /// 
-    public let tags: Array<Dictionary<String, AnyObject>>
+    public let tags: Array<Tagging>
 
-    public init(archived: Bool, body: String, name: String, tags: Array<Dictionary<String, AnyObject>>) {
+    public init(project_id: String, archived: Bool, body: String, name: String, tags: Array<Tagging>) {
+        self.project_id = project_id
         self.archived = archived
         self.body = body
         self.name = name
@@ -50,7 +54,7 @@ extension PatchProject: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/projects/:project_id"
+        return "/api/v2/projects/\(project_id)"
     }
 
     public var headers: [String: AnyObject]? {
@@ -58,11 +62,16 @@ extension PatchProject: RequestToken {
     }
 
     public var parameters: [String: AnyObject]? {
-        return nil
+        return [
+            "archived": archived,
+            "body": body,
+            "name": name,
+            "tags": tags.map({ ["name": $0.name, "versions": $0.versions] }),
+        ]
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {

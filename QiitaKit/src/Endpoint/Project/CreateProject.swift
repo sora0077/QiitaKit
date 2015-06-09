@@ -30,9 +30,9 @@ public class CreateProject {
     /// 投稿に付いたタグ一覧
     /// example: [{"name"=>"Ruby", "versions"=>["0.0.1"]}]
     /// 
-    public let tags: Array<Dictionary<String, AnyObject>>
+    public let tags: Array<Tagging>
 
-    public init(archived: Bool, body: String, name: String, tags: Array<Dictionary<String, AnyObject>>) {
+    public init(archived: Bool, body: String, name: String, tags: Array<Tagging>) {
         self.archived = archived
         self.body = body
         self.name = name
@@ -58,11 +58,16 @@ extension CreateProject: RequestToken {
     }
 
     public var parameters: [String: AnyObject]? {
-        return nil
+        return [
+            "archived": archived,
+            "body": body,
+            "name": name,
+            "tags": tags.map({ ["name": $0.name, "versions": $0.versions] }),
+        ]
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {
