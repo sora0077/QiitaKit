@@ -42,6 +42,58 @@
 		D924E2271B260A3B0025C5E9 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2121B260A3B0025C5E9 /* Template.swift */; };
 		D924E2281B260A3B0025C5E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2131B260A3B0025C5E9 /* User.swift */; };
 		D924E2291B260A3B0025C5E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2131B260A3B0025C5E9 /* User.swift */; };
+		D924E2781B2741F50025C5E9 /* DeleteAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E23B1B2741F50025C5E9 /* DeleteAccessToken.swift */; };
+		D924E2791B2741F50025C5E9 /* GetAuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E23D1B2741F50025C5E9 /* GetAuthenticatedUser.swift */; };
+		D924E27A1B2741F50025C5E9 /* CreateItemComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E23F1B2741F50025C5E9 /* CreateItemComment.swift */; };
+		D924E27B1B2741F50025C5E9 /* DeleteComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2401B2741F50025C5E9 /* DeleteComment.swift */; };
+		D924E27C1B2741F50025C5E9 /* GetComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2411B2741F50025C5E9 /* GetComment.swift */; };
+		D924E27D1B2741F50025C5E9 /* ListItemComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2421B2741F50025C5E9 /* ListItemComments.swift */; };
+		D924E27E1B2741F50025C5E9 /* ThankComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2431B2741F50025C5E9 /* ThankComment.swift */; };
+		D924E27F1B2741F50025C5E9 /* UnthankComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2441B2741F50025C5E9 /* UnthankComment.swift */; };
+		D924E2801B2741F50025C5E9 /* UpdateComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2451B2741F50025C5E9 /* UpdateComment.swift */; };
+		D924E2811B2741F50025C5E9 /* CreateExpandedTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2471B2741F50025C5E9 /* CreateExpandedTemplate.swift */; };
+		D924E2821B2741F50025C5E9 /* CreateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2491B2741F50025C5E9 /* CreateItem.swift */; };
+		D924E2831B2741F50025C5E9 /* DeleteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E24A1B2741F50025C5E9 /* DeleteItem.swift */; };
+		D924E2841B2741F50025C5E9 /* GetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E24B1B2741F50025C5E9 /* GetItem.swift */; };
+		D924E2851B2741F50025C5E9 /* GetItemStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E24C1B2741F50025C5E9 /* GetItemStock.swift */; };
+		D924E2861B2741F50025C5E9 /* LikeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E24D1B2741F50025C5E9 /* LikeItem.swift */; };
+		D924E2871B2741F50025C5E9 /* ListAuthenticatedUserItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E24E1B2741F50025C5E9 /* ListAuthenticatedUserItems.swift */; };
+		D924E2881B2741F50025C5E9 /* ListItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E24F1B2741F50025C5E9 /* ListItems.swift */; };
+		D924E2891B2741F50025C5E9 /* ListTagItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2501B2741F50025C5E9 /* ListTagItems.swift */; };
+		D924E28A1B2741F50025C5E9 /* ListUserItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2511B2741F50025C5E9 /* ListUserItems.swift */; };
+		D924E28B1B2741F50025C5E9 /* ListUserStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2521B2741F50025C5E9 /* ListUserStocks.swift */; };
+		D924E28C1B2741F50025C5E9 /* StockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2531B2741F50025C5E9 /* StockItem.swift */; };
+		D924E28D1B2741F50025C5E9 /* UnlikeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2541B2741F50025C5E9 /* UnlikeItem.swift */; };
+		D924E28E1B2741F50025C5E9 /* UnstockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2551B2741F50025C5E9 /* UnstockItem.swift */; };
+		D924E28F1B2741F50025C5E9 /* UpdateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2561B2741F50025C5E9 /* UpdateItem.swift */; };
+		D924E2901B2741F50025C5E9 /* CreateProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2581B2741F50025C5E9 /* CreateProject.swift */; };
+		D924E2911B2741F50025C5E9 /* DeleteProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2591B2741F50025C5E9 /* DeleteProject.swift */; };
+		D924E2921B2741F50025C5E9 /* GetProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E25A1B2741F50025C5E9 /* GetProject.swift */; };
+		D924E2931B2741F50025C5E9 /* ListProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E25B1B2741F50025C5E9 /* ListProjects.swift */; };
+		D924E2941B2741F50025C5E9 /* PatchProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E25C1B2741F50025C5E9 /* PatchProject.swift */; };
+		D924E2951B2741F50025C5E9 /* FollowTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E25E1B2741F50025C5E9 /* FollowTag.swift */; };
+		D924E2961B2741F50025C5E9 /* GetTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E25F1B2741F50025C5E9 /* GetTag.swift */; };
+		D924E2971B2741F50025C5E9 /* GetTagFollowing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2601B2741F50025C5E9 /* GetTagFollowing.swift */; };
+		D924E2981B2741F50025C5E9 /* ListTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2611B2741F50025C5E9 /* ListTags.swift */; };
+		D924E2991B2741F50025C5E9 /* ListUserFollowingTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2621B2741F50025C5E9 /* ListUserFollowingTags.swift */; };
+		D924E29A1B2741F50025C5E9 /* UnfollowTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2631B2741F50025C5E9 /* UnfollowTag.swift */; };
+		D924E29B1B2741F50025C5E9 /* CreateTagging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2651B2741F50025C5E9 /* CreateTagging.swift */; };
+		D924E29C1B2741F50025C5E9 /* DeleteTagging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2661B2741F50025C5E9 /* DeleteTagging.swift */; };
+		D924E29D1B2741F50025C5E9 /* ListTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2681B2741F50025C5E9 /* ListTeams.swift */; };
+		D924E29E1B2741F50025C5E9 /* CreateTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E26A1B2741F50025C5E9 /* CreateTemplate.swift */; };
+		D924E29F1B2741F50025C5E9 /* DeleteTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E26B1B2741F50025C5E9 /* DeleteTemplate.swift */; };
+		D924E2A01B2741F50025C5E9 /* GetTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E26C1B2741F50025C5E9 /* GetTemplate.swift */; };
+		D924E2A11B2741F50025C5E9 /* ListTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E26D1B2741F50025C5E9 /* ListTemplates.swift */; };
+		D924E2A21B2741F50025C5E9 /* UpdateTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E26E1B2741F50025C5E9 /* UpdateTemplate.swift */; };
+		D924E2A31B2741F50025C5E9 /* FollowUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2701B2741F50025C5E9 /* FollowUser.swift */; };
+		D924E2A41B2741F50025C5E9 /* GetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2711B2741F50025C5E9 /* GetUser.swift */; };
+		D924E2A51B2741F50025C5E9 /* GetUserFollowing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2721B2741F50025C5E9 /* GetUserFollowing.swift */; };
+		D924E2A61B2741F50025C5E9 /* ListItemStockers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2731B2741F50025C5E9 /* ListItemStockers.swift */; };
+		D924E2A71B2741F50025C5E9 /* ListUserFollowees.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2741B2741F50025C5E9 /* ListUserFollowees.swift */; };
+		D924E2A81B2741F50025C5E9 /* ListUserFollowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2751B2741F50025C5E9 /* ListUserFollowers.swift */; };
+		D924E2A91B2741F50025C5E9 /* ListUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2761B2741F50025C5E9 /* ListUsers.swift */; };
+		D924E2AA1B2741F50025C5E9 /* UnfollowUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2771B2741F50025C5E9 /* UnfollowUser.swift */; };
+		D924E2AC1B27420F0025C5E9 /* CreateAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2AB1B27420F0025C5E9 /* CreateAccessToken.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +129,58 @@
 		D924E2111B260A3B0025C5E9 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		D924E2121B260A3B0025C5E9 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		D924E2131B260A3B0025C5E9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D924E23B1B2741F50025C5E9 /* DeleteAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccessToken.swift; sourceTree = "<group>"; };
+		D924E23D1B2741F50025C5E9 /* GetAuthenticatedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAuthenticatedUser.swift; sourceTree = "<group>"; };
+		D924E23F1B2741F50025C5E9 /* CreateItemComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateItemComment.swift; sourceTree = "<group>"; };
+		D924E2401B2741F50025C5E9 /* DeleteComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteComment.swift; sourceTree = "<group>"; };
+		D924E2411B2741F50025C5E9 /* GetComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetComment.swift; sourceTree = "<group>"; };
+		D924E2421B2741F50025C5E9 /* ListItemComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemComments.swift; sourceTree = "<group>"; };
+		D924E2431B2741F50025C5E9 /* ThankComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThankComment.swift; sourceTree = "<group>"; };
+		D924E2441B2741F50025C5E9 /* UnthankComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnthankComment.swift; sourceTree = "<group>"; };
+		D924E2451B2741F50025C5E9 /* UpdateComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateComment.swift; sourceTree = "<group>"; };
+		D924E2471B2741F50025C5E9 /* CreateExpandedTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateExpandedTemplate.swift; sourceTree = "<group>"; };
+		D924E2491B2741F50025C5E9 /* CreateItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateItem.swift; sourceTree = "<group>"; };
+		D924E24A1B2741F50025C5E9 /* DeleteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteItem.swift; sourceTree = "<group>"; };
+		D924E24B1B2741F50025C5E9 /* GetItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetItem.swift; sourceTree = "<group>"; };
+		D924E24C1B2741F50025C5E9 /* GetItemStock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetItemStock.swift; sourceTree = "<group>"; };
+		D924E24D1B2741F50025C5E9 /* LikeItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeItem.swift; sourceTree = "<group>"; };
+		D924E24E1B2741F50025C5E9 /* ListAuthenticatedUserItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListAuthenticatedUserItems.swift; sourceTree = "<group>"; };
+		D924E24F1B2741F50025C5E9 /* ListItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItems.swift; sourceTree = "<group>"; };
+		D924E2501B2741F50025C5E9 /* ListTagItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTagItems.swift; sourceTree = "<group>"; };
+		D924E2511B2741F50025C5E9 /* ListUserItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUserItems.swift; sourceTree = "<group>"; };
+		D924E2521B2741F50025C5E9 /* ListUserStocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUserStocks.swift; sourceTree = "<group>"; };
+		D924E2531B2741F50025C5E9 /* StockItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockItem.swift; sourceTree = "<group>"; };
+		D924E2541B2741F50025C5E9 /* UnlikeItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnlikeItem.swift; sourceTree = "<group>"; };
+		D924E2551B2741F50025C5E9 /* UnstockItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnstockItem.swift; sourceTree = "<group>"; };
+		D924E2561B2741F50025C5E9 /* UpdateItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateItem.swift; sourceTree = "<group>"; };
+		D924E2581B2741F50025C5E9 /* CreateProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProject.swift; sourceTree = "<group>"; };
+		D924E2591B2741F50025C5E9 /* DeleteProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteProject.swift; sourceTree = "<group>"; };
+		D924E25A1B2741F50025C5E9 /* GetProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetProject.swift; sourceTree = "<group>"; };
+		D924E25B1B2741F50025C5E9 /* ListProjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListProjects.swift; sourceTree = "<group>"; };
+		D924E25C1B2741F50025C5E9 /* PatchProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatchProject.swift; sourceTree = "<group>"; };
+		D924E25E1B2741F50025C5E9 /* FollowTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowTag.swift; sourceTree = "<group>"; };
+		D924E25F1B2741F50025C5E9 /* GetTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTag.swift; sourceTree = "<group>"; };
+		D924E2601B2741F50025C5E9 /* GetTagFollowing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTagFollowing.swift; sourceTree = "<group>"; };
+		D924E2611B2741F50025C5E9 /* ListTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTags.swift; sourceTree = "<group>"; };
+		D924E2621B2741F50025C5E9 /* ListUserFollowingTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUserFollowingTags.swift; sourceTree = "<group>"; };
+		D924E2631B2741F50025C5E9 /* UnfollowTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnfollowTag.swift; sourceTree = "<group>"; };
+		D924E2651B2741F50025C5E9 /* CreateTagging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTagging.swift; sourceTree = "<group>"; };
+		D924E2661B2741F50025C5E9 /* DeleteTagging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTagging.swift; sourceTree = "<group>"; };
+		D924E2681B2741F50025C5E9 /* ListTeams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTeams.swift; sourceTree = "<group>"; };
+		D924E26A1B2741F50025C5E9 /* CreateTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTemplate.swift; sourceTree = "<group>"; };
+		D924E26B1B2741F50025C5E9 /* DeleteTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTemplate.swift; sourceTree = "<group>"; };
+		D924E26C1B2741F50025C5E9 /* GetTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTemplate.swift; sourceTree = "<group>"; };
+		D924E26D1B2741F50025C5E9 /* ListTemplates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTemplates.swift; sourceTree = "<group>"; };
+		D924E26E1B2741F50025C5E9 /* UpdateTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTemplate.swift; sourceTree = "<group>"; };
+		D924E2701B2741F50025C5E9 /* FollowUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUser.swift; sourceTree = "<group>"; };
+		D924E2711B2741F50025C5E9 /* GetUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUser.swift; sourceTree = "<group>"; };
+		D924E2721B2741F50025C5E9 /* GetUserFollowing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserFollowing.swift; sourceTree = "<group>"; };
+		D924E2731B2741F50025C5E9 /* ListItemStockers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemStockers.swift; sourceTree = "<group>"; };
+		D924E2741B2741F50025C5E9 /* ListUserFollowees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUserFollowees.swift; sourceTree = "<group>"; };
+		D924E2751B2741F50025C5E9 /* ListUserFollowers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUserFollowers.swift; sourceTree = "<group>"; };
+		D924E2761B2741F50025C5E9 /* ListUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUsers.swift; sourceTree = "<group>"; };
+		D924E2771B2741F50025C5E9 /* UnfollowUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnfollowUser.swift; sourceTree = "<group>"; };
+		D924E2AB1B27420F0025C5E9 /* CreateAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccessToken.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +288,17 @@
 		D924E2071B25E5EE0025C5E9 /* Endpoint */ = {
 			isa = PBXGroup;
 			children = (
+				D924E23A1B2741F50025C5E9 /* AccessToken */,
+				D924E23C1B2741F50025C5E9 /* AuthenticatedUser */,
+				D924E23E1B2741F50025C5E9 /* Comment */,
+				D924E2461B2741F50025C5E9 /* ExpandedTemplate */,
+				D924E2481B2741F50025C5E9 /* Item */,
+				D924E2571B2741F50025C5E9 /* Project */,
+				D924E25D1B2741F50025C5E9 /* Tag */,
+				D924E2641B2741F50025C5E9 /* Tagging */,
+				D924E2671B2741F50025C5E9 /* Team */,
+				D924E2691B2741F50025C5E9 /* Template */,
+				D924E26F1B2741F50025C5E9 /* User */,
 			);
 			name = Endpoint;
 			path = src/Endpoint;
@@ -206,6 +321,135 @@
 			);
 			name = Entity;
 			path = src/Entity;
+			sourceTree = "<group>";
+		};
+		D924E23A1B2741F50025C5E9 /* AccessToken */ = {
+			isa = PBXGroup;
+			children = (
+				D924E2AB1B27420F0025C5E9 /* CreateAccessToken.swift */,
+				D924E23B1B2741F50025C5E9 /* DeleteAccessToken.swift */,
+			);
+			path = AccessToken;
+			sourceTree = "<group>";
+		};
+		D924E23C1B2741F50025C5E9 /* AuthenticatedUser */ = {
+			isa = PBXGroup;
+			children = (
+				D924E23D1B2741F50025C5E9 /* GetAuthenticatedUser.swift */,
+			);
+			path = AuthenticatedUser;
+			sourceTree = "<group>";
+		};
+		D924E23E1B2741F50025C5E9 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				D924E23F1B2741F50025C5E9 /* CreateItemComment.swift */,
+				D924E2401B2741F50025C5E9 /* DeleteComment.swift */,
+				D924E2411B2741F50025C5E9 /* GetComment.swift */,
+				D924E2421B2741F50025C5E9 /* ListItemComments.swift */,
+				D924E2431B2741F50025C5E9 /* ThankComment.swift */,
+				D924E2441B2741F50025C5E9 /* UnthankComment.swift */,
+				D924E2451B2741F50025C5E9 /* UpdateComment.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		D924E2461B2741F50025C5E9 /* ExpandedTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				D924E2471B2741F50025C5E9 /* CreateExpandedTemplate.swift */,
+			);
+			path = ExpandedTemplate;
+			sourceTree = "<group>";
+		};
+		D924E2481B2741F50025C5E9 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				D924E2491B2741F50025C5E9 /* CreateItem.swift */,
+				D924E24A1B2741F50025C5E9 /* DeleteItem.swift */,
+				D924E24B1B2741F50025C5E9 /* GetItem.swift */,
+				D924E24C1B2741F50025C5E9 /* GetItemStock.swift */,
+				D924E24D1B2741F50025C5E9 /* LikeItem.swift */,
+				D924E24E1B2741F50025C5E9 /* ListAuthenticatedUserItems.swift */,
+				D924E24F1B2741F50025C5E9 /* ListItems.swift */,
+				D924E2501B2741F50025C5E9 /* ListTagItems.swift */,
+				D924E2511B2741F50025C5E9 /* ListUserItems.swift */,
+				D924E2521B2741F50025C5E9 /* ListUserStocks.swift */,
+				D924E2531B2741F50025C5E9 /* StockItem.swift */,
+				D924E2541B2741F50025C5E9 /* UnlikeItem.swift */,
+				D924E2551B2741F50025C5E9 /* UnstockItem.swift */,
+				D924E2561B2741F50025C5E9 /* UpdateItem.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		D924E2571B2741F50025C5E9 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				D924E2581B2741F50025C5E9 /* CreateProject.swift */,
+				D924E2591B2741F50025C5E9 /* DeleteProject.swift */,
+				D924E25A1B2741F50025C5E9 /* GetProject.swift */,
+				D924E25B1B2741F50025C5E9 /* ListProjects.swift */,
+				D924E25C1B2741F50025C5E9 /* PatchProject.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		D924E25D1B2741F50025C5E9 /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				D924E25E1B2741F50025C5E9 /* FollowTag.swift */,
+				D924E25F1B2741F50025C5E9 /* GetTag.swift */,
+				D924E2601B2741F50025C5E9 /* GetTagFollowing.swift */,
+				D924E2611B2741F50025C5E9 /* ListTags.swift */,
+				D924E2621B2741F50025C5E9 /* ListUserFollowingTags.swift */,
+				D924E2631B2741F50025C5E9 /* UnfollowTag.swift */,
+			);
+			path = Tag;
+			sourceTree = "<group>";
+		};
+		D924E2641B2741F50025C5E9 /* Tagging */ = {
+			isa = PBXGroup;
+			children = (
+				D924E2651B2741F50025C5E9 /* CreateTagging.swift */,
+				D924E2661B2741F50025C5E9 /* DeleteTagging.swift */,
+			);
+			path = Tagging;
+			sourceTree = "<group>";
+		};
+		D924E2671B2741F50025C5E9 /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				D924E2681B2741F50025C5E9 /* ListTeams.swift */,
+			);
+			path = Team;
+			sourceTree = "<group>";
+		};
+		D924E2691B2741F50025C5E9 /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				D924E26A1B2741F50025C5E9 /* CreateTemplate.swift */,
+				D924E26B1B2741F50025C5E9 /* DeleteTemplate.swift */,
+				D924E26C1B2741F50025C5E9 /* GetTemplate.swift */,
+				D924E26D1B2741F50025C5E9 /* ListTemplates.swift */,
+				D924E26E1B2741F50025C5E9 /* UpdateTemplate.swift */,
+			);
+			path = Template;
+			sourceTree = "<group>";
+		};
+		D924E26F1B2741F50025C5E9 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				D924E2701B2741F50025C5E9 /* FollowUser.swift */,
+				D924E2711B2741F50025C5E9 /* GetUser.swift */,
+				D924E2721B2741F50025C5E9 /* GetUserFollowing.swift */,
+				D924E2731B2741F50025C5E9 /* ListItemStockers.swift */,
+				D924E2741B2741F50025C5E9 /* ListUserFollowees.swift */,
+				D924E2751B2741F50025C5E9 /* ListUserFollowers.swift */,
+				D924E2761B2741F50025C5E9 /* ListUsers.swift */,
+				D924E2771B2741F50025C5E9 /* UnfollowUser.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,18 +559,70 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D924E28D1B2741F50025C5E9 /* UnlikeItem.swift in Sources */,
+				D924E2811B2741F50025C5E9 /* CreateExpandedTemplate.swift in Sources */,
+				D924E29F1B2741F50025C5E9 /* DeleteTemplate.swift in Sources */,
+				D924E28B1B2741F50025C5E9 /* ListUserStocks.swift in Sources */,
+				D924E2931B2741F50025C5E9 /* ListProjects.swift in Sources */,
+				D924E2A31B2741F50025C5E9 /* FollowUser.swift in Sources */,
+				D924E2891B2741F50025C5E9 /* ListTagItems.swift in Sources */,
+				D924E2801B2741F50025C5E9 /* UpdateComment.swift in Sources */,
+				D924E2AA1B2741F50025C5E9 /* UnfollowUser.swift in Sources */,
 				D924E2201B260A3B0025C5E9 /* Tag.swift in Sources */,
+				D924E2821B2741F50025C5E9 /* CreateItem.swift in Sources */,
+				D924E2861B2741F50025C5E9 /* LikeItem.swift in Sources */,
 				D924E1F81B25E2560025C5E9 /* QiitaKit.swift in Sources */,
+				D924E28F1B2741F50025C5E9 /* UpdateItem.swift in Sources */,
+				D924E2961B2741F50025C5E9 /* GetTag.swift in Sources */,
+				D924E2871B2741F50025C5E9 /* ListAuthenticatedUserItems.swift in Sources */,
+				D924E2831B2741F50025C5E9 /* DeleteItem.swift in Sources */,
+				D924E28A1B2741F50025C5E9 /* ListUserItems.swift in Sources */,
+				D924E29C1B2741F50025C5E9 /* DeleteTagging.swift in Sources */,
 				D924E21A1B260A3B0025C5E9 /* ExpandedTemplate.swift in Sources */,
+				D924E27A1B2741F50025C5E9 /* CreateItemComment.swift in Sources */,
+				D924E27B1B2741F50025C5E9 /* DeleteComment.swift in Sources */,
+				D924E2A71B2741F50025C5E9 /* ListUserFollowees.swift in Sources */,
+				D924E2A51B2741F50025C5E9 /* GetUserFollowing.swift in Sources */,
+				D924E28C1B2741F50025C5E9 /* StockItem.swift in Sources */,
+				D924E2AC1B27420F0025C5E9 /* CreateAccessToken.swift in Sources */,
+				D924E29B1B2741F50025C5E9 /* CreateTagging.swift in Sources */,
+				D924E2791B2741F50025C5E9 /* GetAuthenticatedUser.swift in Sources */,
+				D924E2A11B2741F50025C5E9 /* ListTemplates.swift in Sources */,
+				D924E27D1B2741F50025C5E9 /* ListItemComments.swift in Sources */,
+				D924E27F1B2741F50025C5E9 /* UnthankComment.swift in Sources */,
+				D924E2A01B2741F50025C5E9 /* GetTemplate.swift in Sources */,
+				D924E2951B2741F50025C5E9 /* FollowTag.swift in Sources */,
+				D924E2981B2741F50025C5E9 /* ListTags.swift in Sources */,
+				D924E2A41B2741F50025C5E9 /* GetUser.swift in Sources */,
+				D924E2781B2741F50025C5E9 /* DeleteAccessToken.swift in Sources */,
 				D924E2161B260A3B0025C5E9 /* AuthenticatedUser.swift in Sources */,
+				D924E2841B2741F50025C5E9 /* GetItem.swift in Sources */,
+				D924E29E1B2741F50025C5E9 /* CreateTemplate.swift in Sources */,
 				D924E2141B260A3B0025C5E9 /* AccessToken.swift in Sources */,
+				D924E2911B2741F50025C5E9 /* DeleteProject.swift in Sources */,
 				D924E21C1B260A3B0025C5E9 /* Item.swift in Sources */,
+				D924E2A81B2741F50025C5E9 /* ListUserFollowers.swift in Sources */,
+				D924E27E1B2741F50025C5E9 /* ThankComment.swift in Sources */,
 				D924E21E1B260A3B0025C5E9 /* Project.swift in Sources */,
+				D924E29D1B2741F50025C5E9 /* ListTeams.swift in Sources */,
 				D924E2261B260A3B0025C5E9 /* Template.swift in Sources */,
 				D924E2281B260A3B0025C5E9 /* User.swift in Sources */,
+				D924E2941B2741F50025C5E9 /* PatchProject.swift in Sources */,
+				D924E2A61B2741F50025C5E9 /* ListItemStockers.swift in Sources */,
+				D924E2A21B2741F50025C5E9 /* UpdateTemplate.swift in Sources */,
 				D924E2181B260A3B0025C5E9 /* Comment.swift in Sources */,
+				D924E2881B2741F50025C5E9 /* ListItems.swift in Sources */,
+				D924E2901B2741F50025C5E9 /* CreateProject.swift in Sources */,
+				D924E2851B2741F50025C5E9 /* GetItemStock.swift in Sources */,
+				D924E28E1B2741F50025C5E9 /* UnstockItem.swift in Sources */,
 				D924E2241B260A3B0025C5E9 /* Team.swift in Sources */,
+				D924E2991B2741F50025C5E9 /* ListUserFollowingTags.swift in Sources */,
+				D924E29A1B2741F50025C5E9 /* UnfollowTag.swift in Sources */,
+				D924E27C1B2741F50025C5E9 /* GetComment.swift in Sources */,
+				D924E2971B2741F50025C5E9 /* GetTagFollowing.swift in Sources */,
 				D924E2221B260A3B0025C5E9 /* Tagging.swift in Sources */,
+				D924E2A91B2741F50025C5E9 /* ListUsers.swift in Sources */,
+				D924E2921B2741F50025C5E9 /* GetProject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
