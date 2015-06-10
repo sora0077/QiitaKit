@@ -69,9 +69,8 @@ extension ListUserItems {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
-        let items = object.map { object -> Item in
-            
-            let user = User(
+        func _User(object: [String: AnyObject]) -> User {
+            return User(
                 description: object["description"] as? String,
                 facebook_id: object["facebook_id"] as? String,
                 followees_count: object["followees_count"] as! Int,
@@ -88,7 +87,11 @@ extension ListUserItems {
                 twitter_screen_name: object["twitter_screen_name"] as? String,
                 website_url: object["website_url"] as? String
             )
+        }
+        
+        let items = object.map { object -> Item in
             
+            let user = _User(object["user"] as! [String: AnyObject])
             let tags = object["tags"] as! [[String: AnyObject]]
             let item = Item(
                 rendered_body: object["rendered_body"] as! String,

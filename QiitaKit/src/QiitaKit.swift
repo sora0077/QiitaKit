@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import BrightFutures
 
 /**
 *  <#Description#>
@@ -20,6 +21,18 @@ public class QiitaKit {
     
     public init(baseURL: String) {
         self.api = API(baseURL: baseURL)
+    }
+    
+    public func request<T : RequestToken>(token: T) -> Future<T.Response> {
+        return self.api.request(token)
+    }
+    
+    public func cancel<T : RequestToken>(clazz: T.Type) {
+        return self.api.cancel(clazz)
+    }
+    
+    public func cancel<T : RequestToken>(clazz: T.Type, f: T -> Bool) {
+        return self.api.cancel(clazz, f: f)
     }
     
 }
