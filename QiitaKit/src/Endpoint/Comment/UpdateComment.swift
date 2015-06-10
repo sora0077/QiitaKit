@@ -44,7 +44,9 @@ extension UpdateComment: RequestToken {
     }
 
     public var parameters: [String: AnyObject]? {
-        return nil
+        return [
+            "body": body
+        ]
     }
 
     public var encoding: RequestEncoding {

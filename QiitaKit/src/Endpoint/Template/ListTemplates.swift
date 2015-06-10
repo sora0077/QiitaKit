@@ -54,7 +54,7 @@ extension ListTemplates: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .JSON
+        return .URL
     }
 
     public var resonseEncoding: ResponseEncoding {

@@ -50,7 +50,10 @@ extension CreateTagging: RequestToken {
     }
 
     public var parameters: [String: AnyObject]? {
-        return nil
+        return [
+            "name": name,
+            "versions": versions
+        ]
     }
 
     public var encoding: RequestEncoding {
