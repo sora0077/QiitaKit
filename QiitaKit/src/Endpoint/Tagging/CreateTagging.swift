@@ -13,6 +13,8 @@ import APIKit
 *  投稿にタグを追加します。Qiita:Teamでのみ有効です。
 */
 public class CreateTagging {
+    
+    public let item_id: String
     /// タグを特定するための一意な名前
     /// example: qiita
     /// 
@@ -23,7 +25,8 @@ public class CreateTagging {
     /// 
     public let versions: Array<String>
 
-    public init(name: String, versions: Array<String>) {
+    public init(item_id: String, name: String, versions: Array<String>) {
+        self.item_id = item_id
         self.name = name
         self.versions = versions
     }
@@ -39,7 +42,7 @@ extension CreateTagging: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/items/:item_id/taggings"
+        return "/api/v2/items/\(item_id)/taggings"
     }
 
     public var headers: [String: AnyObject]? {
@@ -51,7 +54,7 @@ extension CreateTagging: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {

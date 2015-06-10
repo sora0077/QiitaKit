@@ -13,7 +13,15 @@ import APIKit
 *  投稿から指定されたタグを取り除きます。Qiita:Teamでのみ有効です。
 */
 public class DeleteTagging {
-    public init() {
+    
+    public let item_id: String
+    
+    public let tagging_id: String
+    
+    
+    public init(item_id: String, tagging_id: String) {
+        self.item_id = item_id
+        self.tagging_id = tagging_id
     }
 }
 
@@ -27,7 +35,7 @@ extension DeleteTagging: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/items/:item_id/taggings/:tagging_id"
+        return "/api/v2/items/\(item_id)/taggings/\(tagging_id)"
     }
 
     public var headers: [String: AnyObject]? {
@@ -39,7 +47,7 @@ extension DeleteTagging: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {
