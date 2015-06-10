@@ -13,7 +13,11 @@ import APIKit
 *  ユーザをフォローします。
 */
 public class FollowUser {
-    public init() {
+    
+    public let user_id: String
+    
+    public init(user_id: String) {
+        self.user_id = user_id
     }
 }
 
@@ -27,7 +31,7 @@ extension FollowUser: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/users/:user_id/following"
+        return "/api/v2/users/\(user_id)/following"
     }
 
     public var headers: [String: AnyObject]? {

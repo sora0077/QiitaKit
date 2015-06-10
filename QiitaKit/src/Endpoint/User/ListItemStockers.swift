@@ -13,6 +13,8 @@ import APIKit
 *  投稿をストックしているユーザ一覧を、ストックした日時の降順で返します。
 */
 public class ListItemStockers {
+    
+    public let item_id: String
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$
@@ -23,7 +25,8 @@ public class ListItemStockers {
     /// ^[0-9]+$
     public let per_page: String
 
-    public init(page: String, per_page: String) {
+    public init(item_id: String, page: String, per_page: String) {
+        self.item_id = item_id
         self.page = page
         self.per_page = per_page
     }
@@ -39,7 +42,7 @@ extension ListItemStockers: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/items/:item_id/stockers"
+        return "/api/v2/items/\(item_id)/stockers"
     }
 
     public var headers: [String: AnyObject]? {
@@ -47,7 +50,10 @@ extension ListItemStockers: RequestToken {
     }
 
     public var parameters: [String: AnyObject]? {
-        return nil
+        return [
+            "page": page,
+            "per_page": per_page
+        ]
     }
 
     public var encoding: RequestEncoding {

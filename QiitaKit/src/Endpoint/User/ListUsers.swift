@@ -47,7 +47,10 @@ extension ListUsers: RequestToken {
     }
 
     public var parameters: [String: AnyObject]? {
-        return nil
+        return [
+            "page": page,
+            "per_page": per_page
+        ]
     }
 
     public var encoding: RequestEncoding {

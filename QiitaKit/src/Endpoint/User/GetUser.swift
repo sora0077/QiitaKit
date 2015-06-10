@@ -13,7 +13,11 @@ import APIKit
 *  ユーザを取得します。
 */
 public class GetUser {
-    public init() {
+    
+    public let user_id: String
+    
+    public init(user_id: String) {
+        self.user_id = user_id
     }
 }
 
@@ -27,7 +31,7 @@ extension GetUser: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/users/:user_id"
+        return "/api/v2/users/\(user_id)"
     }
 
     public var headers: [String: AnyObject]? {

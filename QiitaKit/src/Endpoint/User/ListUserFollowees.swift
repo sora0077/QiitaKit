@@ -13,6 +13,8 @@ import APIKit
 *  ユーザがフォローしているユーザ一覧を取得します。
 */
 public class ListUserFollowees {
+    
+    public let user_id: String
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$
@@ -23,7 +25,8 @@ public class ListUserFollowees {
     /// ^[0-9]+$
     public let per_page: String
 
-    public init(page: String, per_page: String) {
+    public init(user_id: String, page: String, per_page: String) {
+        self.user_id = user_id
         self.page = page
         self.per_page = per_page
     }
@@ -39,7 +42,7 @@ extension ListUserFollowees: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/users/:user_id/followees"
+        return "/api/v2/users/\(user_id)/followees"
     }
 
     public var headers: [String: AnyObject]? {
@@ -47,7 +50,10 @@ extension ListUserFollowees: RequestToken {
     }
 
     public var parameters: [String: AnyObject]? {
-        return nil
+        return [
+            "page": page,
+            "per_page": per_page
+        ]
     }
 
     public var encoding: RequestEncoding {

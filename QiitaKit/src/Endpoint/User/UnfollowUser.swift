@@ -13,7 +13,11 @@ import APIKit
 *  ユーザへのフォローを外します。
 */
 public class UnfollowUser {
-    public init() {
+    
+    public let user_id: String
+    
+    public init(user_id: String) {
+        self.user_id = user_id
     }
 }
 
@@ -27,7 +31,7 @@ extension UnfollowUser: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/users/:user_id/following"
+        return "/api/v2/users/\(user_id)/following"
     }
 
     public var headers: [String: AnyObject]? {
