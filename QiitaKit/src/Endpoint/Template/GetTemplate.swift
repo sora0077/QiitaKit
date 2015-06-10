@@ -13,7 +13,11 @@ import APIKit
 *  テンプレートを取得します。
 */
 public class GetTemplate {
-    public init() {
+    
+    public let template_id: String
+    
+    public init(template_id: String) {
+        self.template_id = template_id
     }
 }
 
@@ -27,7 +31,7 @@ extension GetTemplate: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/templates/:template_id"
+        return "/api/v2/templates/\(template_id)"
     }
 
     public var headers: [String: AnyObject]? {
@@ -39,7 +43,7 @@ extension GetTemplate: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {

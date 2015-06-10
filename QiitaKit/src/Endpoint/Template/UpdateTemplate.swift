@@ -13,6 +13,8 @@ import APIKit
 *  テンプレートを更新します。
 */
 public class UpdateTemplate {
+    
+    public let template_id: String
     /// テンプレートの本文
     /// example: Weekly MTG on %{Year}/%{month}/%{day}
     /// 
@@ -33,7 +35,8 @@ public class UpdateTemplate {
     /// 
     public let title: String
 
-    public init(body: String, name: String, tags: Array<Tagging>, title: String) {
+    public init(template_id: String, body: String, name: String, tags: Array<Tagging>, title: String) {
+        self.template_id = template_id
         self.body = body
         self.name = name
         self.tags = tags
@@ -51,7 +54,7 @@ extension UpdateTemplate: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/templates/:template_id"
+        return "/api/v2/templates/\(template_id)"
     }
 
     public var headers: [String: AnyObject]? {
@@ -59,11 +62,16 @@ extension UpdateTemplate: RequestToken {
     }
 
     public var parameters: [String: AnyObject]? {
-        return nil
+        return [
+            "body": body,
+            "name": name,
+            "tags": tags.map({ ["name": $0.name, "versions": $0.versions] }),
+            "title": title
+        ]
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {

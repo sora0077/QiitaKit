@@ -59,11 +59,16 @@ extension CreateTemplate: RequestToken {
     }
 
     public var parameters: [String: AnyObject]? {
-        return nil
+        return [
+            "body": body,
+            "name": name,
+            "tags": tags.map({ ["name": $0.name, "versions": $0.versions] }),
+            "title": title
+        ]
     }
 
     public var encoding: RequestEncoding {
-        return .URL
+        return .JSON
     }
 
     public var resonseEncoding: ResponseEncoding {
