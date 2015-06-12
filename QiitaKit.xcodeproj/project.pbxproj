@@ -23,6 +23,7 @@
 		D9194A501B28903A00E4D916 /* BrightFutures.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FD1B25E5380025C5E9 /* BrightFutures.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9194A511B28903A00E4D916 /* LoggingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FE1B25E5380025C5E9 /* LoggingKit.framework */; };
 		D9194A521B28903A00E4D916 /* LoggingKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FE1B25E5380025C5E9 /* LoggingKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D9194A551B2B3A4F00E4D916 /* dotenv.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9194A541B2B3A4F00E4D916 /* dotenv.swift */; };
 		D924E1E01B25E1970025C5E9 /* QiitaKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D924E1DF1B25E1970025C5E9 /* QiitaKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D924E1E61B25E1970025C5E9 /* QiitaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1DA1B25E1970025C5E9 /* QiitaKit.framework */; };
 		D924E1ED1B25E1970025C5E9 /* QiitaKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E1EC1B25E1970025C5E9 /* QiitaKitTests.swift */; };
@@ -166,6 +167,7 @@
 		D9194A391B288FBC00E4D916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9194A3A1B288FBC00E4D916 /* QiitaKitDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaKitDemoTests.swift; sourceTree = "<group>"; };
 		D9194A421B288FF800E4D916 /* QiitaKitDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QiitaKitDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		D9194A541B2B3A4F00E4D916 /* dotenv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dotenv.swift; sourceTree = "<group>"; };
 		D924E1DA1B25E1970025C5E9 /* QiitaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QiitaKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D924E1DE1B25E1970025C5E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D924E1DF1B25E1970025C5E9 /* QiitaKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiitaKit.h; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 		D9194A221B288FBC00E4D916 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D9194A541B2B3A4F00E4D916 /* dotenv.swift */,
 				D9194A231B288FBC00E4D916 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -591,6 +594,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9194A401B288FBC00E4D916 /* Build configuration list for PBXNativeTarget "QiitaKitDemo" */;
 			buildPhases = (
+				D9194A531B2B3A2000E4D916 /* ShellScript */,
 				D9194A1C1B288FBC00E4D916 /* Sources */,
 				D9194A1D1B288FBC00E4D916 /* Frameworks */,
 				D9194A1E1B288FBC00E4D916 /* Resources */,
@@ -739,11 +743,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D9194A531B2B3A2000E4D916 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd QiitaKitDemo\nruby ./dotenv.rb";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D9194A1C1B288FBC00E4D916 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9194A551B2B3A4F00E4D916 /* dotenv.swift in Sources */,
 				D9194A271B288FBC00E4D916 /* ViewController.swift in Sources */,
 				D9194A251B288FBC00E4D916 /* AppDelegate.swift in Sources */,
 			);
@@ -1131,6 +1152,7 @@
 				D9194A3D1B288FBC00E4D916 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D9194A411B288FBC00E4D916 /* Build configuration list for PBXNativeTarget "QiitaKitDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -1139,6 +1161,7 @@
 				D9194A3F1B288FBC00E4D916 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D924E1D41B25E1960025C5E9 /* Build configuration list for PBXProject "QiitaKit" */ = {
 			isa = XCConfigurationList;

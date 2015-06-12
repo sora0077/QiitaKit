@@ -17,9 +17,14 @@ extension AccessToken {
     public enum Scope: String {
         case ReadQiita = "read_qiita"
         case WriteQiita = "write_qiita"
+        case ReadQiitaTeam = "read_qiita_team"
+        case WriteQiitaTeam = "write_qiita_team"
         
     }
     
+    private static func ScopeValues(scopes: [AccessToken.Scope]) -> String {
+        return join("+", scopes.map({ $0.rawValue }))
+    }
 }
 
 /**
@@ -55,8 +60,10 @@ public class QiitaKit: API {
         callbackScheme = scheme
         oauthPromise = promise
         
+        assert(scopes.count > 0, "where scopes.count > 0")
+        
         let app = UIApplication.sharedApplication()
-        let url = NSURL(string: "\(baseURL)/api/v2/oauth/authorize?client_id=\(clientId)&scope=read_qiita")
+        let url = NSURL(string: "\(baseURL)/api/v2/oauth/authorize?client_id=\(clientId)&scope=\(AccessToken.ScopeValues(scopes))")
         app.openURL(url!)
         
         return promise.future
@@ -75,8 +82,14 @@ public class QiitaKit: API {
             
             let f = self.request(createAccessToken)
             let p = oauthPromise!
-            f.onComplete {
-                p.complete($0)
+            f.onComplete { [weak self] result in
+                switch result {
+                case .Success(let accessToken):
+                    self?.accessToken = accessToken.value
+                default:
+                    break
+                }
+                p.complete(result)
             }
             return true
         }
