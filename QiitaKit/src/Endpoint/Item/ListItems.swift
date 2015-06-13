@@ -12,7 +12,7 @@ import APIKit
 /**
 *  投稿の一覧を作成日時の降順で返します。
 */
-public class ListItems {
+public struct ListItems {
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$

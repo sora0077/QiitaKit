@@ -12,7 +12,7 @@ import APIKit
 /**
 *  投稿を削除します。
 */
-public class DeleteItem {
+public struct DeleteItem {
     
     public let item_id: String
     

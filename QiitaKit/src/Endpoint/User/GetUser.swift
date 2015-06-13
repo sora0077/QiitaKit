@@ -12,7 +12,7 @@ import APIKit
 /**
 *  ユーザを取得します。
 */
-public class GetUser {
+public struct GetUser {
     
     public let user_id: String
     

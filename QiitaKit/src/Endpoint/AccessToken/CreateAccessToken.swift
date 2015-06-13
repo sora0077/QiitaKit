@@ -12,7 +12,7 @@ import APIKit
 /**
 *  与えられた認証情報をもとに新しいアクセストークンを発行します。
 */
-public class CreateAccessToken {
+public struct CreateAccessToken {
     /// 登録されたAPIクライアントを特定するためのID
     /// example: a91f0396a0968ff593eafdd194e3d17d32c41b1da7b25e873b42e9058058cd9d
     /// ^[0-9a-f]{40}$

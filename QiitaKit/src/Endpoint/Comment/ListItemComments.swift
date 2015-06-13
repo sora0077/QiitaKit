@@ -12,7 +12,7 @@ import APIKit
 /**
 *  投稿に付けられたコメント一覧を投稿日時の降順で取得します。
 */
-public class ListItemComments {
+public struct ListItemComments {
     
     public let item_id: String
     

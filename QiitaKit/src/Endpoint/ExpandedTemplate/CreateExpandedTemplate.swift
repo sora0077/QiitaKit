@@ -12,7 +12,7 @@ import APIKit
 /**
 *  受け取ったテンプレート用文字列の変数を展開して返します。
 */
-public class CreateExpandedTemplate {
+public struct CreateExpandedTemplate {
     /// テンプレートの本文
     /// example: Weekly MTG on %{Year}/%{month}/%{day}
     /// 

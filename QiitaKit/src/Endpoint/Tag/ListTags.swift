@@ -12,7 +12,7 @@ import APIKit
 /**
 *  タグ一覧を作成日時の降順で返します。
 */
-public class ListTags {
+public struct ListTags {
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$

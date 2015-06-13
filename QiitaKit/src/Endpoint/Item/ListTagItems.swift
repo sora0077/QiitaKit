@@ -12,7 +12,7 @@ import APIKit
 /**
 *  指定されたタグが付けられた投稿一覧を、タグを付けた日時の降順で返します。
 */
-public class ListTagItems {
+public struct ListTagItems {
     
     public let tag_id: String
     /// ページ番号 (1から100まで)

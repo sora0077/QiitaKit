@@ -8,6 +8,7 @@
 
 import UIKit
 import LoggingKit
+import BrightFutures
 
 let Qiita = QiitaKit(
     baseURL: "https://qiita.com",
@@ -28,14 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         dispatch_async(dispatch_get_main_queue()) {
             Qiita.oauthAuthorize([.ReadQiita, .WriteQiita], scheme: "qiitakitdemo://oauth/callback")
-                .onSuccess {
-                    Logging.d($0.token)
+                .flatMap { _ in
+                    Qiita.request(GetAuthenticatedUser())
                 }
-                .onFailure {
-                    Logging.d($0)
+                .flatMap {
+                    Qiita.request(GetUser(user_id: $0.id))
+                }
+                .onSuccess {
+                    Logging.d($0.github_login_name)
                 }
         }
-        
         
         
         return true

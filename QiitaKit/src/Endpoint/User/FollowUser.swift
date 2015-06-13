@@ -12,7 +12,7 @@ import APIKit
 /**
 *  ユーザをフォローします。
 */
-public class FollowUser {
+public struct FollowUser {
     
     public let user_id: String
     

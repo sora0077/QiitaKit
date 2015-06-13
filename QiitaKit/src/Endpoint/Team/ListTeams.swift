@@ -12,7 +12,7 @@ import APIKit
 /**
 *  ユーザが所属している全てのチームを、チーム作成日時の降順で返します。
 */
-public class ListTeams {
+public struct ListTeams {
     public init() {
     }
 }

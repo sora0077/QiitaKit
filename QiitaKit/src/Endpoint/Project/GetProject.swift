@@ -12,7 +12,7 @@ import APIKit
 /**
 *  プロジェクトを返します。
 */
-public class GetProject {
+public struct GetProject {
     
     public let project_id: String
     

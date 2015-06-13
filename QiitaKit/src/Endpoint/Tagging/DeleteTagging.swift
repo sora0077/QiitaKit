@@ -12,7 +12,7 @@ import APIKit
 /**
 *  投稿から指定されたタグを取り除きます。Qiita:Teamでのみ有効です。
 */
-public class DeleteTagging {
+public struct DeleteTagging {
     
     public let item_id: String
     

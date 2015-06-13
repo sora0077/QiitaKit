@@ -39,7 +39,8 @@ public class QiitaKit: API {
     
     private var callbackScheme: String?
     private var oauthPromise: Promise<AccessToken>?
-    private var accessToken: AccessToken?
+    
+    public var accessToken: AccessToken?
     
     public init(baseURL: String, clientId: String, clientSecret: String) {
         self.baseURL = baseURL
@@ -47,13 +48,22 @@ public class QiitaKit: API {
         self.clientId = clientId
         self.clientSecret = clientSecret
         
-        NSURLProtocol.registerClass(LoggingURLProtocol.self)
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.protocolClasses = [LoggingURLProtocol.self]
         
-        super.init(baseURL: baseURL)
+        super.init(baseURL: baseURL, configuration: configuration)
     }
     
+    public override func additionalHeaders() -> [String : AnyObject]? {
+        if let accessToken = accessToken {
+            return [
+                "Authorization": "Bearer \(accessToken.token)"
+            ]
+        }
+        return nil
+    }
     
-    public func oauthAuthorize(scopes: [AccessToken.Scope], scheme: String) -> Future<AccessToken> {
+    public func oauthAuthorize(scopes: [AccessToken.Scope], scheme: String, state: String? = nil) -> Future<AccessToken> {
         
         let promise = Promise<AccessToken>()
         
@@ -63,7 +73,11 @@ public class QiitaKit: API {
         assert(scopes.count > 0, "where scopes.count > 0")
         
         let app = UIApplication.sharedApplication()
-        let url = NSURL(string: "\(baseURL)/api/v2/oauth/authorize?client_id=\(clientId)&scope=\(AccessToken.ScopeValues(scopes))")
+        var string = "\(baseURL)/api/v2/oauth/authorize?client_id=\(clientId)&scope=\(AccessToken.ScopeValues(scopes))"
+        if let state = state {
+            string += "&state=\(state)"
+        }
+        let url = NSURL(string: string)
         app.openURL(url!)
         
         return promise.future
@@ -101,7 +115,10 @@ public class QiitaKit: API {
 class LoggingURLProtocol: NSURLProtocol {
     
     override class func canInitWithRequest(request: NSURLRequest) -> Bool {
-        Logging.d(request)
+        Logging.d([
+            "headers": request.allHTTPHeaderFields ?? [:],
+            "url": request.URL?.absoluteString ?? ""
+            ] as NSDictionary)
         return false
     }
 }

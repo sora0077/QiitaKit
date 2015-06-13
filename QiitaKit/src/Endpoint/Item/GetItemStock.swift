@@ -12,7 +12,7 @@ import APIKit
 /**
 *  投稿をストックしているかどうかを調べます。
 */
-public class GetItemStock {
+public struct GetItemStock {
     
     public let item_id: String
     

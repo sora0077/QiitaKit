@@ -12,7 +12,7 @@ import APIKit
 /**
 *  チーム内のテンプレート一覧を返します。
 */
-public class ListTemplates {
+public struct ListTemplates {
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$

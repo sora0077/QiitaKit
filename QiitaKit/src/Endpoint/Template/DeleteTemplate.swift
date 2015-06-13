@@ -12,7 +12,7 @@ import APIKit
 /**
 *  テンプレートを削除します。
 */
-public class DeleteTemplate {
+public struct DeleteTemplate {
     
     public let template_id: String
     

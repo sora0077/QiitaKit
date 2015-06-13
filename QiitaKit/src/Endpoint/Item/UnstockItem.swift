@@ -12,7 +12,7 @@ import APIKit
 /**
 *  投稿をストックから取り除きます。
 */
-public class UnstockItem {
+public struct UnstockItem {
     
     public let item_id: String
     

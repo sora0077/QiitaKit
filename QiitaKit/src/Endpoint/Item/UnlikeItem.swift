@@ -12,7 +12,7 @@ import APIKit
 /**
 *  投稿への「いいね！」を取り消します。Qiita:Teamでのみ有効です。
 */
-public class UnlikeItem {
+public struct UnlikeItem {
     
     public let item_id: String
     

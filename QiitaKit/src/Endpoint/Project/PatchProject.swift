@@ -12,7 +12,7 @@ import APIKit
 /**
 *  プロジェクトを更新します。
 */
-public class PatchProject {
+public struct PatchProject {
     
     public let project_id: String
     

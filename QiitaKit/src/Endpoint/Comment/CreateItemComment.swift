@@ -12,7 +12,7 @@ import APIKit
 /**
 *  投稿に対してコメントを投稿します。
 */
-public class CreateItemComment {
+public struct CreateItemComment {
     
     public let item_id: String
     /// コメントの内容を表すMarkdown形式の文字列

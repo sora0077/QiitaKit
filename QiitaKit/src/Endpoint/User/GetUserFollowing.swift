@@ -12,7 +12,7 @@ import APIKit
 /**
 *  ユーザをフォローしている場合に204を返します。
 */
-public class GetUserFollowing {
+public struct GetUserFollowing {
     
     public let user_id: String
     

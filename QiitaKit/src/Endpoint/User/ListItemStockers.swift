@@ -12,7 +12,7 @@ import APIKit
 /**
 *  投稿をストックしているユーザ一覧を、ストックした日時の降順で返します。
 */
-public class ListItemStockers {
+public struct ListItemStockers {
     
     public let item_id: String
     /// ページ番号 (1から100まで)

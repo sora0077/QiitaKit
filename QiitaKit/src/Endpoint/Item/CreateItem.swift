@@ -12,7 +12,7 @@ import APIKit
 /**
 *  新たに投稿を作成します。
 */
-public class CreateItem {
+public struct CreateItem {
     /// Markdown形式の本文
     /// example: # Example
     /// 

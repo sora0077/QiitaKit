@@ -12,7 +12,7 @@ import APIKit
 /**
 *  タグのフォローを外します。
 */
-public class UnfollowTag {
+public struct UnfollowTag {
     
     public let tag_id: String
     

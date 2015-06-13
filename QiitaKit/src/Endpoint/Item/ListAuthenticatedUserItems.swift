@@ -12,7 +12,7 @@ import APIKit
 /**
 *  認証中のユーザの投稿の一覧を作成日時の降順で返します。
 */
-public class ListAuthenticatedUserItems {
+public struct ListAuthenticatedUserItems {
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$

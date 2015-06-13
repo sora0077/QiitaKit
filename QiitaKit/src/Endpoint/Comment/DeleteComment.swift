@@ -12,7 +12,7 @@ import APIKit
 /**
 *  コメントを削除します。
 */
-public class DeleteComment {
+public struct DeleteComment {
     
     public let comment_id: String
     

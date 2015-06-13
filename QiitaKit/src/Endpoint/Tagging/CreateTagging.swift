@@ -12,7 +12,7 @@ import APIKit
 /**
 *  投稿にタグを追加します。Qiita:Teamでのみ有効です。
 */
-public class CreateTagging {
+public struct CreateTagging {
     
     public let item_id: String
     /// タグを特定するための一意な名前

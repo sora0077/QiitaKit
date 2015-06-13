@@ -12,7 +12,7 @@ import APIKit
 /**
 *  コメントを取得します。
 */
-public class GetComment {
+public struct GetComment {
     
     public let comment_id: String
     

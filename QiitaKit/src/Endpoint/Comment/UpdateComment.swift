@@ -12,7 +12,7 @@ import APIKit
 /**
 *  コメントを更新します。
 */
-public class UpdateComment {
+public struct UpdateComment {
     
     public let comment_id: String
     /// コメントの内容を表すMarkdown形式の文字列

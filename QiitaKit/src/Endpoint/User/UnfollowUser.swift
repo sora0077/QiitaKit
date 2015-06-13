@@ -12,7 +12,7 @@ import APIKit
 /**
 *  ユーザへのフォローを外します。
 */
-public class UnfollowUser {
+public struct UnfollowUser {
     
     public let user_id: String
     

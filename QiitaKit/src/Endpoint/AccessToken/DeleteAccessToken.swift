@@ -12,7 +12,7 @@ import APIKit
 /**
 *  指定されたアクセストークンを失効させ、それ以降利用できないようにします。
 */
-public class DeleteAccessToken {
+public struct DeleteAccessToken {
     
     public let access_token: String
     

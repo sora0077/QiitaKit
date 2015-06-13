@@ -12,7 +12,7 @@ import APIKit
 /**
 *  指定されたユーザの投稿一覧を、作成日時の降順で返します。
 */
-public class ListUserItems {
+public struct ListUserItems {
     
     public let user_id: String
     /// ページ番号 (1から100まで)

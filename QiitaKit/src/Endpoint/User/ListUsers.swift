@@ -12,7 +12,7 @@ import APIKit
 /**
 *  全てのユーザの一覧を作成日時の降順で取得します。
 */
-public class ListUsers {
+public struct ListUsers {
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$

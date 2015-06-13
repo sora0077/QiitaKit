@@ -12,7 +12,7 @@ import APIKit
 /**
 *  タグをフォローします。
 */
-public class FollowTag {
+public struct FollowTag {
     
     public let tag_id: String
     

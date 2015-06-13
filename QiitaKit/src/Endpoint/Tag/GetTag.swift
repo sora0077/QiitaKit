@@ -12,7 +12,7 @@ import APIKit
 /**
 *  タグを取得します。
 */
-public class GetTag {
+public struct GetTag {
     
     public let tag_id: String
     

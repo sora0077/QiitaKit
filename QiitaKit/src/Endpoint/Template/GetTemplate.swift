@@ -12,7 +12,7 @@ import APIKit
 /**
 *  テンプレートを取得します。
 */
-public class GetTemplate {
+public struct GetTemplate {
     
     public let template_id: String
     

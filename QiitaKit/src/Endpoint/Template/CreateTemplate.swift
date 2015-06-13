@@ -12,7 +12,7 @@ import APIKit
 /**
 *  新しくテンプレートを作成します。
 */
-public class CreateTemplate {
+public struct CreateTemplate {
     /// テンプレートの本文
     /// example: Weekly MTG on %{Year}/%{month}/%{day}
     /// 

@@ -12,7 +12,7 @@ import APIKit
 /**
 *  プロジェクトを削除します。
 */
-public class DeleteProject {
+public struct DeleteProject {
     
     public let project_id: String
     

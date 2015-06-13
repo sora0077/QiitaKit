@@ -12,7 +12,7 @@ import APIKit
 /**
 *  投稿を更新します。
 */
-public class UpdateItem {
+public struct UpdateItem {
     
     public let item_id: String
     /// Markdown形式の本文

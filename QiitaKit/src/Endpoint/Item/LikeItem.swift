@@ -12,7 +12,7 @@ import APIKit
 /**
 *  投稿に「いいね！」を付けます。Qiita:Teamでのみ有効です。
 */
-public class LikeItem {
+public struct LikeItem {
     
     public let item_id: String
     

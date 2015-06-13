@@ -12,7 +12,7 @@ import APIKit
 /**
 *  テンプレートを更新します。
 */
-public class UpdateTemplate {
+public struct UpdateTemplate {
     
     public let template_id: String
     /// テンプレートの本文

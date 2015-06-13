@@ -12,7 +12,7 @@ import APIKit
 /**
 *  コメントからThankを外します。
 */
-public class UnthankComment {
+public struct UnthankComment {
     
     public let comment_id: String
     

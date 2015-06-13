@@ -12,7 +12,7 @@ import APIKit
 /**
 *  チーム内に存在するプロジェクト一覧をプロジェクト作成日時の降順で返します。
 */
-public class ListProjects {
+public struct ListProjects {
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$

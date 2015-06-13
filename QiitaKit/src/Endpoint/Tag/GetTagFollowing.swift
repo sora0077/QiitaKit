@@ -12,7 +12,7 @@ import APIKit
 /**
 *  タグをフォローしているかどうかを調べます。
 */
-public class GetTagFollowing {
+public struct GetTagFollowing {
     
     public let tag_id: String
     

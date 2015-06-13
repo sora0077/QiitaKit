@@ -12,7 +12,7 @@ import APIKit
 /**
 *  ユーザがフォローしているタグ一覧をフォロー日時の降順で返します。
 */
-public class ListUserFollowingTags {
+public struct ListUserFollowingTags {
     
     public let user_id: String
     

@@ -12,7 +12,7 @@ import APIKit
 /**
 *  アクセストークンに紐付いたユーザを返します。
 */
-public class GetAuthenticatedUser {
+public struct GetAuthenticatedUser {
     public init() {
     }
 }

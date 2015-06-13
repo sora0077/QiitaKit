@@ -12,7 +12,7 @@ import APIKit
 /**
 *  投稿をストックします。
 */
-public class StockItem {
+public struct StockItem {
     
     public let item_id: String
     

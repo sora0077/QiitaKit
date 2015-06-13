@@ -12,7 +12,7 @@ import APIKit
 /**
 *  プロジェクトを新たに作成します。
 */
-public class CreateProject {
+public struct CreateProject {
     /// このプロジェクトが進行中かどうか
     /// 
     public let archived: Bool

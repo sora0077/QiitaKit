@@ -12,7 +12,7 @@ import APIKit
 /**
 *  ユーザをフォローしているユーザ一覧を取得します。
 */
-public class ListUserFollowers {
+public struct ListUserFollowers {
     
     public let user_id: String
     /// ページ番号 (1から100まで)
