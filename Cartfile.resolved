@@ -1,4 +1,4 @@
 github "Alamofire/Alamofire" "1.2.3"
 github "Thomvis/BrightFutures" "v1.0.1"
 github "sora0077/LoggingKit" "1.0.1"
-github "sora0077/APIKit" "0.0.6"
+github "sora0077/APIKit" "0.0.7"

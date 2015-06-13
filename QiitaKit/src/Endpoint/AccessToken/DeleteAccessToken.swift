@@ -23,15 +23,15 @@ public struct DeleteAccessToken {
 
 extension DeleteAccessToken: RequestToken {
 
-    public typealias Response = AccessToken
-    public typealias SerializedType = [String: AnyObject]
+    public typealias Response = ()
+    public typealias SerializedType = NSData
 
     public var method: HTTPMethod {
         return .DELETE
     }
 
     public var URL: String {
-        return "/api/v2/access_tokens/:access_token"
+        return "/api/v2/access_tokens/\(access_token)"
     }
 
     public var headers: [String: AnyObject]? {
@@ -47,19 +47,13 @@ extension DeleteAccessToken: RequestToken {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
+        return .Data
     }
 }
 
 extension DeleteAccessToken {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
-        
-        let accessToken = AccessToken(
-            client_id: object["client_id"] as! String,
-            scopes: object["scopes"] as! Array<String>,
-            token: object["token"] as! String
-        )
-        return Result(accessToken)
+        return Result(())
     }
 }

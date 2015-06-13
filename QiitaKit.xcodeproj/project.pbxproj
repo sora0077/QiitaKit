@@ -28,6 +28,11 @@
 		D9194A5D1B2C66A700E4D916 /* LayoutKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9194A5A1B2C669700E4D916 /* LayoutKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9194A5E1B2C66A700E4D916 /* ToysBoxKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9194A5B1B2C669700E4D916 /* ToysBoxKit.framework */; };
 		D9194A5F1B2C66A700E4D916 /* ToysBoxKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9194A5B1B2C669700E4D916 /* ToysBoxKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D9194A621B2C680D00E4D916 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9194A611B2C680D00E4D916 /* TopViewController.swift */; };
+		D9194A6F1B2C7DED00E4D916 /* AccessTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9194A6E1B2C7DED00E4D916 /* AccessTokenViewController.swift */; };
+		D9194A711B2C845500E4D916 /* AuthenticatedUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9194A701B2C845500E4D916 /* AuthenticatedUserViewController.swift */; };
+		D9194AA81B2C88C300E4D916 /* MaterialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9194AA71B2C88AE00E4D916 /* MaterialKit.framework */; };
+		D9194AA91B2C88C300E4D916 /* MaterialKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9194AA71B2C88AE00E4D916 /* MaterialKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D924E1E01B25E1970025C5E9 /* QiitaKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D924E1DF1B25E1970025C5E9 /* QiitaKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D924E1E61B25E1970025C5E9 /* QiitaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1DA1B25E1970025C5E9 /* QiitaKit.framework */; };
 		D924E1ED1B25E1970025C5E9 /* QiitaKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E1EC1B25E1970025C5E9 /* QiitaKitTests.swift */; };
@@ -148,6 +153,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D9194AA91B2C88C300E4D916 /* MaterialKit.framework in Embed Frameworks */,
 				D9194A4E1B28903A00E4D916 /* APIKit.framework in Embed Frameworks */,
 				D9194A5D1B2C66A700E4D916 /* LayoutKit.framework in Embed Frameworks */,
 				D9194A501B28903A00E4D916 /* BrightFutures.framework in Embed Frameworks */,
@@ -176,6 +182,10 @@
 		D9194A541B2B3A4F00E4D916 /* dotenv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dotenv.swift; sourceTree = "<group>"; };
 		D9194A5A1B2C669700E4D916 /* LayoutKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LayoutKit.framework; path = Carthage/Build/iOS/LayoutKit.framework; sourceTree = "<group>"; };
 		D9194A5B1B2C669700E4D916 /* ToysBoxKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToysBoxKit.framework; path = Carthage/Build/iOS/ToysBoxKit.framework; sourceTree = "<group>"; };
+		D9194A611B2C680D00E4D916 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
+		D9194A6E1B2C7DED00E4D916 /* AccessTokenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenViewController.swift; sourceTree = "<group>"; };
+		D9194A701B2C845500E4D916 /* AuthenticatedUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedUserViewController.swift; sourceTree = "<group>"; };
+		D9194AA71B2C88AE00E4D916 /* MaterialKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaterialKit.framework; path = Carthage/Build/iOS/MaterialKit.framework; sourceTree = "<group>"; };
 		D924E1DA1B25E1970025C5E9 /* QiitaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QiitaKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D924E1DE1B25E1970025C5E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D924E1DF1B25E1970025C5E9 /* QiitaKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiitaKit.h; sourceTree = "<group>"; };
@@ -257,6 +267,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9194AA81B2C88C300E4D916 /* MaterialKit.framework in Frameworks */,
 				D9194A4D1B28903A00E4D916 /* APIKit.framework in Frameworks */,
 				D9194A5C1B2C66A700E4D916 /* LayoutKit.framework in Frameworks */,
 				D9194A4F1B28903A00E4D916 /* BrightFutures.framework in Frameworks */,
@@ -303,6 +314,7 @@
 		D9194A211B288FBC00E4D916 /* QiitaKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D9194A601B2C679F00E4D916 /* ViewControllers */,
 				D9194A241B288FBC00E4D916 /* AppDelegate.swift */,
 				D9194A261B288FBC00E4D916 /* ViewController.swift */,
 				D9194A281B288FBC00E4D916 /* Main.storyboard */,
@@ -344,10 +356,109 @@
 		D9194A591B2C665E00E4D916 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D9194AA71B2C88AE00E4D916 /* MaterialKit.framework */,
 				D9194A5A1B2C669700E4D916 /* LayoutKit.framework */,
 				D9194A5B1B2C669700E4D916 /* ToysBoxKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D9194A601B2C679F00E4D916 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D9194A631B2C7BA100E4D916 /* AccessToken */,
+				D9194A641B2C7BA800E4D916 /* AuthenticatedUser */,
+				D9194A6D1B2C7BFA00E4D916 /* Comment */,
+				D9194A6C1B2C7BF100E4D916 /* ExpandedTemplate */,
+				D9194A6B1B2C7BE900E4D916 /* Item */,
+				D9194A6A1B2C7BE100E4D916 /* Project */,
+				D9194A691B2C7BD900E4D916 /* Tag */,
+				D9194A681B2C7BD300E4D916 /* Tagging */,
+				D9194A671B2C7BCD00E4D916 /* Team */,
+				D9194A661B2C7BC600E4D916 /* Template */,
+				D9194A651B2C7BBE00E4D916 /* User */,
+				D9194A611B2C680D00E4D916 /* TopViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D9194A631B2C7BA100E4D916 /* AccessToken */ = {
+			isa = PBXGroup;
+			children = (
+				D9194A6E1B2C7DED00E4D916 /* AccessTokenViewController.swift */,
+			);
+			name = AccessToken;
+			sourceTree = "<group>";
+		};
+		D9194A641B2C7BA800E4D916 /* AuthenticatedUser */ = {
+			isa = PBXGroup;
+			children = (
+				D9194A701B2C845500E4D916 /* AuthenticatedUserViewController.swift */,
+			);
+			name = AuthenticatedUser;
+			sourceTree = "<group>";
+		};
+		D9194A651B2C7BBE00E4D916 /* User */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		D9194A661B2C7BC600E4D916 /* Template */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Template;
+			sourceTree = "<group>";
+		};
+		D9194A671B2C7BCD00E4D916 /* Team */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Team;
+			sourceTree = "<group>";
+		};
+		D9194A681B2C7BD300E4D916 /* Tagging */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tagging;
+			sourceTree = "<group>";
+		};
+		D9194A691B2C7BD900E4D916 /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tag;
+			sourceTree = "<group>";
+		};
+		D9194A6A1B2C7BE100E4D916 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Project;
+			sourceTree = "<group>";
+		};
+		D9194A6B1B2C7BE900E4D916 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Item;
+			sourceTree = "<group>";
+		};
+		D9194A6C1B2C7BF100E4D916 /* ExpandedTemplate */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ExpandedTemplate;
+			sourceTree = "<group>";
+		};
+		D9194A6D1B2C7BFA00E4D916 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Comment;
 			sourceTree = "<group>";
 		};
 		D924E1D01B25E1960025C5E9 = {
@@ -784,9 +895,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9194A621B2C680D00E4D916 /* TopViewController.swift in Sources */,
+				D9194A711B2C845500E4D916 /* AuthenticatedUserViewController.swift in Sources */,
 				D9194A551B2B3A4F00E4D916 /* dotenv.swift in Sources */,
 				D9194A271B288FBC00E4D916 /* ViewController.swift in Sources */,
 				D9194A251B288FBC00E4D916 /* AppDelegate.swift in Sources */,
+				D9194A6F1B2C7DED00E4D916 /* AccessTokenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

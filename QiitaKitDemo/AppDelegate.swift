@@ -27,24 +27,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         LOGGING_VERBOSE()
         
-        dispatch_async(dispatch_get_main_queue()) {
-            Qiita.oauthAuthorize([.ReadQiita, .WriteQiita], scheme: "qiitakitdemo://oauth/callback", state: "aaaa")
-                .flatMap { _ in
-                    Qiita.request(GetAuthenticatedUser())
-                }
-                .flatMap {
-                    Qiita.request(GetUser(user_id: $0.id))
-                }
-                .flatMap { _ in
-                    Qiita.request(ListItemComments(item_id: "8fb2092d621c287f6f86"))
-                }
-                .onSuccess {
-                    Logging.d($0)
-                }
-                .onFailure {
-                    Logging.d($0)
-                }
-        }
+//        dispatch_async(dispatch_get_main_queue()) {
+//            Qiita.oauthAuthorize([.ReadQiita, .WriteQiita], scheme: "qiitakitdemo://oauth/callback", state: "aaaa")
+//                .flatMap { _ in
+//                    Qiita.request(GetAuthenticatedUser())
+//                }
+//                .flatMap {
+//                    Qiita.request(GetUser(user_id: $0.id))
+//                }
+//                .flatMap { _ in
+//                    Qiita.request(ListItemComments(item_id: "8fb2092d621c287f6f86"))
+//                }
+//                .onSuccess {
+//                    Logging.d($0)
+//                }
+//                .onFailure {
+//                    Logging.d($0)
+//                }
+//        }
         
         
         return true

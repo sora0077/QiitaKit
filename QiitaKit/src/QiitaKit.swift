@@ -112,21 +112,36 @@ public class QiitaKit: API {
             
             let createAccessToken = CreateAccessToken(client_id: clientId, client_secret: clientSecret, code: code)
             
-            self.request(createAccessToken)
-                .onComplete { [weak self] result in
-                    switch result {
-                    case .Success(let accessToken):
-                        self?.accessToken = accessToken.value
-                    default:
-                        break
-                    }
-                    promise.complete(result)
+            request(createAccessToken).onComplete { [weak self] result in
+                switch result {
+                case .Success(let accessToken):
+                    self?.accessToken = accessToken.value
+                default:
+                    break
                 }
+                promise.complete(result)
+            }
             return true
         }
         return false
     }
     
+    public func oauthDelete() -> Future<()> {
+        if let accessToken = accessToken {
+            let deleteAccessToken = DeleteAccessToken(access_token: accessToken.token)
+            return request(deleteAccessToken).map { [weak self] t in
+                self?.accessToken = nil
+                return t
+            }
+        }
+        return Future.failed(NSError(
+            domain: QiitaKitErrorDomain,
+            code: -1,
+            userInfo: [
+                NSLocalizedDescriptionKey: "The operation couldn’t be completed."
+            ])
+        )
+    }
 }
 
 class LoggingURLProtocol: NSURLProtocol {
@@ -134,6 +149,7 @@ class LoggingURLProtocol: NSURLProtocol {
     override class func canInitWithRequest(request: NSURLRequest) -> Bool {
         Logging.d([
             "headers": request.allHTTPHeaderFields ?? [:],
+            "method": request.HTTPMethod ?? "",
             "url": request.URL?.absoluteString ?? ""
             ] as NSDictionary)
         return false
