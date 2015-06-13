@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LOGGING_VERBOSE()
         
         dispatch_async(dispatch_get_main_queue()) {
-            Qiita.oauthAuthorize([.ReadQiita, .WriteQiita], scheme: "qiitakitdemo://oauth/callback")
+            Qiita.oauthAuthorize([.ReadQiita, .WriteQiita], scheme: "qiitakitdemo://oauth/callback", state: "aaaa")
                 .flatMap { _ in
                     Qiita.request(GetAuthenticatedUser())
                 }
@@ -38,6 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 .onSuccess {
                     Logging.d($0.github_login_name)
                 }
+                .onFailure {
+                    Logging.d($0)
+                }
         }
         
         
@@ -46,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         
-        if Qiita.oauthCallback(url, sourceApplication: sourceApplication, annotation: annotation) {
+        if Qiita.oauthCallback(state: "aaaa", url: url, sourceApplication: sourceApplication, annotation: annotation) {
             
             return true
         }

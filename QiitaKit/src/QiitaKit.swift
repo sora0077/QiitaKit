@@ -27,6 +27,8 @@ extension AccessToken {
     }
 }
 
+public let QiitaKitErrorDomain = "jp.sora0077.QiitaKit.ErrorDomain"
+
 /**
 *  <#Description#>
 */
@@ -83,28 +85,43 @@ public class QiitaKit: API {
         return promise.future
     }
     
-    public func oauthCallback(url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    public func oauthCallback(state: String? = nil, url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        
+        func query(items: [NSURLQueryItem], name: String) -> String? {
+            return items.filter({ $0.name == name }).first?.value
+        }
         
         if let scheme = callbackScheme,
+            let promise = oauthPromise,
             let urlString = url.absoluteString,
             let components = NSURLComponents(string: urlString),
             let items = components.queryItems as? [NSURLQueryItem],
-            let code = items.filter({ $0.name == "code" }).first?.value
+            let code = query(items, "code")
             where urlString.hasPrefix(scheme)
         {
+            if let returnedState = query(items, "state") where state != returnedState {
+                promise.failure(NSError(
+                    domain: QiitaKitErrorDomain,
+                    code: -1,
+                    userInfo: [
+                        NSLocalizedDescriptionKey: "The operation couldn’t be completed. state:\(returnedState) mismatch."
+                    ])
+                )
+                return false
+            }
+            
             let createAccessToken = CreateAccessToken(client_id: clientId, client_secret: clientSecret, code: code)
             
-            let f = self.request(createAccessToken)
-            let p = oauthPromise!
-            f.onComplete { [weak self] result in
-                switch result {
-                case .Success(let accessToken):
-                    self?.accessToken = accessToken.value
-                default:
-                    break
+            self.request(createAccessToken)
+                .onComplete { [weak self] result in
+                    switch result {
+                    case .Success(let accessToken):
+                        self?.accessToken = accessToken.value
+                    default:
+                        break
+                    }
+                    promise.complete(result)
                 }
-                p.complete(result)
-            }
             return true
         }
         return false
