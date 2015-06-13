@@ -35,8 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 .flatMap {
                     Qiita.request(GetUser(user_id: $0.id))
                 }
+                .flatMap { _ in
+                    Qiita.request(ListItemComments(item_id: "8fb2092d621c287f6f86"))
+                }
                 .onSuccess {
-                    Logging.d($0.github_login_name)
+                    Logging.d($0)
                 }
                 .onFailure {
                     Logging.d($0)

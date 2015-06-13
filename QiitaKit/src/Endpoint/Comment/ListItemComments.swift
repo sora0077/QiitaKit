@@ -27,7 +27,7 @@ extension ListItemComments: RequestToken {
     public typealias SerializedType = [[String: AnyObject]]
 
     public var method: HTTPMethod {
-        return .POST
+        return .GET
     }
 
     public var URL: String {
@@ -43,7 +43,7 @@ extension ListItemComments: RequestToken {
     }
 
     public var encoding: RequestEncoding {
-        return .JSON
+        return .URL
     }
 
     public var resonseEncoding: ResponseEncoding {
@@ -55,9 +55,8 @@ extension ListItemComments {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
-        let comments = object.map { object -> Comment in
-            
-            let user = User(
+        func _User(object: GetUser.SerializedType) -> User {
+            return User(
                 description: object["description"] as? String,
                 facebook_id: object["facebook_id"] as? String,
                 followees_count: object["followees_count"] as! Int,
@@ -74,6 +73,12 @@ extension ListItemComments {
                 twitter_screen_name: object["twitter_screen_name"] as? String,
                 website_url: object["website_url"] as? String
             )
+        }
+        
+        
+        let comments = object.map { object -> Comment in
+            
+            let user = _User(object["user"] as! GetUser.SerializedType)
             let comment = Comment(
                 body: object["body"] as! String,
                 created_at: object["created_at"] as! String,
