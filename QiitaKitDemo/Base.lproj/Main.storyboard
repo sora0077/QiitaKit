@@ -202,6 +202,59 @@
             </objects>
             <point key="canvasLocation" x="1807" y="922"/>
         </scene>
+        <!--Item View Controller-->
+        <scene sceneID="Sn2-UH-uxv">
+            <objects>
+                <viewController storyboardIdentifier="ItemViewController" id="gQg-re-an4" customClass="ItemViewController" customModule="QiitaKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r4J-gx-CdF"/>
+                        <viewControllerLayoutGuide type="bottom" id="sGx-eD-djy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LDL-mC-6aD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9W4-Hs-Wvk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2151" y="922"/>
+        </scene>
+        <!--List Item View Controller-->
+        <scene sceneID="KfQ-Yc-EjE">
+            <objects>
+                <viewController storyboardIdentifier="ListItemViewController" id="f0G-YJ-YEZ" customClass="ListItemViewController" customModule="QiitaKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iEF-Mg-OzX"/>
+                        <viewControllerLayoutGuide type="bottom" id="AAN-iB-E1c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vVc-9S-taA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eCl-89-0Av">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AAN-iB-E1c" firstAttribute="top" secondItem="eCl-89-0Av" secondAttribute="bottom" id="Cua-dz-f2S"/>
+                            <constraint firstAttribute="trailing" secondItem="eCl-89-0Av" secondAttribute="trailing" id="UB3-ST-wPz"/>
+                            <constraint firstItem="eCl-89-0Av" firstAttribute="leading" secondItem="vVc-9S-taA" secondAttribute="leading" id="Wkj-Ch-5rI"/>
+                            <constraint firstItem="eCl-89-0Av" firstAttribute="top" secondItem="vVc-9S-taA" secondAttribute="top" id="oDO-MU-hir"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableView" destination="eCl-89-0Av" id="E9l-F2-0wL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ev-i4-8uw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2151" y="1581"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="rhH-q8-vWI">
             <objects>

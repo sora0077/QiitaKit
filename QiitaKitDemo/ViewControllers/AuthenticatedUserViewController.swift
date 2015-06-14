@@ -89,11 +89,9 @@ class AuthenticatedUserViewController: UIViewController {
         let rows = user._dict.map({
             UITableView.StyleSubtitleRow(text: $0, detailText: $1.map({ "\($0)" }) ?? "nil")
         })
-        async_main {
-            if let section = self.tableView.controller.sections.first {
-                section.removeAll()
-                section.extend(rows)
-            }
+        if let section = tableView.controller.sections.first {
+            section.removeAll()
+            section.extend(rows)
         }
     }
     

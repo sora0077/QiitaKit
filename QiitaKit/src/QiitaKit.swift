@@ -42,7 +42,7 @@ public class QiitaKit: API {
     private var callbackScheme: String?
     private var oauthPromise: Promise<AccessToken>?
     
-    public var accessToken: AccessToken?
+    public private(set) var accessToken: AccessToken?
     
     public init(baseURL: String, clientId: String, clientSecret: String) {
         self.baseURL = baseURL
@@ -63,6 +63,10 @@ public class QiitaKit: API {
             ]
         }
         return nil
+    }
+    
+    public func setAccessToken(clientId: String, scopes: [String], token: String) {
+        accessToken = AccessToken(client_id: clientId, scopes: scopes, token: token)
     }
     
     public func oauthAuthorize(scopes: [AccessToken.Scope], scheme: String, state: String? = nil) -> Future<AccessToken> {
@@ -99,7 +103,8 @@ public class QiitaKit: API {
             let code = query(items, "code")
             where urlString.hasPrefix(scheme)
         {
-            if let returnedState = query(items, "state") where state != returnedState {
+            let returnedState = query(items, "state")
+            if state != returnedState {
                 promise.failure(NSError(
                     domain: QiitaKitErrorDomain,
                     code: -1,

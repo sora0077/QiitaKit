@@ -26,7 +26,7 @@ class TopViewController: UIViewController {
             "AuthenticatedUser",
             "Comment",
             "ExpandedTemplate",
-            "Item",
+            "ListItem",
             "Project",
             "Tag",
             "Tagging",

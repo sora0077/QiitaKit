@@ -38,8 +38,13 @@ class AccessTokenViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        accessTokenLabel.alpha = 0
-        deleteAccessTokenButton.alpha = 0
+        
+        if let accessToken = Qiita.accessToken {
+            accessTokenLabel.text = accessToken.token
+        } else {
+            accessTokenLabel.alpha = 0
+            deleteAccessTokenButton.alpha = 0
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +57,7 @@ class AccessTokenViewController: UIViewController {
         Qiita.oauthAuthorize([.ReadQiita, .WriteQiita], scheme: "qiitakitdemo://oauth/callback")
             .onSuccess { [weak self] accessToken in
                 self?.accessTokenLabel.text = accessToken.token
+                self?.saveAccessToken(accessToken)
                 async_after(0.5) {
                     UIView.animateWithDuration(0.3, animations: {
                         self?.accessTokenLabel.alpha = 1
@@ -71,6 +77,18 @@ class AccessTokenViewController: UIViewController {
                 })
             }
         }
+    }
+    
+    private func saveAccessToken(accessToken: AccessToken) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.setObject([
+            "token": accessToken.token,
+            "scopes": accessToken.scopes,
+            "client_id": accessToken.client_id
+            ], forKey: "AccessToken")
+        
+        defaults.synchronize()
     }
     
 
