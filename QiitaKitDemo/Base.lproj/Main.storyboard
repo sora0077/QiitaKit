@@ -151,11 +151,54 @@
                     <view key="view" contentMode="scaleToFill" id="iyI-ww-S5O">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zGA-KH-6a4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zGA-KH-6a4" firstAttribute="leading" secondItem="iyI-ww-S5O" secondAttribute="leading" id="CbX-Fs-5sy"/>
+                            <constraint firstAttribute="trailing" secondItem="zGA-KH-6a4" secondAttribute="trailing" id="Jcv-9J-AZ1"/>
+                            <constraint firstItem="JDa-wB-mMe" firstAttribute="top" secondItem="zGA-KH-6a4" secondAttribute="bottom" id="a2A-fv-ipL"/>
+                            <constraint firstItem="zGA-KH-6a4" firstAttribute="top" secondItem="iyI-ww-S5O" secondAttribute="top" id="cjy-Io-fEM"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="getAuthenticatedUserButton" destination="qtC-HC-wlr" id="pqh-ed-lGf"/>
+                        <outlet property="headerView" destination="QHg-Nx-NYg" id="D8s-iR-SlJ"/>
+                        <outlet property="tableView" destination="zGA-KH-6a4" id="9Yh-NL-spB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vB8-jb-A6N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="QHg-Nx-NYg">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtC-HC-wlr" customClass="MKButton" customModule="MaterialKit">
+                            <rect key="frame" x="67" y="100" width="187" height="44"/>
+                            <color key="backgroundColor" red="0.19215686269999999" green="0.56078431370000004" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="wZF-gS-F5Z"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                            <state key="normal" title="Get Authenticated User">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="getAuthenticatedUserAction:" destination="Ryc-UY-y2h" eventType="touchUpInside" id="Utw-78-Heo"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="qtC-HC-wlr" secondAttribute="centerX" id="Bc2-JU-Ory"/>
+                        <constraint firstItem="qtC-HC-wlr" firstAttribute="top" secondItem="QHg-Nx-NYg" secondAttribute="top" constant="100" id="VK5-M9-eAr"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="1807" y="922"/>
         </scene>

@@ -16,6 +16,17 @@ let Qiita = QiitaKit(
     clientSecret: ENV.DEMO_QIITA_CLIENT_SECRET
 )
 
+extension Dictionary {
+    
+    func map<U>(transform: Element -> U) -> [U] {
+        var projection: [U] = []
+        for e in self {
+            projection.append(transform(e))
+        }
+        return projection
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
