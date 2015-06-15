@@ -23,8 +23,8 @@ public struct UnfollowTag {
 
 extension UnfollowTag: RequestToken {
     
-    public typealias Response = Tag
-    public typealias SerializedType = [String: AnyObject]
+    public typealias Response = ()
+    public typealias SerializedType = NSData
 
     public var method: HTTPMethod {
         return .DELETE
@@ -47,7 +47,7 @@ extension UnfollowTag: RequestToken {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
+        return .Data
     }
 }
 
@@ -55,12 +55,6 @@ extension UnfollowTag {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
-        let tag = Tag(
-            followers_count: object["followers_count"] as! Int,
-            icon_url: object["icon_url"] as? String,
-            id: object["id"] as! String,
-            items_count: object["items_count"] as! Int
-        )
-        return Result(tag)
+        return Result(())
     }
 }

@@ -27,8 +27,8 @@ public struct DeleteTagging {
 
 extension DeleteTagging: RequestToken {
     
-    public typealias Response = Tagging
-    public typealias SerializedType = [String: AnyObject]
+    public typealias Response = ()
+    public typealias SerializedType = NSData
 
     public var method: HTTPMethod {
         return .DELETE
@@ -51,7 +51,7 @@ extension DeleteTagging: RequestToken {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
+        return .Data
     }
 }
 
@@ -59,10 +59,6 @@ extension DeleteTagging {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
-        let tagging = Tagging(
-            name: object["name"] as! String,
-            versions: object["versions"] as! Array<String>
-        )
-        return Result(tagging)
+        return Result(())
     }
 }

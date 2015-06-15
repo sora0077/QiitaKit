@@ -21,18 +21,20 @@ class TopViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        self.title = "QiitaKitDemo"
+        
         let categories = [
             "AccessToken",
             "AuthenticatedUser",
-            "Comment",
-            "ExpandedTemplate",
+//            "Comment",
+//            "ExpandedTemplate",
             "ListItem",
-            "Project",
-            "Tag",
-            "Tagging",
-            "Team",
-            "Template",
-            "User",
+//            "Project",
+//            "Tag",
+//            "Tagging",
+//            "Team",
+//            "Template",
+//            "User",
         ]
         
         if let section = tableView.controller.sections.first {
