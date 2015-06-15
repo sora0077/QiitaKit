@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import APIKit
 import BrightFutures
-import LoggingKit
 
 extension AccessToken {
     
@@ -44,14 +43,11 @@ public class QiitaKit: API {
     
     public private(set) var accessToken: AccessToken?
     
-    public init(baseURL: String, clientId: String, clientSecret: String) {
+    public init(baseURL: String, clientId: String, clientSecret: String, configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()) {
         self.baseURL = baseURL
         
         self.clientId = clientId
         self.clientSecret = clientSecret
-        
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.protocolClasses = [LoggingURLProtocol.self]
         
         super.init(baseURL: baseURL, configuration: configuration)
     }
@@ -146,17 +142,5 @@ public class QiitaKit: API {
                 NSLocalizedDescriptionKey: "The operation couldn’t be completed."
             ])
         )
-    }
-}
-
-class LoggingURLProtocol: NSURLProtocol {
-    
-    override class func canInitWithRequest(request: NSURLRequest) -> Bool {
-        Logging.d([
-            "headers": request.allHTTPHeaderFields ?? [:],
-            "method": request.HTTPMethod ?? "",
-            "url": request.URL?.absoluteString ?? ""
-            ] as NSDictionary)
-        return false
     }
 }

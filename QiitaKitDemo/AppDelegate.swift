@@ -13,7 +13,12 @@ import BrightFutures
 let Qiita = QiitaKit(
     baseURL: "https://qiita.com",
     clientId: ENV.DEMO_QIITA_CLIENT_ID,
-    clientSecret: ENV.DEMO_QIITA_CLIENT_SECRET
+    clientSecret: ENV.DEMO_QIITA_CLIENT_SECRET,
+    configuration: {
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.protocolClasses = [LoggingURLProtocol.self]
+        return configuration
+    }()
 )
 
 extension Dictionary {
@@ -24,6 +29,18 @@ extension Dictionary {
             projection.append(transform(e))
         }
         return projection
+    }
+}
+
+class LoggingURLProtocol: NSURLProtocol {
+    
+    override class func canInitWithRequest(request: NSURLRequest) -> Bool {
+        Logging.d([
+            "headers": request.allHTTPHeaderFields ?? [:],
+            "method": request.HTTPMethod ?? "",
+            "url": request.URL?.absoluteString ?? ""
+            ] as NSDictionary)
+        return false
     }
 }
 

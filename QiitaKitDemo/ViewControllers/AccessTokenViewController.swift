@@ -54,7 +54,7 @@ class AccessTokenViewController: UIViewController {
     
     @IBAction
     private func getNewAccessTokenAction(sender: AnyObject) {
-        Qiita.oauthAuthorize([.ReadQiita, .WriteQiita], scheme: "qiitakitdemo://oauth/callback")
+        Qiita.oauthAuthorize([.ReadQiita, .WriteQiita], scheme: ENV.DEMO_QIITA_CALLBACK_URL)
             .onSuccess { [weak self] accessToken in
                 self?.accessTokenLabel.text = accessToken.token
                 self?.saveAccessToken(accessToken)

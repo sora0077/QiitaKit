@@ -22,6 +22,9 @@ end
 unless ENV["DEMO_QIITA_CLIENT_SECRET"] then
   f.puts "    static let DEMO_QIITA_CLIENT_SECRET = \"\""
 end
+unless ENV["DEMO_QIITA_CALLBACK_URL"] then
+  f.puts "    static let DEMO_QIITA_CALLBACK_URL = \"\""
+end
 
 f.puts "}"
 end
