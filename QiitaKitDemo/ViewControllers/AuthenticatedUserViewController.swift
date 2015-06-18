@@ -87,7 +87,7 @@ class AuthenticatedUserViewController: UIViewController {
     private func refreshAuthenticatedUser(user: AuthenticatedUser) {
         
         let rows = user._dict.map({
-            UITableView.StyleSubtitleRow(text: $0, detailText: $1.map({ "\($0)" }) ?? "nil")
+            UITableView.StyleValue2Row(text: $0, detailText: $1.map({ "\($0)" }) ?? "nil")
         })
         if let section = tableView.controller.sections.first {
             section.removeAll()

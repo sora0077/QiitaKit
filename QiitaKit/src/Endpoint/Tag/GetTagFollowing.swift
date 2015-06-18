@@ -21,13 +21,17 @@ public struct GetTagFollowing {
     }
 }
 
-extension GetTagFollowing: RequestToken {
+extension GetTagFollowing: RequestToken, RequestTokenValidatorStatusCode {
     
-    public typealias Response = Tag
-    public typealias SerializedType = [String: AnyObject]
+    public typealias Response = Bool
+    public typealias SerializedType = Any
 
     public var method: HTTPMethod {
         return .GET
+    }
+    
+    public var statusCode: Range<Int> {
+        return 200..<500
     }
 
     public var URL: String {
@@ -47,7 +51,7 @@ extension GetTagFollowing: RequestToken {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
+        return .Data
     }
 }
 
@@ -55,12 +59,14 @@ extension GetTagFollowing {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
-        let tag = Tag(
-            followers_count: object["followers_count"] as! Int,
-            icon_url: object["icon_url"] as? String,
-            id: object["id"] as! String,
-            items_count: object["items_count"] as! Int
-        )
-        return Result(tag)
+        if let statusCode = response?.statusCode {
+            switch statusCode {
+            case 200..<300:
+                return Result(true)
+            default:
+                break
+            }
+        }
+        return Result(false)
     }
 }

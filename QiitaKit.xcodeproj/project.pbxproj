@@ -119,6 +119,8 @@
 		D94CEE031B2D6D5A003EFD0F /* ListItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94CEE021B2D6D5A003EFD0F /* ListItemViewController.swift */; };
 		D9D8893F1B2F3A4E00433DAF /* LoggingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */; };
 		D9D889401B2F3A4E00433DAF /* LoggingKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D9D889421B308E8E00433DAF /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D889411B308E8E00433DAF /* TagViewController.swift */; };
+		D9D889441B31BB5200433DAF /* ListTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D889431B31BB5200433DAF /* ListTagsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -260,6 +262,8 @@
 		D94CEE001B2D423D003EFD0F /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		D94CEE021B2D6D5A003EFD0F /* ListItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemViewController.swift; sourceTree = "<group>"; };
 		D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoggingKit.framework; path = Carthage/Build/iOS/LoggingKit.framework; sourceTree = "<group>"; };
+		D9D889411B308E8E00433DAF /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
+		D9D889431B31BB5200433DAF /* ListTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTagsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -427,6 +431,8 @@
 		D9194A691B2C7BD900E4D916 /* Tag */ = {
 			isa = PBXGroup;
 			children = (
+				D9D889411B308E8E00433DAF /* TagViewController.swift */,
+				D9D889431B31BB5200433DAF /* ListTagsViewController.swift */,
 			);
 			name = Tag;
 			sourceTree = "<group>";
@@ -897,8 +903,10 @@
 				D94CEE011B2D423D003EFD0F /* ItemViewController.swift in Sources */,
 				D94CEE031B2D6D5A003EFD0F /* ListItemViewController.swift in Sources */,
 				D9194A621B2C680D00E4D916 /* TopViewController.swift in Sources */,
+				D9D889441B31BB5200433DAF /* ListTagsViewController.swift in Sources */,
 				D9194A711B2C845500E4D916 /* AuthenticatedUserViewController.swift in Sources */,
 				D9194A551B2B3A4F00E4D916 /* dotenv.swift in Sources */,
+				D9D889421B308E8E00433DAF /* TagViewController.swift in Sources */,
 				D9194A251B288FBC00E4D916 /* AppDelegate.swift in Sources */,
 				D9194A6F1B2C7DED00E4D916 /* AccessTokenViewController.swift in Sources */,
 			);

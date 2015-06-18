@@ -8,6 +8,7 @@
 
 import UIKit
 import LoggingKit
+import APIKit
 import BrightFutures
 
 let Qiita = QiitaKit(
@@ -18,7 +19,8 @@ let Qiita = QiitaKit(
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.protocolClasses = [LoggingURLProtocol.self]
         return configuration
-    }()
+    }(),
+    debugger: UIApplication.sharedApplication().delegate as? APIDebugger
 )
 
 extension Dictionary {
@@ -45,10 +47,19 @@ class LoggingURLProtocol: NSURLProtocol {
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, APIDebugger {
 
     var window: UIWindow?
 
+    func response(request: NSURLRequest, response: NSHTTPURLResponse, result: Result<String!>) {
+        Logging.d(response.allHeaderFields as NSDictionary)
+        switch result {
+        case let .Success(box):
+            Logging.d(box.value)
+        case let .Failure(e):
+            Logging.d(e)
+        }
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

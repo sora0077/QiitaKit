@@ -55,6 +55,8 @@ extension GetTag {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
+        println(response?.allHeaderFields)
+        
         let tag = Tag(
             followers_count: object["followers_count"] as! Int,
             icon_url: object["icon_url"] as? String,

@@ -43,13 +43,13 @@ public class QiitaKit: API {
     
     public private(set) var accessToken: AccessToken?
     
-    public init(baseURL: String, clientId: String, clientSecret: String, configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()) {
+    public init(baseURL: String, clientId: String, clientSecret: String, configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration(), debugger: APIDebugger? = nil) {
         self.baseURL = baseURL
         
         self.clientId = clientId
         self.clientSecret = clientSecret
         
-        super.init(baseURL: baseURL, configuration: configuration)
+        super.init(baseURL: baseURL, configuration: configuration, debugger: debugger)
     }
     
     public override func additionalHeaders() -> [String : AnyObject]? {

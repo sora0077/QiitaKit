@@ -29,6 +29,7 @@ class TopViewController: UIViewController {
 //            "Comment",
 //            "ExpandedTemplate",
             "ListItem",
+            "ListTags",
 //            "Project",
 //            "Tag",
 //            "Tagging",

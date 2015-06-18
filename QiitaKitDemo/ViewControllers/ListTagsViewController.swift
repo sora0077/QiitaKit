@@ -1,17 +1,16 @@
 //
-//  ListItemViewController.swift
+//  ListTagsViewController.swift
 //  QiitaKit
 //
-//  Created by 林達也 on 2015/06/14.
+//  Created by 林達也 on 2015/06/17.
 //  Copyright (c) 2015年 林達也. All rights reserved.
 //
 
 import UIKit
 
-class ListItemViewController: UIViewController {
+class ListTagsViewController: UIViewController {
     
-    
-    @IBOutlet weak var tableView: UITableView! {
+    @IBOutlet private weak var tableView: UITableView! {
         didSet {
             tableView.controller = TableController(responder: self)
         }
@@ -21,9 +20,9 @@ class ListItemViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let listAuthenticatedUserItems = ListAuthenticatedUserItems(page: "1", per_page: "100")
-        Qiita.request(listAuthenticatedUserItems).onSuccess { [weak self] in
-            self?.refreshListAuthenticatedUserItems($0)
+        let listTags = ListTags(page: "1", per_page: "100")
+        Qiita.request(listTags).onSuccess { [weak self] in
+            self?.refreshListTags($0)
         }
     }
 
@@ -32,14 +31,13 @@ class ListItemViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    private func refreshListAuthenticatedUserItems(items: [Item]) {
+    private func refreshListTags(tags: [Tag]) {
         
-        let rows = items.map { item -> TableRowBase in
-            let row = UITableView.StyleSubtitleRow(text: item.title, detailText: item.body)
+        let rows = tags.map { tag -> TableRowBase in
+            let row = UITableView.StyleDefaultRow(text: tag.id)
             row.didSelectAction = { [weak self] in
-                let vc = from_storyboard(ItemViewController.self)
-                vc.item_id = item.id
+                let vc = from_storyboard(TagViewController.self)
+                vc.tag_id = tag.id
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
             return row
