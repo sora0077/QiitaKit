@@ -39,7 +39,6 @@
                         <outlet property="tableView" destination="w7G-WN-S2B" id="eMq-6L-BX7"/>
                         <segue destination="6pg-S8-Xr7" kind="show" id="GL9-H5-cnj"/>
                         <segue destination="Ryc-UY-y2h" kind="show" id="R2W-fN-deh"/>
-                        <segue destination="gQg-re-an4" kind="show" id="DnR-gU-pCx"/>
                         <segue destination="E20-WP-ZsG" kind="show" id="hzr-er-Trh"/>
                         <segue destination="f0G-YJ-YEZ" kind="show" id="hNM-RN-LZy"/>
                         <segue destination="ST1-AB-T3a" kind="show" id="wwt-px-f5x"/>
@@ -61,7 +60,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBN-vj-jp9" customClass="MKButton" customModule="MaterialKit">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBN-vj-jp9" customClass="MKButton" customModule="MaterialKit">
                                 <rect key="frame" x="70" y="100" width="180" height="44"/>
                                 <color key="backgroundColor" red="0.19215686274509805" green="0.5607843137254902" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -76,7 +75,7 @@
                                     <action selector="getNewAccessTokenAction:" destination="6pg-S8-Xr7" eventType="touchUpInside" id="Hpl-v5-vSd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMC-uP-987" customClass="MKButton" customModule="MaterialKit">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMC-uP-987" customClass="MKButton" customModule="MaterialKit">
                                 <rect key="frame" x="70" y="201" width="180" height="44"/>
                                 <color key="backgroundColor" red="0.87450980392156863" green="0.20392156862745098" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -91,7 +90,7 @@
                                     <action selector="deleteAccessTokenAction" destination="6pg-S8-Xr7" eventType="touchUpInside" id="ec5-Fe-8jp"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4U-gB-wvA" customClass="MKLabel" customModule="MaterialKit">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4U-gB-wvA" customClass="MKLabel" customModule="MaterialKit">
                                 <rect key="frame" x="139" y="305" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -206,6 +205,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uAS-U1-lyX">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="7ra-LJ-FKl">
+                                        <barButtonItem key="rightBarButtonItem" title="Item" id="6NW-eu-YSl">
+                                            <connections>
+                                                <action selector="toggleStockAction:" destination="gQg-re-an4" id="F7e-ww-NKR"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -217,6 +228,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="stockButton" destination="6NW-eu-YSl" id="vCu-TN-UYW"/>
                         <outlet property="tableView" destination="6hg-Ku-RS7" id="XRD-tE-BEg"/>
                     </connections>
                 </viewController>
@@ -292,10 +304,10 @@
             </objects>
             <point key="canvasLocation" x="2496" y="1581"/>
         </scene>
-        <!--Title-->
+        <!--Tag View Controller-->
         <scene sceneID="jcO-fr-e3U">
             <objects>
-                <viewController storyboardIdentifier="TagViewController" id="E20-WP-ZsG" customClass="TagViewController" customModule="QiitaKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TagViewController" id="E20-WP-ZsG" userLabel="Tag View Controller" customClass="TagViewController" customModule="QiitaKitDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lyU-MC-87t"/>
                         <viewControllerLayoutGuide type="bottom" id="dqc-fu-xb1"/>

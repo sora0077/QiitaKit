@@ -36,11 +36,15 @@ class ItemViewController: UIViewController {
             tableView.controller = TableController(responder: self)
         }
     }
+    
+    @IBOutlet private weak var stockButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.navigationItem.rightBarButtonItem = self.stockButton
         
         let getItem = GetItem(item_id: item_id)
         Qiita.request(getItem).onSuccess { [weak self] in
@@ -70,6 +74,47 @@ class ItemViewController: UIViewController {
                 return row
             })
         }
+        
+        Qiita.request(GetItemStock(item_id: item.id)).onSuccess { [weak self] in
+            self?.refreshGetItemStock($0)
+        }
+        
+//        Qiita
+//            .flatMap(item) {
+//                CreateItemComment(item_id: $0.id, body: "a")
+//            }
+//            .flatMap {
+//                UpdateComment(comment_id: $0.id, body: "b")
+//            }
+//            .flatMap {
+//                DeleteComment(comment_id: $0.id)
+//            }
+        
+        
+        
+        
+//        Qiita
+//            .flatMap(item) {
+//                Qiita.request(CreateItemComment(item_id: $0.id, body: "a"))
+//            }
+//            .flatMap {
+//                Qiita.request(UpdateComment(comment_id: $0.id, body: "b"))
+//            }
+//            .flatMap {
+//                Qiita.request(DeleteComment(comment_id: $0.id))
+//            }
+//            .onSuccess {
+//                Logging.d("")
+//            }
+    }
+    
+    private func refreshGetItemStock(b: Bool) {
+        
+        if b {
+            self.stockButton.title = "Unstock"
+        } else {
+            self.stockButton.title = "Stock"
+        }
     }
     
     private func segueTagView(tagging: Tagging) {
@@ -91,6 +136,28 @@ class ItemViewController: UIViewController {
     */
 
 }
+
+extension ItemViewController {
+
+    @IBAction func toggleStockAction(sender: AnyObject) {
+        
+        switch self.stockButton.title! {
+        case "Stock":
+            Qiita.request(StockItem(item_id: item_id)).onSuccess { [weak self] _ in
+                self?.refreshGetItemStock(true)
+            }
+        case "Unstock":
+            Qiita.request(UnstockItem(item_id: item_id)).onSuccess { [weak self] in
+                self?.refreshGetItemStock(false)
+            }
+        default:
+            break
+        }
+        
+    }
+    
+}
+
 
 extension ItemViewController: Storyboardable {
     

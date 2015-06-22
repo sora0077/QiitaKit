@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, APIDebugger {
 
     func response(request: NSURLRequest, response: NSHTTPURLResponse, result: Result<String!>) {
         Logging.d(response.allHeaderFields as NSDictionary)
+        Logging.d(response.statusCode)
         switch result {
         case let .Success(box):
             Logging.d(box.value)
