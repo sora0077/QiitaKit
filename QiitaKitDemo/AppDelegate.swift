@@ -37,11 +37,11 @@ extension Dictionary {
 class LoggingURLProtocol: NSURLProtocol {
     
     override class func canInitWithRequest(request: NSURLRequest) -> Bool {
-        Logging.d([
-            "headers": request.allHTTPHeaderFields ?? [:],
-            "method": request.HTTPMethod ?? "",
-            "url": request.URL?.absoluteString ?? ""
-            ] as NSDictionary)
+//        Logging.d([
+//            "headers": request.allHTTPHeaderFields ?? [:],
+//            "method": request.HTTPMethod ?? "",
+//            "url": request.URL?.absoluteString ?? ""
+//            ] as NSDictionary)
         return false
     }
 }
@@ -52,6 +52,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, APIDebugger {
     var window: UIWindow?
 
     func response(request: NSURLRequest, response: NSHTTPURLResponse, result: Result<String!>) {
+        Logging.d([
+            "headers": request.allHTTPHeaderFields ?? [:],
+            "method": request.HTTPMethod ?? "",
+            "url": request.URL?.absoluteString ?? ""
+            ] as NSDictionary)
         Logging.d(response.allHeaderFields as NSDictionary)
         Logging.d(response.statusCode)
         switch result {

@@ -31,3 +31,9 @@ DerivedData
 # Carthage/Checkouts
 
 Carthage/Build
+
+Carthage/
+.bundle/
+.env
+dotenv.swift
+vendor/

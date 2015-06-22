@@ -148,6 +148,10 @@ public class QiitaKit: API {
         return transform(v)
     }
     
+    public func flatMap<U>(transform: () -> Future<U>) -> Future<U> {
+        return transform()
+    }
+    
 //    public func flatMap<T, U: RequestToken>(v: T, _ transform: T -> U) -> RequestChain<U> {
 //        
 //        return RequestChain(api: self, future: self.request(transform(v)))
