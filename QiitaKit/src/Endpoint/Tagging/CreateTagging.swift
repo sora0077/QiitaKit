@@ -69,10 +69,6 @@ extension CreateTagging {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
-        let tagging = Tagging(
-            name: object["name"] as! String,
-            versions: object["versions"] as! Array<String>
-        )
-        return Result(tagging)
+        return Result(_Tagging(object))
     }
 }
