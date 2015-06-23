@@ -21,13 +21,17 @@ public struct DeleteItem {
     }
 }
 
-extension DeleteItem: RequestToken {
+extension DeleteItem: RequestToken, RequestTokenValidatorStatusCode {
 
     public typealias Response = ()
     public typealias SerializedType = NSData
 
     public var method: HTTPMethod {
-        return .GET
+        return .DELETE
+    }
+    
+    public var statusCode: Range<Int> {
+        return 200..<400
     }
 
     public var URL: String {

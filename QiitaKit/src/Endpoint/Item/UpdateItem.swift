@@ -58,7 +58,7 @@ extension UpdateItem: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/items/:item_id"
+        return "/api/v2/items/\(item_id)"
     }
 
     public var headers: [String: AnyObject]? {

@@ -19,5 +19,10 @@ public struct Tagging {
     /// 
     /// example: ["0.0.1"]
     public let versions: Array<String>
+    
+    public init(name: String, versions: Array<String> = []) {
+        self.name = name
+        self.versions = versions
+    }
 
 }
