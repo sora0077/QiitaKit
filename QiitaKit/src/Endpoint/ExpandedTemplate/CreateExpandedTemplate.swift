@@ -73,12 +73,6 @@ extension CreateExpandedTemplate {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
-        let expanded_tags = object["expanded_tags"] as! [[String: AnyObject]]
-        let expandedTemplate = ExpandedTemplate(
-            expanded_body: object["expanded_body"] as! String,
-            expanded_tags: expanded_tags.map({ Tagging(name: $0["name"] as! String, versions: $0["versions"] as! [String]) }),
-            expanded_title: object["expanded_title"] as! String
-        )
-        return Result(expandedTemplate)
+        return Result(_ExpandedTemplate(object))
     }
 }

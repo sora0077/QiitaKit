@@ -122,6 +122,8 @@
 		D9807F2D1B39C2B20031BD71 /* Item+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9807F2C1B39C2B20031BD71 /* Item+JSON.swift */; };
 		D9807F2F1B39C4E60031BD71 /* Comment+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9807F2E1B39C4E60031BD71 /* Comment+JSON.swift */; };
 		D9807F311B39C6040031BD71 /* AuthenticatedUser+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9807F301B39C6040031BD71 /* AuthenticatedUser+JSON.swift */; };
+		D9807F331B3B1ADD0031BD71 /* ExpandedTemplate+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9807F321B3B1ADD0031BD71 /* ExpandedTemplate+JSON.swift */; };
+		D9807F351B3B1C950031BD71 /* Template+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9807F341B3B1C950031BD71 /* Template+JSON.swift */; };
 		D9D8893F1B2F3A4E00433DAF /* LoggingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */; };
 		D9D889401B2F3A4E00433DAF /* LoggingKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9D889421B308E8E00433DAF /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D889411B308E8E00433DAF /* TagViewController.swift */; };
@@ -271,6 +273,8 @@
 		D9807F2C1B39C2B20031BD71 /* Item+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+JSON.swift"; sourceTree = "<group>"; };
 		D9807F2E1B39C4E60031BD71 /* Comment+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Comment+JSON.swift"; sourceTree = "<group>"; };
 		D9807F301B39C6040031BD71 /* AuthenticatedUser+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AuthenticatedUser+JSON.swift"; sourceTree = "<group>"; };
+		D9807F321B3B1ADD0031BD71 /* ExpandedTemplate+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpandedTemplate+JSON.swift"; sourceTree = "<group>"; };
+		D9807F341B3B1C950031BD71 /* Template+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Template+JSON.swift"; sourceTree = "<group>"; };
 		D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoggingKit.framework; path = Carthage/Build/iOS/LoggingKit.framework; sourceTree = "<group>"; };
 		D9D889411B308E8E00433DAF /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		D9D889431B31BB5200433DAF /* ListTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTagsViewController.swift; sourceTree = "<group>"; };
@@ -731,6 +735,8 @@
 				D9807F2C1B39C2B20031BD71 /* Item+JSON.swift */,
 				D9807F2E1B39C4E60031BD71 /* Comment+JSON.swift */,
 				D9807F301B39C6040031BD71 /* AuthenticatedUser+JSON.swift */,
+				D9807F321B3B1ADD0031BD71 /* ExpandedTemplate+JSON.swift */,
+				D9807F341B3B1C950031BD71 /* Template+JSON.swift */,
 			);
 			name = Utility;
 			path = src/Utility;
@@ -965,6 +971,7 @@
 				D924E1F81B25E2560025C5E9 /* QiitaKit.swift in Sources */,
 				D924E28F1B2741F50025C5E9 /* UpdateItem.swift in Sources */,
 				D924E2961B2741F50025C5E9 /* GetTag.swift in Sources */,
+				D9807F351B3B1C950031BD71 /* Template+JSON.swift in Sources */,
 				D924E2871B2741F50025C5E9 /* ListAuthenticatedUserItems.swift in Sources */,
 				D924E2831B2741F50025C5E9 /* DeleteItem.swift in Sources */,
 				D924E28A1B2741F50025C5E9 /* ListUserItems.swift in Sources */,
@@ -992,6 +999,7 @@
 				D924E2841B2741F50025C5E9 /* GetItem.swift in Sources */,
 				D924E29E1B2741F50025C5E9 /* CreateTemplate.swift in Sources */,
 				D924E2141B260A3B0025C5E9 /* AccessToken.swift in Sources */,
+				D9807F331B3B1ADD0031BD71 /* ExpandedTemplate+JSON.swift in Sources */,
 				D924E2911B2741F50025C5E9 /* DeleteProject.swift in Sources */,
 				D924E21C1B260A3B0025C5E9 /* Item.swift in Sources */,
 				D924E2A81B2741F50025C5E9 /* ListUserFollowers.swift in Sources */,
