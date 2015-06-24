@@ -21,13 +21,17 @@ public struct DeleteTemplate {
     }
 }
 
-extension DeleteTemplate: RequestToken {
+extension DeleteTemplate: RequestToken, RequestTokenValidatorStatusCode {
     
     public typealias Response = ()
     public typealias SerializedType = NSData
 
     public var method: HTTPMethod {
         return .DELETE
+    }
+    
+    public var statusCode: Range<Int> {
+        return 200..<400
     }
 
     public var URL: String {

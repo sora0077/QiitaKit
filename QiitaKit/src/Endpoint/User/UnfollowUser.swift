@@ -31,7 +31,7 @@ extension UnfollowUser: RequestToken, RequestTokenValidatorStatusCode {
     }
     
     public var statusCode: Range<Int> {
-        return 200..<500
+        return 200..<400
     }
 
     public var URL: String {

@@ -21,13 +21,17 @@ public struct FollowTag {
     }
 }
 
-extension FollowTag: RequestToken {
+extension FollowTag: RequestToken, RequestTokenValidatorStatusCode {
 
     public typealias Response = ()
     public typealias SerializedType = NSData
 
     public var method: HTTPMethod {
         return .PUT
+    }
+    
+    public var statusCode: Range<Int> {
+        return 200..<400
     }
 
     public var URL: String {
