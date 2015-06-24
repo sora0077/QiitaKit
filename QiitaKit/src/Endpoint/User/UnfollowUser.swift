@@ -21,13 +21,17 @@ public struct UnfollowUser {
     }
 }
 
-extension UnfollowUser: RequestToken {
+extension UnfollowUser: RequestToken, RequestTokenValidatorStatusCode {
     
     public typealias Response = ()
     public typealias SerializedType = NSData
 
     public var method: HTTPMethod {
         return .DELETE
+    }
+    
+    public var statusCode: Range<Int> {
+        return 200..<500
     }
 
     public var URL: String {

@@ -55,7 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, APIDebugger {
         Logging.d([
             "headers": request.allHTTPHeaderFields ?? [:],
             "method": request.HTTPMethod ?? "",
-            "url": request.URL?.absoluteString ?? ""
+            "url": request.URL?.absoluteString ?? "",
+//            "params": NSJSONSerialization.JSONObjectWithData(request.HTTPBody ?? NSData(), options: .AllowFragments, error: nil) as? NSDictionary ?? [:]
             ] as NSDictionary)
         Logging.d(response.allHeaderFields as NSDictionary)
         Logging.d(response.statusCode)

@@ -24,7 +24,7 @@ public struct GetTagFollowing {
 extension GetTagFollowing: RequestToken, RequestTokenValidatorStatusCode {
     
     public typealias Response = Bool
-    public typealias SerializedType = Any
+    public typealias SerializedType = NSData
 
     public var method: HTTPMethod {
         return .GET

@@ -79,19 +79,6 @@ class ItemViewController: UIViewController {
             self?.refreshGetItemStock($0)
         }
         
-//        Qiita
-//            .flatMap(item) {
-//                CreateItemComment(item_id: $0.id, body: "a")
-//            }
-//            .flatMap {
-//                UpdateComment(comment_id: $0.id, body: "b")
-//            }
-//            .flatMap {
-//                DeleteComment(comment_id: $0.id)
-//            }
-        
-        
-        
         
 //        Qiita
 //            .flatMap(item) {
