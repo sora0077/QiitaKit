@@ -30,7 +30,7 @@ extension GetTagFollowing: RequestToken, RequestTokenValidatorStatusCode {
         return .GET
     }
     
-    public var statusCode: Range<Int> {
+    public var statusCode: Set<Int> {
         return 200..<500
     }
 

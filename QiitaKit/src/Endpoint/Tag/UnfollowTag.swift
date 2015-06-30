@@ -30,7 +30,7 @@ extension UnfollowTag: RequestToken, RequestTokenValidatorStatusCode {
         return .DELETE
     }
     
-    public var statusCode: Range<Int> {
+    public var statusCode: Set<Int> {
         return 200..<400
     }
 

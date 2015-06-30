@@ -30,7 +30,7 @@ extension FollowUser: RequestToken, RequestTokenValidatorStatusCode {
         return .PUT
     }
     
-    public var statusCode: Range<Int> {
+    public var statusCode: Set<Int> {
         return 200..<400
     }
 

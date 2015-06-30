@@ -34,7 +34,6 @@
 		D924E1E61B25E1970025C5E9 /* QiitaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1DA1B25E1970025C5E9 /* QiitaKit.framework */; };
 		D924E1ED1B25E1970025C5E9 /* QiitaKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E1EC1B25E1970025C5E9 /* QiitaKitTests.swift */; };
 		D924E1F81B25E2560025C5E9 /* QiitaKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E1F71B25E2560025C5E9 /* QiitaKit.swift */; };
-		D924E1F91B25E2560025C5E9 /* QiitaKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E1F71B25E2560025C5E9 /* QiitaKit.swift */; };
 		D924E1FF1B25E5380025C5E9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FB1B25E5380025C5E9 /* Alamofire.framework */; };
 		D924E2001B25E5380025C5E9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FB1B25E5380025C5E9 /* Alamofire.framework */; };
 		D924E2011B25E5380025C5E9 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FC1B25E5380025C5E9 /* APIKit.framework */; };
@@ -114,7 +113,6 @@
 		D924E2A81B2741F50025C5E9 /* ListUserFollowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2751B2741F50025C5E9 /* ListUserFollowers.swift */; };
 		D924E2A91B2741F50025C5E9 /* ListUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2761B2741F50025C5E9 /* ListUsers.swift */; };
 		D924E2AA1B2741F50025C5E9 /* UnfollowUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2771B2741F50025C5E9 /* UnfollowUser.swift */; };
-		D924E2AC1B27420F0025C5E9 /* CreateAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2AB1B27420F0025C5E9 /* CreateAccessToken.swift */; };
 		D94CEE011B2D423D003EFD0F /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94CEE001B2D423D003EFD0F /* ItemViewController.swift */; };
 		D94CEE031B2D6D5A003EFD0F /* ListItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94CEE021B2D6D5A003EFD0F /* ListItemViewController.swift */; };
 		D9807F291B39C0A20031BD71 /* User+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9807F281B39C0A20031BD71 /* User+JSON.swift */; };
@@ -124,6 +122,12 @@
 		D9807F311B39C6040031BD71 /* AuthenticatedUser+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9807F301B39C6040031BD71 /* AuthenticatedUser+JSON.swift */; };
 		D9807F331B3B1ADD0031BD71 /* ExpandedTemplate+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9807F321B3B1ADD0031BD71 /* ExpandedTemplate+JSON.swift */; };
 		D9807F351B3B1C950031BD71 /* Template+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9807F341B3B1C950031BD71 /* Template+JSON.swift */; };
+		D9807F371B3C526A0031BD71 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9807F361B3C526A0031BD71 /* Utility.swift */; };
+		D9807F391B3E6ED20031BD71 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D924E1FB1B25E5380025C5E9 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D9807F3A1B3E6ED20031BD71 /* APIKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D924E1FC1B25E5380025C5E9 /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D9807F3B1B3E6ED20031BD71 /* BrightFutures.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D924E1FD1B25E5380025C5E9 /* BrightFutures.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D9807F3C1B3E6EDF0031BD71 /* QiitaKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D924E1DA1B25E1970025C5E9 /* QiitaKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D99E8AC71B3E752E009D6DED /* CreateAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2AB1B27420F0025C5E9 /* CreateAccessToken.swift */; };
 		D9D8893F1B2F3A4E00433DAF /* LoggingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */; };
 		D9D889401B2F3A4E00433DAF /* LoggingKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9D889421B308E8E00433DAF /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D889411B308E8E00433DAF /* TagViewController.swift */; };
@@ -171,6 +175,19 @@
 				D9D889401B2F3A4E00433DAF /* LoggingKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9807F381B3E6EBC0031BD71 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D9807F3C1B3E6EDF0031BD71 /* QiitaKit.framework in CopyFiles */,
+				D9807F391B3E6ED20031BD71 /* Alamofire.framework in CopyFiles */,
+				D9807F3A1B3E6ED20031BD71 /* APIKit.framework in CopyFiles */,
+				D9807F3B1B3E6ED20031BD71 /* BrightFutures.framework in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -275,6 +292,7 @@
 		D9807F301B39C6040031BD71 /* AuthenticatedUser+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AuthenticatedUser+JSON.swift"; sourceTree = "<group>"; };
 		D9807F321B3B1ADD0031BD71 /* ExpandedTemplate+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpandedTemplate+JSON.swift"; sourceTree = "<group>"; };
 		D9807F341B3B1C950031BD71 /* Template+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Template+JSON.swift"; sourceTree = "<group>"; };
+		D9807F361B3C526A0031BD71 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoggingKit.framework; path = Carthage/Build/iOS/LoggingKit.framework; sourceTree = "<group>"; };
 		D9D889411B308E8E00433DAF /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		D9D889431B31BB5200433DAF /* ListTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTagsViewController.swift; sourceTree = "<group>"; };
@@ -737,6 +755,7 @@
 				D9807F301B39C6040031BD71 /* AuthenticatedUser+JSON.swift */,
 				D9807F321B3B1ADD0031BD71 /* ExpandedTemplate+JSON.swift */,
 				D9807F341B3B1C950031BD71 /* Template+JSON.swift */,
+				D9807F361B3C526A0031BD71 /* Utility.swift */,
 			);
 			name = Utility;
 			path = src/Utility;
@@ -819,6 +838,7 @@
 				D924E1E11B25E1970025C5E9 /* Sources */,
 				D924E1E21B25E1970025C5E9 /* Frameworks */,
 				D924E1E31B25E1970025C5E9 /* Resources */,
+				D9807F381B3E6EBC0031BD71 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -974,17 +994,18 @@
 				D9807F351B3B1C950031BD71 /* Template+JSON.swift in Sources */,
 				D924E2871B2741F50025C5E9 /* ListAuthenticatedUserItems.swift in Sources */,
 				D924E2831B2741F50025C5E9 /* DeleteItem.swift in Sources */,
+				D9807F371B3C526A0031BD71 /* Utility.swift in Sources */,
 				D924E28A1B2741F50025C5E9 /* ListUserItems.swift in Sources */,
 				D9807F2B1B39C18C0031BD71 /* Tagging+JSON.swift in Sources */,
 				D924E29C1B2741F50025C5E9 /* DeleteTagging.swift in Sources */,
 				D924E21A1B260A3B0025C5E9 /* ExpandedTemplate.swift in Sources */,
+				D99E8AC71B3E752E009D6DED /* CreateAccessToken.swift in Sources */,
 				D924E27A1B2741F50025C5E9 /* CreateItemComment.swift in Sources */,
 				D924E27B1B2741F50025C5E9 /* DeleteComment.swift in Sources */,
 				D924E2A71B2741F50025C5E9 /* ListUserFollowees.swift in Sources */,
 				D924E2A51B2741F50025C5E9 /* GetUserFollowing.swift in Sources */,
 				D9807F2D1B39C2B20031BD71 /* Item+JSON.swift in Sources */,
 				D924E28C1B2741F50025C5E9 /* StockItem.swift in Sources */,
-				D924E2AC1B27420F0025C5E9 /* CreateAccessToken.swift in Sources */,
 				D924E29B1B2741F50025C5E9 /* CreateTagging.swift in Sources */,
 				D924E2791B2741F50025C5E9 /* GetAuthenticatedUser.swift in Sources */,
 				D924E2A11B2741F50025C5E9 /* ListTemplates.swift in Sources */,
@@ -1036,7 +1057,6 @@
 				D924E2191B260A3B0025C5E9 /* Comment.swift in Sources */,
 				D924E2171B260A3B0025C5E9 /* AuthenticatedUser.swift in Sources */,
 				D924E1ED1B25E1970025C5E9 /* QiitaKitTests.swift in Sources */,
-				D924E1F91B25E2560025C5E9 /* QiitaKit.swift in Sources */,
 				D924E21D1B260A3B0025C5E9 /* Item.swift in Sources */,
 				D924E21B1B260A3B0025C5E9 /* ExpandedTemplate.swift in Sources */,
 				D924E2211B260A3B0025C5E9 /* Tag.swift in Sources */,
@@ -1107,6 +1127,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QiitaKitDemo/QiitaKitDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 			};
 			name = Debug;
 		};
@@ -1124,6 +1145,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QiitaKitDemo/QiitaKitDemo-Bridging-Header.h";
+				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 			};
 			name = Release;
 		};
@@ -1268,6 +1290,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 			};
 			name = Debug;
 		};
@@ -1288,6 +1311,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 			};
 			name = Release;
 		};

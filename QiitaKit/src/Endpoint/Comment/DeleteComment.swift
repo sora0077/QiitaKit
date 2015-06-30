@@ -24,14 +24,14 @@ public struct DeleteComment {
 extension DeleteComment: RequestToken, RequestTokenValidatorStatusCode {
 
     public typealias Response = ()
-    public typealias SerializedType = NSData
+    public typealias SerializedType = Any
 
     public var method: HTTPMethod {
         return .DELETE
     }
     
-    public var statusCode: Range<Int> {
-        return 200..<500
+    public var statusCode: Set<Int> {
+        return [204, 404]
     }
 
     public var URL: String {
@@ -51,7 +51,7 @@ extension DeleteComment: RequestToken, RequestTokenValidatorStatusCode {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .Data
+        return .JSON(.AllowFragments)
     }
 }
 

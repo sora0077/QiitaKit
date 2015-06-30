@@ -61,6 +61,13 @@ public class QiitaKit: API {
         return nil
     }
     
+    public override func request<T : RequestToken>(token: T) -> Future<T.Response> {
+        println(T.SerializedType.self)
+        
+        return super.request(token)
+    }
+    
+    
     public func setAccessToken(clientId: String, scopes: [String], token: String) {
         accessToken = AccessToken(client_id: clientId, scopes: scopes, token: token)
     }
@@ -91,7 +98,7 @@ public class QiitaKit: API {
             return items.filter({ $0.name == name }).first?.value
         }
         
-        if let scheme = callbackScheme,
+        if  let scheme = callbackScheme,
             let promise = oauthPromise,
             let urlString = url.absoluteString,
             let components = NSURLComponents(string: urlString),
