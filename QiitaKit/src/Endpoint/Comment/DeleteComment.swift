@@ -24,7 +24,7 @@ public struct DeleteComment {
 extension DeleteComment: RequestToken {
 
     public typealias Response = ()
-    public typealias SerializedType = AnyObject?
+    public typealias SerializedType = Any
 
     public var method: HTTPMethod {
         return .DELETE

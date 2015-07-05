@@ -24,7 +24,7 @@ public struct DeleteAccessToken {
 extension DeleteAccessToken: RequestToken {
 
     public typealias Response = ()
-    public typealias SerializedType = NSData
+    public typealias SerializedType = Any
 
     public var method: HTTPMethod {
         return .DELETE
@@ -47,7 +47,7 @@ extension DeleteAccessToken: RequestToken {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .Data
+        return .JSON(.AllowFragments)
     }
 }
 

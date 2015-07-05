@@ -24,7 +24,7 @@ public struct UnfollowUser {
 extension UnfollowUser: RequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = NSData
+    public typealias SerializedType = Any
 
     public var method: HTTPMethod {
         return .DELETE
@@ -47,7 +47,7 @@ extension UnfollowUser: RequestToken {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .Data
+        return .JSON(.AllowFragments)
     }
 }
 

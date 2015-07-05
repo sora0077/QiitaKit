@@ -47,7 +47,7 @@ extension UnthankComment: RequestToken {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .Data
+        return .JSON(.AllowFragments)
     }
 }
 

@@ -60,9 +60,14 @@ class TagViewController: UIViewController {
         }
         
         let getTagFollowing = GetTagFollowing(tag_id: tag.id)
-        Qiita.request(getTagFollowing).onSuccess { [weak self] in
-            self?.refreshGetTagFollowing($0)
-        }
+        Qiita.request(getTagFollowing)
+            .onSuccess { [weak self] _ in
+                self?.refreshGetTagFollowing(true)
+            }
+            .onFailure { [weak self] _ in
+                self?.refreshGetTagFollowing(false)
+            }
+        
     }
     
     private func refreshGetTagFollowing(b: Bool) {

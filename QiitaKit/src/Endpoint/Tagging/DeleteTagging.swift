@@ -28,7 +28,7 @@ public struct DeleteTagging {
 extension DeleteTagging: RequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = NSData
+    public typealias SerializedType = Any
 
     public var method: HTTPMethod {
         return .DELETE
@@ -51,7 +51,7 @@ extension DeleteTagging: RequestToken {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .Data
+        return .JSON(.AllowFragments)
     }
 }
 

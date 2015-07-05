@@ -24,7 +24,7 @@ public struct UnstockItem {
 extension UnstockItem: RequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = NSData
+    public typealias SerializedType = Any
 
     public var method: HTTPMethod {
         return .DELETE
@@ -47,7 +47,7 @@ extension UnstockItem: RequestToken {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .Data
+        return .JSON(.AllowFragments)
     }
 }
 

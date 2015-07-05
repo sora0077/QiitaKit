@@ -23,8 +23,8 @@ public struct GetTagFollowing {
 
 extension GetTagFollowing: RequestToken {
     
-    public typealias Response = Bool
-    public typealias SerializedType = NSData
+    public typealias Response = ()
+    public typealias SerializedType = Any
 
     public var method: HTTPMethod {
         return .GET
@@ -47,7 +47,7 @@ extension GetTagFollowing: RequestToken {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .Data
+        return .JSON(.AllowFragments)
     }
 }
 
@@ -55,14 +55,6 @@ extension GetTagFollowing {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
-        if let statusCode = response?.statusCode {
-            switch statusCode {
-            case 200..<300:
-                return Result(true)
-            default:
-                break
-            }
-        }
-        return Result(false)
+        return Result(())
     }
 }

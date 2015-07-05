@@ -75,9 +75,13 @@ class ItemViewController: UIViewController {
             })
         }
         
-        Qiita.request(GetItemStock(item_id: item.id)).onSuccess { [weak self] in
-            self?.refreshGetItemStock($0)
-        }
+        Qiita.request(GetItemStock(item_id: item.id))
+            .onSuccess { [weak self] _ in
+                self?.refreshGetItemStock(true)
+            }
+            .onFailure { [weak self] _ in
+                self?.refreshGetItemStock(false)
+            }
         
         
 //        Qiita

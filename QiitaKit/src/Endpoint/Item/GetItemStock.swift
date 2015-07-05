@@ -23,7 +23,7 @@ public struct GetItemStock {
 
 extension GetItemStock: RequestToken {
     
-    public typealias Response = Bool
+    public typealias Response = ()
     public typealias SerializedType = Any
 
     public var method: HTTPMethod {
@@ -47,7 +47,7 @@ extension GetItemStock: RequestToken {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .Data
+        return .JSON(.AllowFragments)
     }
 }
 
@@ -55,14 +55,6 @@ extension GetItemStock {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
-        if let statusCode = response?.statusCode {
-            switch statusCode {
-            case 200..<300:
-                return Result(true)
-            default:
-                return Result(false)
-            }
-        }
-        return Result(false)
+        return Result(())
     }
 }

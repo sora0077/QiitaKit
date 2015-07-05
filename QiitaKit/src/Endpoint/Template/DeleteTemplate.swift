@@ -24,7 +24,7 @@ public struct DeleteTemplate {
 extension DeleteTemplate: RequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = NSData
+    public typealias SerializedType = Any
 
     public var method: HTTPMethod {
         return .DELETE
@@ -47,7 +47,7 @@ extension DeleteTemplate: RequestToken {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .Data
+        return .JSON(.AllowFragments)
     }
 }
 

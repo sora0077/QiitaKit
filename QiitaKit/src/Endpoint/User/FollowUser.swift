@@ -24,7 +24,7 @@ public struct FollowUser {
 extension FollowUser: RequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = NSData
+    public typealias SerializedType = Any
 
     public var method: HTTPMethod {
         return .PUT
@@ -47,7 +47,7 @@ extension FollowUser: RequestToken {
     }
 
     public var resonseEncoding: ResponseEncoding {
-        return .Data
+        return .JSON(.AllowFragments)
     }
 }
 
