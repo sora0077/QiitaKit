@@ -16,8 +16,6 @@
 		D9194A471B28903400E4D916 /* QiitaKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1DA1B25E1970025C5E9 /* QiitaKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9194A4B1B28903A00E4D916 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FB1B25E5380025C5E9 /* Alamofire.framework */; };
 		D9194A4C1B28903A00E4D916 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FB1B25E5380025C5E9 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D9194A4D1B28903A00E4D916 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FC1B25E5380025C5E9 /* APIKit.framework */; };
-		D9194A4E1B28903A00E4D916 /* APIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FC1B25E5380025C5E9 /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9194A4F1B28903A00E4D916 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FD1B25E5380025C5E9 /* BrightFutures.framework */; };
 		D9194A501B28903A00E4D916 /* BrightFutures.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FD1B25E5380025C5E9 /* BrightFutures.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9194A551B2B3A4F00E4D916 /* dotenv.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9194A541B2B3A4F00E4D916 /* dotenv.swift */; };
@@ -36,8 +34,6 @@
 		D924E1F81B25E2560025C5E9 /* QiitaKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E1F71B25E2560025C5E9 /* QiitaKit.swift */; };
 		D924E1FF1B25E5380025C5E9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FB1B25E5380025C5E9 /* Alamofire.framework */; };
 		D924E2001B25E5380025C5E9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FB1B25E5380025C5E9 /* Alamofire.framework */; };
-		D924E2011B25E5380025C5E9 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FC1B25E5380025C5E9 /* APIKit.framework */; };
-		D924E2021B25E5380025C5E9 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FC1B25E5380025C5E9 /* APIKit.framework */; };
 		D924E2031B25E5380025C5E9 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FD1B25E5380025C5E9 /* BrightFutures.framework */; };
 		D924E2041B25E5380025C5E9 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D924E1FD1B25E5380025C5E9 /* BrightFutures.framework */; };
 		D924E2141B260A3B0025C5E9 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2091B260A3B0025C5E9 /* AccessToken.swift */; };
@@ -124,9 +120,11 @@
 		D9807F351B3B1C950031BD71 /* Template+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9807F341B3B1C950031BD71 /* Template+JSON.swift */; };
 		D9807F371B3C526A0031BD71 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9807F361B3C526A0031BD71 /* Utility.swift */; };
 		D9807F391B3E6ED20031BD71 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D924E1FB1B25E5380025C5E9 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D9807F3A1B3E6ED20031BD71 /* APIKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D924E1FC1B25E5380025C5E9 /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9807F3B1B3E6ED20031BD71 /* BrightFutures.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D924E1FD1B25E5380025C5E9 /* BrightFutures.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9807F3C1B3E6EDF0031BD71 /* QiitaKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D924E1DA1B25E1970025C5E9 /* QiitaKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D980FC5B1B47F1D70082D841 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D980FC5A1B47F1C20082D841 /* APIKit.framework */; };
+		D980FC5C1B47F1DE0082D841 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D980FC5A1B47F1C20082D841 /* APIKit.framework */; };
+		D980FC5D1B47F1DE0082D841 /* APIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D980FC5A1B47F1C20082D841 /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D99E8AC71B3E752E009D6DED /* CreateAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2AB1B27420F0025C5E9 /* CreateAccessToken.swift */; };
 		D9D8893F1B2F3A4E00433DAF /* LoggingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */; };
 		D9D889401B2F3A4E00433DAF /* LoggingKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -166,12 +164,12 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D9194AA91B2C88C300E4D916 /* MaterialKit.framework in Embed Frameworks */,
-				D9194A4E1B28903A00E4D916 /* APIKit.framework in Embed Frameworks */,
 				D9194A5D1B2C66A700E4D916 /* LayoutKit.framework in Embed Frameworks */,
 				D9194A501B28903A00E4D916 /* BrightFutures.framework in Embed Frameworks */,
 				D9194A471B28903400E4D916 /* QiitaKit.framework in Embed Frameworks */,
 				D9194A5F1B2C66A700E4D916 /* ToysBoxKit.framework in Embed Frameworks */,
 				D9194A4C1B28903A00E4D916 /* Alamofire.framework in Embed Frameworks */,
+				D980FC5D1B47F1DE0082D841 /* APIKit.framework in Embed Frameworks */,
 				D9D889401B2F3A4E00433DAF /* LoggingKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -185,7 +183,6 @@
 			files = (
 				D9807F3C1B3E6EDF0031BD71 /* QiitaKit.framework in CopyFiles */,
 				D9807F391B3E6ED20031BD71 /* Alamofire.framework in CopyFiles */,
-				D9807F3A1B3E6ED20031BD71 /* APIKit.framework in CopyFiles */,
 				D9807F3B1B3E6ED20031BD71 /* BrightFutures.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,7 +215,6 @@
 		D924E1EC1B25E1970025C5E9 /* QiitaKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaKitTests.swift; sourceTree = "<group>"; };
 		D924E1F71B25E2560025C5E9 /* QiitaKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QiitaKit.swift; path = src/QiitaKit.swift; sourceTree = "<group>"; };
 		D924E1FB1B25E5380025C5E9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		D924E1FC1B25E5380025C5E9 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		D924E1FD1B25E5380025C5E9 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
 		D924E2091B260A3B0025C5E9 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		D924E20A1B260A3B0025C5E9 /* AuthenticatedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedUser.swift; sourceTree = "<group>"; };
@@ -293,6 +289,7 @@
 		D9807F321B3B1ADD0031BD71 /* ExpandedTemplate+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpandedTemplate+JSON.swift"; sourceTree = "<group>"; };
 		D9807F341B3B1C950031BD71 /* Template+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Template+JSON.swift"; sourceTree = "<group>"; };
 		D9807F361B3C526A0031BD71 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		D980FC5A1B47F1C20082D841 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoggingKit.framework; path = Carthage/Build/iOS/LoggingKit.framework; sourceTree = "<group>"; };
 		D9D889411B308E8E00433DAF /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		D9D889431B31BB5200433DAF /* ListTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTagsViewController.swift; sourceTree = "<group>"; };
@@ -304,12 +301,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9194AA81B2C88C300E4D916 /* MaterialKit.framework in Frameworks */,
-				D9194A4D1B28903A00E4D916 /* APIKit.framework in Frameworks */,
 				D9194A5C1B2C66A700E4D916 /* LayoutKit.framework in Frameworks */,
 				D9194A4F1B28903A00E4D916 /* BrightFutures.framework in Frameworks */,
 				D9194A461B28903400E4D916 /* QiitaKit.framework in Frameworks */,
 				D9194A5E1B2C66A700E4D916 /* ToysBoxKit.framework in Frameworks */,
 				D9194A4B1B28903A00E4D916 /* Alamofire.framework in Frameworks */,
+				D980FC5C1B47F1DE0082D841 /* APIKit.framework in Frameworks */,
 				D9D8893F1B2F3A4E00433DAF /* LoggingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,8 +323,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D924E2031B25E5380025C5E9 /* BrightFutures.framework in Frameworks */,
-				D924E2011B25E5380025C5E9 /* APIKit.framework in Frameworks */,
 				D924E1FF1B25E5380025C5E9 /* Alamofire.framework in Frameworks */,
+				D980FC5B1B47F1D70082D841 /* APIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,7 +332,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D924E2021B25E5380025C5E9 /* APIKit.framework in Frameworks */,
 				D924E2041B25E5380025C5E9 /* BrightFutures.framework in Frameworks */,
 				D924E1E61B25E1970025C5E9 /* QiitaKit.framework in Frameworks */,
 				D924E2001B25E5380025C5E9 /* Alamofire.framework in Frameworks */,
@@ -571,8 +567,8 @@
 		D924E1FA1B25E4A20025C5E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D980FC5A1B47F1C20082D841 /* APIKit.framework */,
 				D924E1FB1B25E5380025C5E9 /* Alamofire.framework */,
-				D924E1FC1B25E5380025C5E9 /* APIKit.framework */,
 				D924E1FD1B25E5380025C5E9 /* BrightFutures.framework */,
 			);
 			name = Frameworks;

@@ -21,17 +21,13 @@ public struct GetTagFollowing {
     }
 }
 
-extension GetTagFollowing: RequestToken, RequestTokenValidatorStatusCode {
+extension GetTagFollowing: RequestToken {
     
     public typealias Response = Bool
     public typealias SerializedType = NSData
 
     public var method: HTTPMethod {
         return .GET
-    }
-    
-    public var statusCode: Set<Int> {
-        return 200..<500
     }
 
     public var URL: String {

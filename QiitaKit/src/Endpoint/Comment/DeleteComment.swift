@@ -21,17 +21,13 @@ public struct DeleteComment {
     }
 }
 
-extension DeleteComment: RequestToken, RequestTokenValidatorStatusCode {
+extension DeleteComment: RequestToken {
 
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedType = AnyObject?
 
     public var method: HTTPMethod {
         return .DELETE
-    }
-    
-    public var statusCode: Set<Int> {
-        return [204, 404]
     }
 
     public var URL: String {

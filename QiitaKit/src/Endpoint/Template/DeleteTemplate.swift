@@ -21,7 +21,7 @@ public struct DeleteTemplate {
     }
 }
 
-extension DeleteTemplate: RequestToken, RequestTokenValidatorStatusCode {
+extension DeleteTemplate: RequestToken {
     
     public typealias Response = ()
     public typealias SerializedType = NSData
@@ -30,10 +30,6 @@ extension DeleteTemplate: RequestToken, RequestTokenValidatorStatusCode {
         return .DELETE
     }
     
-    public var statusCode: Set<Int> {
-        return 200..<400
-    }
-
     public var URL: String {
         return "/api/v2/templates/\(template_id)"
     }

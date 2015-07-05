@@ -27,6 +27,7 @@ extension AccessToken {
 }
 
 public let QiitaKitErrorDomain = "jp.sora0077.QiitaKit.ErrorDomain"
+public let QiitaAPIErrorDomain = "jp.sora0077.QiitaAPI.ErrorDomain"
 
 /**
 *  <#Description#>
@@ -61,12 +62,22 @@ public class QiitaKit: API {
         return nil
     }
     
-    public override func request<T : RequestToken>(token: T) -> Future<T.Response> {
-        println(T.SerializedType.self)
+    public override func validate(request URLRequest: NSURLRequest, response: NSHTTPURLResponse, object: AnyObject?) -> NSError? {
         
-        return super.request(token)
+        let (JSON, error) = json_encode_dictionary(object)
+        
+        if let e = error {
+            return e
+        }
+        
+        if  let type = JSON?["type"] as? String,
+            let message = JSON?["message"] as? String
+        {
+            let code = response.statusCode
+            return NSError(domain: QiitaAPIErrorDomain, code: code, userInfo: JSON)
+        }
+        return nil
     }
-    
     
     public func setAccessToken(clientId: String, scopes: [String], token: String) {
         accessToken = AccessToken(client_id: clientId, scopes: scopes, token: token)
@@ -186,4 +197,21 @@ public class QiitaKit: API {
 //        return RequestChain<U>(api: a, future: u)
 //    }
 //}
+
+private func json_encode_dictionary(data: AnyObject?) -> ([String: AnyObject]?, NSError?) {
+    
+    if let data = data as? NSData {
+        var error: NSError?
+        let f = NSJSONSerialization.JSONObjectWithData
+        let JSON = f(data, options: .AllowFragments, error: &error) as? [String: AnyObject]
+        
+        return (JSON, error)
+    }
+    
+    if let JSON = data as? [String: AnyObject] {
+        return (JSON, nil)
+    }
+    
+    return (nil, nil)
+}
 

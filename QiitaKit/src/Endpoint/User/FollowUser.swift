@@ -21,7 +21,7 @@ public struct FollowUser {
     }
 }
 
-extension FollowUser: RequestToken, RequestTokenValidatorStatusCode {
+extension FollowUser: RequestToken {
     
     public typealias Response = ()
     public typealias SerializedType = NSData
@@ -30,10 +30,6 @@ extension FollowUser: RequestToken, RequestTokenValidatorStatusCode {
         return .PUT
     }
     
-    public var statusCode: Set<Int> {
-        return 200..<400
-    }
-
     public var URL: String {
         return "/api/v2/users/\(user_id)/following"
     }

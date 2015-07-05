@@ -21,17 +21,13 @@ public struct UnstockItem {
     }
 }
 
-extension UnstockItem: RequestToken, RequestTokenValidatorStatusCode {
+extension UnstockItem: RequestToken {
     
     public typealias Response = ()
     public typealias SerializedType = NSData
 
     public var method: HTTPMethod {
         return .DELETE
-    }
-    
-    public var statusCode: Set<Int> {
-        return 200..<400
     }
 
     public var URL: String {

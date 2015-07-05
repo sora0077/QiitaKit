@@ -21,17 +21,13 @@ public struct GetItemStock {
     }
 }
 
-extension GetItemStock: RequestToken, RequestTokenValidatorStatusCode {
+extension GetItemStock: RequestToken {
     
     public typealias Response = Bool
     public typealias SerializedType = Any
 
     public var method: HTTPMethod {
         return .GET
-    }
-    
-    public var statusCode: Set<Int> {
-        return 200..<500
     }
 
     public var URL: String {

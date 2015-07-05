@@ -21,17 +21,13 @@ public struct ThankComment {
     }
 }
 
-extension ThankComment: RequestToken, RequestTokenValidatorStatusCode {
+extension ThankComment: RequestToken {
     
     public typealias Response = ()
     public typealias SerializedType = NSData
 
     public var method: HTTPMethod {
         return .PUT
-    }
-    
-    public var statusCode: Set<Int> {
-        return 200..<400
     }
 
     public var URL: String {
