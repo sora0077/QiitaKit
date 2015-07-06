@@ -34,7 +34,7 @@ public struct ListUserItems {
 
 extension ListUserItems: RequestToken {
     
-    public typealias Response = [Item]
+    public typealias Response = ([Item], LinkMeta<ListUserItems>)
     public typealias SerializedType = [[String: AnyObject]]
 
     public var method: HTTPMethod {
@@ -65,10 +65,26 @@ extension ListUserItems: RequestToken {
     }
 }
 
+extension ListUserItems: LinkProtocol {
+    
+    public init(url: NSURL!) {
+        
+        let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        var query: [String: String] = [:]
+        for i in component?.queryItems as! [NSURLQueryItem] {
+            query[i.name] = i.value
+        }
+        self.page = query["page"]!
+        self.per_page = query["per_page"]!
+        
+        self.user_id = url.pathComponents?[url.pathComponents!.count - 2] as! String
+    }
+}
+
 extension ListUserItems {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
-        return Result(_Items(object))
+        return Result(_Items(object), LinkMeta<ListUserItems>(dict: response!.allHeaderFields))
     }
 }

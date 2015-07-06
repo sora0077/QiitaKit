@@ -22,8 +22,9 @@ class ListItemViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         let listAuthenticatedUserItems = ListAuthenticatedUserItems(page: "1", per_page: "100")
-        Qiita.request(listAuthenticatedUserItems).onSuccess { [weak self] in
-            self?.refreshListAuthenticatedUserItems($0)
+        Qiita.request(listAuthenticatedUserItems).onSuccess { [weak self] items, meta in
+            self?.refreshListAuthenticatedUserItems(items)
+            println(meta.first)
         }
     }
 

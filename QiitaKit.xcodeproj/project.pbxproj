@@ -51,7 +51,6 @@
 		D924E2201B260A3B0025C5E9 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20F1B260A3B0025C5E9 /* Tag.swift */; };
 		D924E2211B260A3B0025C5E9 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E20F1B260A3B0025C5E9 /* Tag.swift */; };
 		D924E2221B260A3B0025C5E9 /* Tagging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2101B260A3B0025C5E9 /* Tagging.swift */; };
-		D924E2231B260A3B0025C5E9 /* Tagging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2101B260A3B0025C5E9 /* Tagging.swift */; };
 		D924E2241B260A3B0025C5E9 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2111B260A3B0025C5E9 /* Team.swift */; };
 		D924E2251B260A3B0025C5E9 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2111B260A3B0025C5E9 /* Team.swift */; };
 		D924E2261B260A3B0025C5E9 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2121B260A3B0025C5E9 /* Template.swift */; };
@@ -130,6 +129,8 @@
 		D9D889401B2F3A4E00433DAF /* LoggingKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9D889421B308E8E00433DAF /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D889411B308E8E00433DAF /* TagViewController.swift */; };
 		D9D889441B31BB5200433DAF /* ListTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D889431B31BB5200433DAF /* ListTagsViewController.swift */; };
+		D9EB34CB1B4977DC00CA9C57 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EB34CA1B4977DC00CA9C57 /* Meta.swift */; };
+		D9EB34CC1B4979E700CA9C57 /* Tagging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924E2101B260A3B0025C5E9 /* Tagging.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -293,6 +294,7 @@
 		D9D8893E1B2F3A3200433DAF /* LoggingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoggingKit.framework; path = Carthage/Build/iOS/LoggingKit.framework; sourceTree = "<group>"; };
 		D9D889411B308E8E00433DAF /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		D9D889431B31BB5200433DAF /* ListTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTagsViewController.swift; sourceTree = "<group>"; };
+		D9EB34CA1B4977DC00CA9C57 /* Meta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -558,6 +560,7 @@
 			children = (
 				D9807F271B39C0600031BD71 /* Utility */,
 				D924E2081B25E5FE0025C5E9 /* Entity */,
+				D9EB34C91B4976C900CA9C57 /* Meta */,
 				D924E2071B25E5EE0025C5E9 /* Endpoint */,
 				D924E1F71B25E2560025C5E9 /* QiitaKit.swift */,
 			);
@@ -755,6 +758,15 @@
 			);
 			name = Utility;
 			path = src/Utility;
+			sourceTree = "<group>";
+		};
+		D9EB34C91B4976C900CA9C57 /* Meta */ = {
+			isa = PBXGroup;
+			children = (
+				D9EB34CA1B4977DC00CA9C57 /* Meta.swift */,
+			);
+			name = Meta;
+			path = src/Meta;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -972,6 +984,7 @@
 			files = (
 				D924E28D1B2741F50025C5E9 /* UnlikeItem.swift in Sources */,
 				D924E2811B2741F50025C5E9 /* CreateExpandedTemplate.swift in Sources */,
+				D9EB34CB1B4977DC00CA9C57 /* Meta.swift in Sources */,
 				D924E29F1B2741F50025C5E9 /* DeleteTemplate.swift in Sources */,
 				D924E28B1B2741F50025C5E9 /* ListUserStocks.swift in Sources */,
 				D924E2931B2741F50025C5E9 /* ListProjects.swift in Sources */,
@@ -1054,13 +1067,13 @@
 				D924E2171B260A3B0025C5E9 /* AuthenticatedUser.swift in Sources */,
 				D924E1ED1B25E1970025C5E9 /* QiitaKitTests.swift in Sources */,
 				D924E21D1B260A3B0025C5E9 /* Item.swift in Sources */,
+				D9EB34CC1B4979E700CA9C57 /* Tagging.swift in Sources */,
 				D924E21B1B260A3B0025C5E9 /* ExpandedTemplate.swift in Sources */,
 				D924E2211B260A3B0025C5E9 /* Tag.swift in Sources */,
 				D924E2151B260A3B0025C5E9 /* AccessToken.swift in Sources */,
 				D924E2251B260A3B0025C5E9 /* Team.swift in Sources */,
 				D924E2271B260A3B0025C5E9 /* Template.swift in Sources */,
 				D924E21F1B260A3B0025C5E9 /* Project.swift in Sources */,
-				D924E2231B260A3B0025C5E9 /* Tagging.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
