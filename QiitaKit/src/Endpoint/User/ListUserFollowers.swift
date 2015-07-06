@@ -34,7 +34,7 @@ public struct ListUserFollowers {
 
 extension ListUserFollowers: RequestToken {
     
-    public typealias Response = [User]
+    public typealias Response = ([User], LinkMeta<ListUserFollowers>)
     public typealias SerializedType = [[String: AnyObject]]
 
     public var method: HTTPMethod {
@@ -65,10 +65,26 @@ extension ListUserFollowers: RequestToken {
     }
 }
 
+extension ListUserFollowers: LinkProtocol {
+    
+    public init(url: NSURL!) {
+        
+        let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        var query: [String: String] = [:]
+        for i in component?.queryItems as! [NSURLQueryItem] {
+            query[i.name] = i.value
+        }
+        self.page = query["page"]!
+        self.per_page = query["per_page"]!
+        
+        self.user_id = url.pathComponents?[url.pathComponents!.count - 2] as! String
+    }
+}
+
 extension ListUserFollowers {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
-        return Result(_Users(object))
+        return Result(_Users(object), LinkMeta<ListUserFollowers>(dict: response!.allHeaderFields))
     }
 }

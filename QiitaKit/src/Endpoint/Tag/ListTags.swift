@@ -31,7 +31,7 @@ public struct ListTags {
 
 extension ListTags: RequestToken {
     
-    public typealias Response = [Tag]
+    public typealias Response = ([Tag], LinkMeta<ListTags>)
     public typealias SerializedType = [[String: AnyObject]]
 
     public var method: HTTPMethod {
@@ -62,6 +62,20 @@ extension ListTags: RequestToken {
     }
 }
 
+extension ListTags: LinkProtocol {
+    
+    public init(url: NSURL!) {
+        
+        let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        var query: [String: String] = [:]
+        for i in component?.queryItems as! [NSURLQueryItem] {
+            query[i.name] = i.value
+        }
+        self.page = query["page"]!
+        self.per_page = query["per_page"]!
+    }
+}
+
 extension ListTags {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
@@ -74,6 +88,6 @@ extension ListTags {
                 items_count: object["items_count"] as! Int
             )
         }
-        return Result(tags)
+        return Result(tags, LinkMeta<ListTags>(dict: response!.allHeaderFields))
     }
 }

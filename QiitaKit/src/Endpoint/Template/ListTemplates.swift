@@ -31,7 +31,7 @@ public struct ListTemplates {
 
 extension ListTemplates: RequestToken {
     
-    public typealias Response = [Template]
+    public typealias Response = ([Template], LinkMeta<ListTemplates>)
     public typealias SerializedType = [[String: AnyObject]]
 
     public var method: HTTPMethod {
@@ -62,10 +62,24 @@ extension ListTemplates: RequestToken {
     }
 }
 
+extension ListTemplates: LinkProtocol {
+    
+    public init(url: NSURL!) {
+        
+        let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        var query: [String: String] = [:]
+        for i in component?.queryItems as! [NSURLQueryItem] {
+            query[i.name] = i.value
+        }
+        self.page = query["page"]!
+        self.per_page = query["per_page"]!
+    }
+}
+
 extension ListTemplates {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
-        return Result(_Templates(object))
+        return Result(_Templates(object), LinkMeta<ListTemplates>(dict: response!.allHeaderFields))
     }
 }

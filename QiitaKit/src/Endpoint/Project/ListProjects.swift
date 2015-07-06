@@ -31,7 +31,7 @@ public struct ListProjects {
 
 extension ListProjects: RequestToken {
     
-    public typealias Response = [Project]
+    public typealias Response = ([Project], LinkMeta<ListProjects>)
     public typealias SerializedType = [[String: AnyObject]]
 
     public var method: HTTPMethod {
@@ -62,6 +62,20 @@ extension ListProjects: RequestToken {
     }
 }
 
+extension ListProjects: LinkProtocol {
+    
+    public init(url: NSURL!) {
+        
+        let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        var query: [String: String] = [:]
+        for i in component?.queryItems as! [NSURLQueryItem] {
+            query[i.name] = i.value
+        }
+        self.page = query["page"]!
+        self.per_page = query["per_page"]!
+    }
+}
+
 extension ListProjects {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
@@ -80,6 +94,6 @@ extension ListProjects {
             )
             return project
         }
-        return Result(projects)
+        return Result(projects, LinkMeta<ListProjects>(dict: response!.allHeaderFields))
     }
 }

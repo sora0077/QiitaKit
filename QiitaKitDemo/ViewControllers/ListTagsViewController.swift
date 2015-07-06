@@ -21,8 +21,8 @@ class ListTagsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         let listTags = ListTags(page: "1", per_page: "100")
-        Qiita.request(listTags).onSuccess { [weak self] in
-            self?.refreshListTags($0)
+        Qiita.request(listTags).onSuccess { [weak self] tags, meta in
+            self?.refreshListTags(tags)
         }
     }
 

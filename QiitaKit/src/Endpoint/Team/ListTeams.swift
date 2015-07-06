@@ -19,7 +19,7 @@ public struct ListTeams {
 
 extension ListTeams: RequestToken {
 
-    public typealias Response = [Team]
+    public typealias Response = ([Team], LinkMeta<ListTeams>)
     public typealias SerializedType = [[String: AnyObject]]
 
     public var method: HTTPMethod {
@@ -47,6 +47,12 @@ extension ListTeams: RequestToken {
     }
 }
 
+extension ListTeams: LinkProtocol {
+    
+    public init(url: NSURL!) {
+    }
+}
+
 extension ListTeams {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
@@ -58,6 +64,6 @@ extension ListTeams {
                 name: object["name"] as! String
             )
         }
-        return Result(teams)
+        return Result(teams, LinkMeta<ListTeams>(dict: response!.allHeaderFields))
     }
 }

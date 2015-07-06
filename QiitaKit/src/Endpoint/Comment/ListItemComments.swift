@@ -23,7 +23,7 @@ public struct ListItemComments {
 
 extension ListItemComments: RequestToken {
 
-    public typealias Response = [Comment]
+    public typealias Response = ([Comment], LinkMeta<ListItemComments>)
     public typealias SerializedType = [[String: AnyObject]]
 
     public var method: HTTPMethod {
@@ -51,10 +51,18 @@ extension ListItemComments: RequestToken {
     }
 }
 
+extension ListItemComments: LinkProtocol {
+    
+    public init!(url: NSURL!) {
+        
+        self.item_id = url.pathComponents?[url.pathComponents!.count - 2] as! String
+    }
+}
+
 extension ListItemComments {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
         
-        return Result(_Comments(object))
+        return Result(_Comments(object), LinkMeta<ListItemComments>(dict: response!.allHeaderFields))
     }
 }
