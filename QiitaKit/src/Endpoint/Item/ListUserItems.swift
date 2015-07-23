@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  指定されたユーザの投稿一覧を、作成日時の降順で返します。
@@ -83,7 +84,7 @@ extension ListUserItems: LinkProtocol {
 
 extension ListUserItems {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         return Result(_Items(object), LinkMeta<ListUserItems>(dict: response!.allHeaderFields))
     }

@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  ユーザが所属している全てのチームを、チーム作成日時の降順で返します。
@@ -55,7 +56,7 @@ extension ListTeams: LinkProtocol {
 
 extension ListTeams {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         let teams = object.map { object in
             Team(

@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  投稿から指定されたタグを取り除きます。Qiita:Teamでのみ有効です。
@@ -57,7 +58,7 @@ extension DeleteTagging: RequestToken {
 
 extension DeleteTagging {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         return Result(())
     }

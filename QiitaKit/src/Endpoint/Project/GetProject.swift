@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  プロジェクトを返します。
@@ -53,7 +54,7 @@ extension GetProject: RequestToken {
 
 extension GetProject {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         let project = Project(
             rendered_body: object["rendered_body"] as! String,

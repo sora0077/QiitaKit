@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  投稿への「いいね！」を取り消します。Qiita:Teamでのみ有効です。
@@ -53,8 +54,8 @@ extension UnlikeItem: RequestToken {
 
 extension UnlikeItem {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
-        return Result(())
+        return Result(value: ())
     }
 }

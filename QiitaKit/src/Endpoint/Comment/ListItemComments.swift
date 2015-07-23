@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  投稿に付けられたコメント一覧を投稿日時の降順で取得します。
@@ -61,7 +62,7 @@ extension ListItemComments: LinkProtocol {
 
 extension ListItemComments {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         return Result(_Comments(object), LinkMeta<ListItemComments>(dict: response!.allHeaderFields))
     }

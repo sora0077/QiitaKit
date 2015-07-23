@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  プロジェクトを新たに作成します。
@@ -77,7 +78,7 @@ extension CreateProject: RequestToken {
 
 extension CreateProject {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         let project = Project(
             rendered_body: object["rendered_body"] as! String,

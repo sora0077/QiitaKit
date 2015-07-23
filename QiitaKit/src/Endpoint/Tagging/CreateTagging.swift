@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  投稿にタグを追加します。Qiita:Teamでのみ有効です。
@@ -67,7 +68,7 @@ extension CreateTagging: RequestToken {
 
 extension CreateTagging {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         return Result(_Tagging(object))
     }

@@ -10,6 +10,15 @@ import Foundation
 import UIKit
 import APIKit
 import BrightFutures
+import Result
+import Box
+
+extension Result {
+
+    init(_ value: T) {
+        self = .Success(Box(value))
+    }
+}
 
 extension AccessToken {
     
@@ -40,7 +49,7 @@ public class QiitaKit: API {
     let clientSecret: String
     
     private var callbackScheme: String?
-    private var oauthPromise: Promise<AccessToken>?
+    private var oauthPromise: Promise<AccessToken, NSError>?
     
     public private(set) var accessToken: AccessToken?
     
@@ -83,9 +92,9 @@ public class QiitaKit: API {
         accessToken = AccessToken(client_id: clientId, scopes: scopes, token: token)
     }
     
-    public func oauthAuthorize(scopes: [AccessToken.Scope], scheme: String, state: String? = nil) -> Future<AccessToken> {
+    public func oauthAuthorize(scopes: [AccessToken.Scope], scheme: String, state: String? = nil) -> Future<AccessToken, NSError> {
         
-        let promise = Promise<AccessToken>()
+        let promise = Promise<AccessToken, NSError>()
         
         callbackScheme = scheme
         oauthPromise = promise
@@ -145,7 +154,7 @@ public class QiitaKit: API {
         return false
     }
     
-    public func oauthDelete() -> Future<()> {
+    public func oauthDelete() -> Future<(), NSError> {
         if let accessToken = accessToken {
             let deleteAccessToken = DeleteAccessToken(access_token: accessToken.token)
             return request(deleteAccessToken).map { [weak self] t in
@@ -162,11 +171,11 @@ public class QiitaKit: API {
         )
     }
     
-    public func flatMap<T, U>(v: T, _ transform: T -> Future<U>) -> Future<U> {
+    public func flatMap<T, U>(v: T, _ transform: T -> Future<U, NSError>) -> Future<U, NSError> {
         return transform(v)
     }
     
-    public func flatMap<U>(transform: () -> Future<U>) -> Future<U> {
+    public func flatMap<U>(transform: () -> Future<U, NSError>) -> Future<U, NSError> {
         return transform()
     }
     

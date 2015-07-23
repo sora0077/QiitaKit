@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  全てのユーザの一覧を作成日時の降順で取得します。
@@ -78,7 +79,7 @@ extension ListUsers: LinkProtocol {
 
 extension ListUsers {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         return Result(_Users(object), LinkMeta<ListUsers>(dict: response!.allHeaderFields))
     }

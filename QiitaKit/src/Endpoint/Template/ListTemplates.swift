@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  チーム内のテンプレート一覧を返します。
@@ -78,7 +79,7 @@ extension ListTemplates: LinkProtocol {
 
 extension ListTemplates {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         return Result(_Templates(object), LinkMeta<ListTemplates>(dict: response!.allHeaderFields))
     }

@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  ユーザがフォローしているタグ一覧をフォロー日時の降順で返します。
@@ -84,7 +85,7 @@ extension ListUserFollowingTags: LinkProtocol {
 
 extension ListUserFollowingTags {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         let tags = object.map { object in
             Tag(

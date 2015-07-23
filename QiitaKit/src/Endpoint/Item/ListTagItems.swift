@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  指定されたタグが付けられた投稿一覧を、タグを付けた日時の降順で返します。
@@ -83,7 +84,7 @@ extension ListTagItems: LinkProtocol {
 
 extension ListTagItems {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         return Result(_Items(object), LinkMeta<ListTagItems>(dict: response!.allHeaderFields))
     }

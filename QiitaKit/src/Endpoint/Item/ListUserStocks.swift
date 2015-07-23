@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  指定されたユーザがストックした投稿一覧を、ストックした日時の降順で返します。
@@ -83,7 +84,7 @@ extension ListUserStocks: LinkProtocol {
 
 extension ListUserStocks {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         return Result(_Items(object), LinkMeta<ListUserStocks>(dict: response!.allHeaderFields))
     }

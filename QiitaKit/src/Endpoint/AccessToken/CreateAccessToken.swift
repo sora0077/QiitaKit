@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  与えられた認証情報をもとに新しいアクセストークンを発行します。
@@ -71,7 +72,7 @@ extension CreateAccessToken: RequestToken {
 
 extension CreateAccessToken {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         let accessToken = AccessToken(
             client_id: object["client_id"] as! String,

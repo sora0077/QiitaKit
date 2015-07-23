@@ -10,6 +10,7 @@ import UIKit
 import LoggingKit
 import APIKit
 import BrightFutures
+import Result
 
 let Qiita = QiitaKit(
     baseURL: "https://qiita.com",
@@ -51,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, APIDebugger {
 
     var window: UIWindow?
 
-    func response(request: NSURLRequest, response: NSHTTPURLResponse, result: Result<String!>) {
+    func response(request: NSURLRequest, response: NSHTTPURLResponse, result: Result<String!, NSError>) {
         Logging.d([
             "headers": request.allHTTPHeaderFields ?? [:],
             "method": request.HTTPMethod ?? "",
@@ -86,6 +87,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, APIDebugger {
             let token = dict["token"] as! String
             Qiita.setAccessToken(clientId, scopes: scopes, token: token)
         }
+        let listItems = ListItems(page: "1", per_page: "20", query: "qiita user:yaotti")
+        Qiita.request(listItems)
+        
+        let item: [Item] = []
+        
+        let fs = item.map { Qiita.request(GetItem(item_id: $0.id)) }
+        let ss = sequence(item.map { Qiita.request(GetItem(item_id: $0.id)) })
         
         return true
     }

@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  ユーザがフォローしているユーザ一覧を取得します。
@@ -83,7 +84,7 @@ extension ListUserFollowees: LinkProtocol {
 
 extension ListUserFollowees {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         return Result(_Users(object), LinkMeta<ListUserFollowees>(dict: response!.allHeaderFields))
     }

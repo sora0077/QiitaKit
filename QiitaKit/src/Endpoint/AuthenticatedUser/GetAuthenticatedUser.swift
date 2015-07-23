@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  アクセストークンに紐付いたユーザを返します。
@@ -49,7 +50,7 @@ extension GetAuthenticatedUser: RequestToken {
 
 extension GetAuthenticatedUser {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         return Result(_AuthenticatedUser(object))
     }

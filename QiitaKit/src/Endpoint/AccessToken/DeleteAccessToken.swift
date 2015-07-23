@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  指定されたアクセストークンを失効させ、それ以降利用できないようにします。
@@ -53,7 +54,7 @@ extension DeleteAccessToken: RequestToken {
 
 extension DeleteAccessToken {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         return Result(())
     }
 }

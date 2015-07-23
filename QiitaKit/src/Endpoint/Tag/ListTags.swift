@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  タグ一覧を作成日時の降順で返します。
@@ -78,7 +79,7 @@ extension ListTags: LinkProtocol {
 
 extension ListTags {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         let tags = object.map { object in
             Tag(

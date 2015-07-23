@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  チーム内に存在するプロジェクト一覧をプロジェクト作成日時の降順で返します。
@@ -78,7 +79,7 @@ extension ListProjects: LinkProtocol {
 
 extension ListProjects {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         let projects = object.map { object -> Project in
             

@@ -8,6 +8,7 @@
 
 import Foundation
 import APIKit
+import Result
 
 /**
 *  認証中のユーザの投稿の一覧を作成日時の降順で返します。
@@ -78,7 +79,7 @@ extension ListAuthenticatedUserItems: LinkProtocol {
 
 extension ListAuthenticatedUserItems {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
         
         return Result(_Items(object), LinkMeta<ListAuthenticatedUserItems>(dict: response!.allHeaderFields))
     }
