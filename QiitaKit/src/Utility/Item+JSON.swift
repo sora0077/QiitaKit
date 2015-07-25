@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import APIKit
 
 func _Item(object: AnyObject!) -> Item {
     let object = object as! GetItem.SerializedType
@@ -28,4 +29,13 @@ func _Item(object: AnyObject!) -> Item {
 func _Items(object: AnyObject!) -> [Item] {
     let object = object as! [GetItem.SerializedType]
     return object.map { _Item($0) }
+}
+
+
+extension RequestToken where Response == Item, SerializedType == [String: AnyObject] {
+    
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+        
+        return _Item(object)
+    }
 }

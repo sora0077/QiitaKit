@@ -25,7 +25,7 @@ public struct UnlikeItem {
 extension UnlikeItem: RequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = NSData
+    public typealias SerializedType = Any
 
     public var method: HTTPMethod {
         return .DELETE
@@ -34,27 +34,8 @@ extension UnlikeItem: RequestToken {
     public var URL: String {
         return "/api/v2/items/\(item_id)/like"
     }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .Data
-    }
-}
-
-extension UnlikeItem {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) throws -> Response {
-        return ()
+    public var resonseEncoding: ResponseEncoding {
+        return .JSON(.AllowFragments)
     }
 }

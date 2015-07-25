@@ -46,19 +46,11 @@ extension ListTagItems: RequestToken {
         return "/api/v2/tags/\(tag_id)/items"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
     public var parameters: [String: AnyObject]? {
         return [
             "page": page,
             "per_page": per_page
         ]
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
     }
 
     public var resonseEncoding: ResponseEncoding {

@@ -62,10 +62,6 @@ extension UpdateItem: RequestToken {
         return "/api/v2/items/\(item_id)"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
     public var parameters: [String: AnyObject]? {
         return [
             "body": body,
@@ -82,13 +78,5 @@ extension UpdateItem: RequestToken {
 
     public var resonseEncoding: ResponseEncoding {
         return .JSON(.AllowFragments)
-    }
-}
-
-extension UpdateItem {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
-        
-        return _Item(object)
     }
 }

@@ -35,25 +35,7 @@ extension GetItemStock: RequestToken {
         return "/api/v2/items/\(item_id)/stock"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
     public var resonseEncoding: ResponseEncoding {
         return .JSON(.AllowFragments)
-    }
-}
-
-extension GetItemStock {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
     }
 }

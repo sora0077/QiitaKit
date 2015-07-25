@@ -49,20 +49,12 @@ extension ListItems: RequestToken {
         return "/api/v2/items"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
     public var parameters: [String: AnyObject]? {
         return [
             "page": page,
             "per_page": per_page,
             "query": query,
         ]
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
     }
 
     public var resonseEncoding: ResponseEncoding {

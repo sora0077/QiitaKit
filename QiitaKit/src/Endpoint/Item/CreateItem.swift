@@ -8,7 +8,6 @@
 
 import Foundation
 import APIKit
-import Result
 
 /**
 *  新たに投稿を作成します。
@@ -69,10 +68,6 @@ extension CreateItem: RequestToken {
         return "/api/v2/items"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
     public var parameters: [String: AnyObject]? {
         return [
             "body": body,
@@ -91,13 +86,5 @@ extension CreateItem: RequestToken {
 
     public var resonseEncoding: ResponseEncoding {
         return .JSON(.AllowFragments)
-    }
-}
-
-extension CreateItem {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
-        
-        return _Item(object)
     }
 }

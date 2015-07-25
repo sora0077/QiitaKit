@@ -49,17 +49,6 @@ class TopViewController: UIViewController {
                 }
             )
         }
-        
-//        Qiita
-//            .flatMap {
-//                Qiita.request(CreateItem(body: "aaa", coediting: false, gist: false, `private`: true, tags: [Tagging(name: "iOS")], title: "bbbb", tweet: false))
-//            }
-//            .flatMap {
-//                Qiita.request(UpdateItem(item_id: $0.id, body: "ccc", coediting: false, `private`: true, tags: [Tagging(name: "iOS")], title: "dddd"))
-//            }
-//            .flatMap {
-//                Qiita.request(DeleteItem(item_id: $0.id))
-//        }
     }
 
     override func didReceiveMemoryWarning() {
