@@ -49,10 +49,6 @@ extension CreateAccessToken: RequestToken {
         return "/api/v2/access_tokens"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
     public var parameters: [String: AnyObject]? {
         return [
             "client_id": client_id,

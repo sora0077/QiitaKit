@@ -55,10 +55,6 @@ extension CreateTemplate: RequestToken {
         return "/api/v2/templates"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
     public var parameters: [String: AnyObject]? {
         return [
             "body": body,

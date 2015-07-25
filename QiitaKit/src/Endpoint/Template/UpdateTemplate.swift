@@ -58,10 +58,6 @@ extension UpdateTemplate: RequestToken {
         return "/api/v2/templates/\(template_id)"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
     public var parameters: [String: AnyObject]? {
         return [
             "body": body,
