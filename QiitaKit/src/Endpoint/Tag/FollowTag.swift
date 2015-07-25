@@ -35,25 +35,7 @@ extension FollowTag: RequestToken {
         return "/api/v2/tags/\(tag_id)/following"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
     public var resonseEncoding: ResponseEncoding {
         return .JSON(.AllowFragments)
-    }
-}
-
-extension FollowTag {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
     }
 }
