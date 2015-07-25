@@ -54,8 +54,8 @@ extension GetComment: RequestToken {
 
 extension GetComment {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
         
-        return Result(_Comment(object))
+        return _Comment(object)
     }
 }

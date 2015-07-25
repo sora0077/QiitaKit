@@ -54,16 +54,13 @@ extension GetTag: RequestToken {
 
 extension GetTag {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        
-        println(response?.allHeaderFields)
-        
-        let tag = Tag(
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+                let tag = Tag(
             followers_count: object["followers_count"] as! Int,
             icon_url: object["icon_url"] as? String,
             id: object["id"] as! String,
             items_count: object["items_count"] as! Int
         )
-        return Result(tag)
+        return tag
     }
 }

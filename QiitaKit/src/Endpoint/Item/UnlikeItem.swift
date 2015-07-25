@@ -54,8 +54,7 @@ extension UnlikeItem: RequestToken {
 
 extension UnlikeItem {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        
-        return Result(value: ())
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) throws -> Response {
+        return ()
     }
 }

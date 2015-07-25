@@ -11,12 +11,11 @@ import UIKit
 import APIKit
 import BrightFutures
 import Result
-import Box
 
 extension Result {
 
     init(_ value: T) {
-        self = .Success(Box(value))
+        self = .Success(value)
     }
 }
 
@@ -31,17 +30,41 @@ extension AccessToken {
     }
     
     private static func ScopeValues(scopes: [AccessToken.Scope]) -> String {
-        return join("+", scopes.map({ $0.rawValue }))
+        return "+".join(scopes.map({ $0.rawValue }))
     }
 }
 
 public let QiitaKitErrorDomain = "jp.sora0077.QiitaKit.ErrorDomain"
 public let QiitaAPIErrorDomain = "jp.sora0077.QiitaAPI.ErrorDomain"
 
+public enum QiitaKitError: APIKitErrorType {
+    
+    case QiitaAPIError(type: String, message: String, code: Int)
+//    case ValidationError(ErrorType)
+    
+    case NonAccessToken
+    
+    case OAuthStateMismatchError(String)
+    case UnknownError
+    
+    public static func NetworkError(error: ErrorType) -> QiitaKitError {
+        return .UnknownError
+    }
+    
+    public static func SerializeError(error: ErrorType) -> QiitaKitError {
+        return .UnknownError
+    }
+    
+    public static func ValidationError(error: ErrorType) -> QiitaKitError {
+        return .UnknownError
+    }
+}
+
+
 /**
 *  <#Description#>
 */
-public class QiitaKit: API {
+public class QiitaKit: API<QiitaKitError> {
     
     let baseURL: String
     
@@ -49,7 +72,7 @@ public class QiitaKit: API {
     let clientSecret: String
     
     private var callbackScheme: String?
-    private var oauthPromise: Promise<AccessToken, NSError>?
+    private var oauthPromise: Promise<AccessToken, QiitaKitError>?
     
     public private(set) var accessToken: AccessToken?
     
@@ -71,30 +94,32 @@ public class QiitaKit: API {
         return nil
     }
     
-    public override func validate(request URLRequest: NSURLRequest, response: NSHTTPURLResponse, object: AnyObject?) -> NSError? {
+    public override func validate(request URLRequest: NSURLRequest, response: NSHTTPURLResponse, object: AnyObject?) -> QiitaKitError? {
         
-        let (JSON, error) = json_encode_dictionary(object)
-        
-        if let e = error {
-            return e
+        do {
+            let JSON = try json_encode_dictionary(object)
+            
+            if  let type = JSON?["type"] as? String,
+                let message = JSON?["message"] as? String
+            {
+                let code = response.statusCode
+                return .QiitaAPIError(type: type, message: message, code: code)
+            }
+            return nil
+        }
+        catch let error {
+            return .ValidationError(error)
         }
         
-        if  let type = JSON?["type"] as? String,
-            let message = JSON?["message"] as? String
-        {
-            let code = response.statusCode
-            return NSError(domain: QiitaAPIErrorDomain, code: code, userInfo: JSON)
-        }
-        return nil
     }
     
     public func setAccessToken(clientId: String, scopes: [String], token: String) {
         accessToken = AccessToken(client_id: clientId, scopes: scopes, token: token)
     }
     
-    public func oauthAuthorize(scopes: [AccessToken.Scope], scheme: String, state: String? = nil) -> Future<AccessToken, NSError> {
+    public func oauthAuthorize(scopes: [AccessToken.Scope], scheme: String, state: String? = nil) -> Future<AccessToken, QiitaKitError> {
         
-        let promise = Promise<AccessToken, NSError>()
+        let promise = Promise<AccessToken, QiitaKitError>()
         
         callbackScheme = scheme
         oauthPromise = promise
@@ -112,29 +137,24 @@ public class QiitaKit: API {
         return promise.future
     }
     
-    public func oauthCallback(state: String? = nil, url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    public func oauthCallback(state: String? = nil, url: NSURL, sourceApplication: String?, annotation: AnyObject?) throws -> Bool {
         
-        func query(items: [NSURLQueryItem], name: String) -> String? {
+        func query(items: [NSURLQueryItem], _ name: String) -> String? {
             return items.filter({ $0.name == name }).first?.value
         }
         
+        let urlString = url.absoluteString
         if  let scheme = callbackScheme,
             let promise = oauthPromise,
-            let urlString = url.absoluteString,
             let components = NSURLComponents(string: urlString),
-            let items = components.queryItems as? [NSURLQueryItem],
+            let items = components.queryItems,
             let code = query(items, "code")
             where urlString.hasPrefix(scheme)
         {
+            
             let returnedState = query(items, "state")
-            if state != returnedState {
-                promise.failure(NSError(
-                    domain: QiitaKitErrorDomain,
-                    code: -1,
-                    userInfo: [
-                        NSLocalizedDescriptionKey: "The operation couldn’t be completed. state:\(returnedState) mismatch."
-                    ])
-                )
+            if let returnedState = returnedState where state != returnedState {
+                try! promise.failure(.OAuthStateMismatchError(returnedState))
                 return false
             }
             
@@ -143,18 +163,18 @@ public class QiitaKit: API {
             request(createAccessToken).onComplete { [weak self] result in
                 switch result {
                 case .Success(let accessToken):
-                    self?.accessToken = accessToken.value
+                    self?.accessToken = accessToken
                 default:
                     break
                 }
-                promise.complete(result)
+                try! promise.complete(result)
             }
             return true
         }
         return false
     }
     
-    public func oauthDelete() -> Future<(), NSError> {
+    public func oauthDelete() -> Future<(), QiitaKitError> {
         if let accessToken = accessToken {
             let deleteAccessToken = DeleteAccessToken(access_token: accessToken.token)
             return request(deleteAccessToken).map { [weak self] t in
@@ -162,13 +182,7 @@ public class QiitaKit: API {
                 return t
             }
         }
-        return Future.failed(NSError(
-            domain: QiitaKitErrorDomain,
-            code: -1,
-            userInfo: [
-                NSLocalizedDescriptionKey: "The operation couldn’t be completed."
-            ])
-        )
+        return Future(error: .NonAccessToken)
     }
     
     public func flatMap<T, U>(v: T, _ transform: T -> Future<U, NSError>) -> Future<U, NSError> {
@@ -207,20 +221,21 @@ public class QiitaKit: API {
 //    }
 //}
 
-private func json_encode_dictionary(data: AnyObject?) -> ([String: AnyObject]?, NSError?) {
+private func json_encode_dictionary(data: AnyObject?) throws -> [String: AnyObject]? {
     
     if let data = data as? NSData {
-        var error: NSError?
         let f = NSJSONSerialization.JSONObjectWithData
-        let JSON = f(data, options: .AllowFragments, error: &error) as? [String: AnyObject]
         
-        return (JSON, error)
+        do {
+            let JSON = try f(data, options: .AllowFragments) as? [String: AnyObject]
+            return JSON
+        }
     }
     
     if let JSON = data as? [String: AnyObject] {
-        return (JSON, nil)
+        return JSON
     }
     
-    return (nil, nil)
+    return nil
 }
 

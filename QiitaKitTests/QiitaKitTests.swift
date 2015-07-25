@@ -12,7 +12,7 @@ import QiitaKit
 import APIKit
 
 
-func test<T: RequestToken, U>(token: T.Type, obj: U) -> Bool {
+func test<T: RequestToken, U>(token: T.Type, _ obj: U) -> Bool {
     return (obj as? T.SerializedType) != nil
 }
 

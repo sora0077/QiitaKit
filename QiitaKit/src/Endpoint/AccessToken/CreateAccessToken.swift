@@ -72,13 +72,13 @@ extension CreateAccessToken: RequestToken {
 
 extension CreateAccessToken {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
         
         let accessToken = AccessToken(
             client_id: object["client_id"] as! String,
             scopes: object["scopes"] as! Array<String>,
             token: object["token"] as! String
         )
-        return Result(accessToken)
+        return accessToken
     }
 }

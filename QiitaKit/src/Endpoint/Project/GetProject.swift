@@ -54,7 +54,7 @@ extension GetProject: RequestToken {
 
 extension GetProject {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
         
         let project = Project(
             rendered_body: object["rendered_body"] as! String,
@@ -66,6 +66,6 @@ extension GetProject {
             updated_at: object["updated_at"] as! String
             
         )
-        return Result(project)
+        return project
     }
 }

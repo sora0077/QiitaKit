@@ -56,14 +56,14 @@ extension ListItemComments: LinkProtocol {
     
     public init!(url: NSURL!) {
         
-        self.item_id = url.pathComponents?[url.pathComponents!.count - 2] as! String
+        self.item_id = url.pathComponents![url.pathComponents!.count - 2]
     }
 }
 
 extension ListItemComments {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
         
-        return Result(_Comments(object), LinkMeta<ListItemComments>(dict: response!.allHeaderFields))
+        return (_Comments(object), LinkMeta<ListItemComments>(dict: response!.allHeaderFields))
     }
 }

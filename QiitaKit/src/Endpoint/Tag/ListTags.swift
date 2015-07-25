@@ -69,7 +69,7 @@ extension ListTags: LinkProtocol {
         
         let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
         var query: [String: String] = [:]
-        for i in component?.queryItems as! [NSURLQueryItem] {
+        for i in component?.queryItems ?? [] {
             query[i.name] = i.value
         }
         self.page = query["page"]!
@@ -79,7 +79,7 @@ extension ListTags: LinkProtocol {
 
 extension ListTags {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
         
         let tags = object.map { object in
             Tag(
@@ -89,6 +89,6 @@ extension ListTags {
                 items_count: object["items_count"] as! Int
             )
         }
-        return Result(tags, LinkMeta<ListTags>(dict: response!.allHeaderFields))
+        return (tags, LinkMeta<ListTags>(dict: response!.allHeaderFields))
     }
 }

@@ -8,9 +8,9 @@
 
 import Foundation
 
-private func toInt(key: String, dict: [NSObject: AnyObject]) -> Int {
+private func toInt(key: String, _ dict: [NSObject: AnyObject]) -> Int {
     let s = dict["Rate-Limit"] as! String
-    return s.toInt()!
+    return Int(s)!
 }
 
 public class Meta {
@@ -47,11 +47,11 @@ public class LinkMeta<T: LinkProtocol>: Meta {
         
         self.totalCount = toInt("Total-Count", dict)
         
-        let link = split(dict["Link"] as! String) { $0 == "," }
+        let link = (dict["Link"] as! String).componentsSeparatedByString(",")
         var links: [String: String] = [:]
-        let regex = NSRegularExpression(pattern: "^.?<(.+)>; rel=\"(.*)\".?$", options: .allZeros, error: nil)
+        let regex = try! NSRegularExpression(pattern: "^.?<(.+)>; rel=\"(.*)\".?$", options: [])
         for l in link as [NSString] {
-            if let result = regex?.firstMatchInString(l as String, options: .allZeros, range: NSRange(location: 0, length: l.length)) {
+            if let result = regex.firstMatchInString(l as String, options: [], range: NSRange(location: 0, length: l.length)) {
                 
                 let key = l.substringWithRange(result.rangeAtIndex(2))
                 let url = l.substringWithRange(result.rangeAtIndex(1))
@@ -62,8 +62,8 @@ public class LinkMeta<T: LinkProtocol>: Meta {
         self.first = T(url: NSURL(string: links["first"]!))
         self.last = T(url: NSURL(string: links["last"]!))
         
-        self.prev = flatMap(links["prev"]) { T(url: NSURL(string: $0)) }
-        self.next = flatMap(links["next"]) { T(url: NSURL(string: $0)) }
+        self.prev = links["prev"].flatMap { T(url: NSURL(string: $0)) }
+        self.next = links["next"].flatMap { T(url: NSURL(string: $0)) }
         
         super.init(dict: dict)
     }

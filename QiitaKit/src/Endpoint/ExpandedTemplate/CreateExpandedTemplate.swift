@@ -8,7 +8,6 @@
 
 import Foundation
 import APIKit
-import Result
 
 /**
 *  受け取ったテンプレート用文字列の変数を展開して返します。
@@ -72,8 +71,8 @@ extension CreateExpandedTemplate: RequestToken {
 
 extension CreateExpandedTemplate {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
         
-        return Result(_ExpandedTemplate(object))
+        return _ExpandedTemplate(object)
     }
 }

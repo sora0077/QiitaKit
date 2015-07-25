@@ -54,8 +54,6 @@ extension GetUserFollowing: RequestToken {
 
 extension GetUserFollowing {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        
-        return Result(())
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
     }
 }

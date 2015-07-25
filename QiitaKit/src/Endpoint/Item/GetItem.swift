@@ -54,8 +54,8 @@ extension GetItem: RequestToken {
 
 extension GetItem {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
         
-        return Result(_Item(object))
+        return _Item(object)
     }
 }

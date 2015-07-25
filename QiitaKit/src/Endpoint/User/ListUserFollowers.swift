@@ -72,20 +72,20 @@ extension ListUserFollowers: LinkProtocol {
         
         let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
         var query: [String: String] = [:]
-        for i in component?.queryItems as! [NSURLQueryItem] {
+        for i in component?.queryItems ?? [] {
             query[i.name] = i.value
         }
         self.page = query["page"]!
         self.per_page = query["per_page"]!
         
-        self.user_id = url.pathComponents?[url.pathComponents!.count - 2] as! String
+        self.user_id = url.pathComponents![url.pathComponents!.count - 2]
     }
 }
 
 extension ListUserFollowers {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
         
-        return Result(_Users(object), LinkMeta<ListUserFollowers>(dict: response!.allHeaderFields))
+        return (_Users(object), LinkMeta<ListUserFollowers>(dict: response!.allHeaderFields))
     }
 }

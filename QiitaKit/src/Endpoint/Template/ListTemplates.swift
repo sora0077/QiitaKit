@@ -69,7 +69,7 @@ extension ListTemplates: LinkProtocol {
         
         let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
         var query: [String: String] = [:]
-        for i in component?.queryItems as! [NSURLQueryItem] {
+        for i in component?.queryItems ?? [] {
             query[i.name] = i.value
         }
         self.page = query["page"]!
@@ -79,8 +79,8 @@ extension ListTemplates: LinkProtocol {
 
 extension ListTemplates {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
         
-        return Result(_Templates(object), LinkMeta<ListTemplates>(dict: response!.allHeaderFields))
+        return (_Templates(object), LinkMeta<ListTemplates>(dict: response!.allHeaderFields))
     }
 }

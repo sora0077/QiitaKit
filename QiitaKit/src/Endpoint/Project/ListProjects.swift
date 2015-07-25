@@ -69,7 +69,7 @@ extension ListProjects: LinkProtocol {
         
         let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
         var query: [String: String] = [:]
-        for i in component?.queryItems as! [NSURLQueryItem] {
+        for i in component?.queryItems ?? [] {
             query[i.name] = i.value
         }
         self.page = query["page"]!
@@ -79,7 +79,7 @@ extension ListProjects: LinkProtocol {
 
 extension ListProjects {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
         
         let projects = object.map { object -> Project in
             
@@ -95,6 +95,6 @@ extension ListProjects {
             )
             return project
         }
-        return Result(projects, LinkMeta<ListProjects>(dict: response!.allHeaderFields))
+        return (projects, LinkMeta<ListProjects>(dict: response!.allHeaderFields))
     }
 }

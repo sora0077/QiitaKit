@@ -61,8 +61,8 @@ extension CreateItemComment: RequestToken {
 
 extension CreateItemComment {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
         
-        return Result(_Comment(object))
+        return _Comment(object)
     }
 }

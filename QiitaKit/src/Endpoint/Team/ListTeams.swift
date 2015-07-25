@@ -56,7 +56,7 @@ extension ListTeams: LinkProtocol {
 
 extension ListTeams {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
         
         let teams = object.map { object in
             Team(
@@ -65,6 +65,6 @@ extension ListTeams {
                 name: object["name"] as! String
             )
         }
-        return Result(teams, LinkMeta<ListTeams>(dict: response!.allHeaderFields))
+        return (teams, LinkMeta<ListTeams>(dict: response!.allHeaderFields))
     }
 }
