@@ -43,19 +43,11 @@ extension ListProjects: RequestToken {
         return "/api/v2/projects"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
     public var parameters: [String: AnyObject]? {
         return [
             "page": page,
             "per_page": per_page
         ]
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
     }
 
     public var resonseEncoding: ResponseEncoding {
@@ -81,9 +73,8 @@ extension ListProjects {
     
     public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
         
-        let projects = object.map { object -> Project in
-            
-            let project = Project(
+        let projects = object.map { object in
+            return Project(
                 rendered_body: object["rendered_body"] as! String,
                 archived: object["archived"] as! Bool,
                 body: object["body"] as! String,
@@ -93,7 +84,6 @@ extension ListProjects {
                 updated_at: object["updated_at"] as! String
                 
             )
-            return project
         }
         return (projects, LinkMeta<ListProjects>(dict: response!.allHeaderFields))
     }

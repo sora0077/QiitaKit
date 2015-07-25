@@ -47,11 +47,7 @@ extension CreateExpandedTemplate: RequestToken {
     public var URL: String {
         return "/api/v2/expanded_templates"
     }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
+    
     public var parameters: [String: AnyObject]? {
         return [
             "body": body,

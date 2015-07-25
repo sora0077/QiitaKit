@@ -54,10 +54,6 @@ extension CreateProject: RequestToken {
         return "/api/v2/projects"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
     public var parameters: [String: AnyObject]? {
         return [
             "archived": archived,

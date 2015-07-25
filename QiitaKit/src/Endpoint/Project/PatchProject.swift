@@ -58,10 +58,6 @@ extension PatchProject: RequestToken {
         return "/api/v2/projects/\(project_id)"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
     public var parameters: [String: AnyObject]? {
         return [
             "archived": archived,
