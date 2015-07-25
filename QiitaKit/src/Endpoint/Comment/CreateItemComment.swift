@@ -40,10 +40,6 @@ extension CreateItemComment: RequestToken {
         return "/api/v2/items/\(item_id)/comments"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
     public var parameters: [String: AnyObject]? {
         return [
             "body": body
@@ -56,13 +52,5 @@ extension CreateItemComment: RequestToken {
 
     public var resonseEncoding: ResponseEncoding {
         return .JSON(.AllowFragments)
-    }
-}
-
-extension CreateItemComment {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
-        
-        return _Comment(object)
     }
 }

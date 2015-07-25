@@ -25,7 +25,7 @@ public struct ThankComment {
 extension ThankComment: RequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = NSData
+    public typealias SerializedType = Any
 
     public var method: HTTPMethod {
         return .PUT
@@ -35,25 +35,7 @@ extension ThankComment: RequestToken {
         return "/api/v2/comments/\(comment_id)/thank"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
     public var resonseEncoding: ResponseEncoding {
-        return .Data
-    }
-}
-
-extension ThankComment {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+        return .JSON(.AllowFragments)
     }
 }

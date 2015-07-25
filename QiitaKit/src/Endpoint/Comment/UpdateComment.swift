@@ -39,11 +39,7 @@ extension UpdateComment: RequestToken {
     public var URL: String {
         return "/api/v2/comments/\(comment_id)"
     }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
+    
     public var parameters: [String: AnyObject]? {
         return [
             "body": body
@@ -56,13 +52,5 @@ extension UpdateComment: RequestToken {
 
     public var resonseEncoding: ResponseEncoding {
         return .JSON(.AllowFragments)
-    }
-}
-
-extension UpdateComment {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
-        
-        return _Comment(object)
     }
 }
