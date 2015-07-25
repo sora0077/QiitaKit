@@ -15,7 +15,7 @@ import Result
 */
 public struct ListUserFollowingTags {
     
-    public let user_id: String
+    public let id: String
     
     /// ページ番号 (1から100まで)
     /// example: 1
@@ -27,8 +27,8 @@ public struct ListUserFollowingTags {
     /// ^[0-9]+$
     public let per_page: String
 
-    public init(user_id: String, page: String, per_page: String) {
-        self.user_id = user_id
+    public init(id: String, page: String, per_page: String) {
+        self.id = id
         self.page = page
         self.per_page = per_page
     }
@@ -44,7 +44,7 @@ extension ListUserFollowingTags: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/users/\(user_id)/following_tags"
+        return "/api/v2/users/\(id)/following_tags"
     }
 
     public var parameters: [String: AnyObject]? {
@@ -71,7 +71,7 @@ extension ListUserFollowingTags: LinkProtocol {
         self.page = query["page"]!
         self.per_page = query["per_page"]!
         
-        self.user_id = url.pathComponents![url.pathComponents!.count - 2]
+        self.id = url.pathComponents![url.pathComponents!.count - 2]
     }
 }
 

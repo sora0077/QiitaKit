@@ -29,7 +29,7 @@ extension Item {
 
 class ItemViewController: UIViewController {
     
-    var item_id: String!
+    var id: String!
     
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
@@ -46,7 +46,7 @@ class ItemViewController: UIViewController {
         
         self.navigationItem.rightBarButtonItem = self.stockButton
         
-        let getItem = GetItem(item_id: item_id)
+        let getItem = GetItem(id: id)
         Qiita.request(getItem).onSuccess { [weak self] in
             self?.refreshGetItem($0)
         }
@@ -75,7 +75,7 @@ class ItemViewController: UIViewController {
             })
         }
         
-        Qiita.request(GetItemStock(item_id: item.id))
+        Qiita.request(GetItemStock(id: item.id))
             .onSuccess { [weak self] _ in
                 self?.refreshGetItemStock(true)
             }
@@ -86,7 +86,7 @@ class ItemViewController: UIViewController {
         
 //        Qiita
 //            .flatMap(item) {
-//                Qiita.request(CreateItemComment(item_id: $0.id, body: "a"))
+//                Qiita.request(CreateItemComment(id: $0.id, body: "a"))
 //            }
 //            .flatMap {
 //                Qiita.request(UpdateComment(comment_id: $0.id, body: "b"))
@@ -111,7 +111,7 @@ class ItemViewController: UIViewController {
     private func segueTagView(tagging: Tagging) {
         
         let vc = from_storyboard(TagViewController.self)
-        vc.tag_id = tagging.name
+        vc.id = tagging.name
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -134,11 +134,11 @@ extension ItemViewController {
         
         switch self.stockButton.title! {
         case "Stock":
-            Qiita.request(StockItem(item_id: item_id)).onSuccess { [weak self] _ in
+            Qiita.request(StockItem(id: id)).onSuccess { [weak self] _ in
                 self?.refreshGetItemStock(true)
             }
         case "Unstock":
-            Qiita.request(UnstockItem(item_id: item_id)).onSuccess { [weak self] in
+            Qiita.request(UnstockItem(id: id)).onSuccess { [weak self] in
                 self?.refreshGetItemStock(false)
             }
         default:

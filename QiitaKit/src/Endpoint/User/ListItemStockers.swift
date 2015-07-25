@@ -15,7 +15,7 @@ import Result
 */
 public struct ListItemStockers {
     
-    public let item_id: String
+    public let id: String
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$
@@ -26,8 +26,8 @@ public struct ListItemStockers {
     /// ^[0-9]+$
     public let per_page: String
 
-    public init(item_id: String, page: String, per_page: String) {
-        self.item_id = item_id
+    public init(id: String, page: String, per_page: String) {
+        self.id = id
         self.page = page
         self.per_page = per_page
     }
@@ -43,7 +43,7 @@ extension ListItemStockers: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/items/\(item_id)/stockers"
+        return "/api/v2/items/\(id)/stockers"
     }
 
     public var parameters: [String: AnyObject]? {
@@ -70,7 +70,7 @@ extension ListItemStockers: LinkProtocol {
         self.page = query["page"]!
         self.per_page = query["per_page"]!
         
-        self.item_id = url.pathComponents![url.pathComponents!.count - 2]
+        self.id = url.pathComponents![url.pathComponents!.count - 2]
     }
 }
 

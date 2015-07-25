@@ -15,14 +15,14 @@ import Result
 */
 public struct CreateItemComment {
     
-    public let item_id: String
+    public let id: String
     /// コメントの内容を表すMarkdown形式の文字列
     /// example: # Example
     /// 
     public let body: String
 
-    public init(item_id: String, body: String) {
-        self.item_id = item_id
+    public init(id: String, body: String) {
+        self.id = id
         self.body = body
     }
 }
@@ -37,7 +37,7 @@ extension CreateItemComment: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/items/\(item_id)/comments"
+        return "/api/v2/items/\(id)/comments"
     }
 
     public var parameters: [String: AnyObject]? {

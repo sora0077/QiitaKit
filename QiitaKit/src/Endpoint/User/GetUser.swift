@@ -15,10 +15,10 @@ import Result
 */
 public struct GetUser {
     
-    public let user_id: String
+    public let id: String
     
-    public init(user_id: String) {
-        self.user_id = user_id
+    public init(id: String) {
+        self.id = id
     }
 }
 
@@ -32,7 +32,7 @@ extension GetUser: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/users/\(user_id)"
+        return "/api/v2/users/\(id)"
     }
 
     public var resonseEncoding: ResponseEncoding {

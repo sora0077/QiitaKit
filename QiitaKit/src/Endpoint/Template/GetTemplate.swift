@@ -15,10 +15,10 @@ import Result
 */
 public struct GetTemplate {
     
-    public let template_id: String
+    public let id: String
     
-    public init(template_id: String) {
-        self.template_id = template_id
+    public init(id: String) {
+        self.id = id
     }
 }
 
@@ -32,7 +32,7 @@ extension GetTemplate: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/templates/\(template_id)"
+        return "/api/v2/templates/\(id)"
     }
 
     public var resonseEncoding: ResponseEncoding {

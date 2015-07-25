@@ -15,7 +15,7 @@ import Result
 */
 public struct CreateTagging {
     
-    public let item_id: String
+    public let id: String
     /// タグを特定するための一意な名前
     /// example: qiita
     /// 
@@ -26,8 +26,8 @@ public struct CreateTagging {
     /// 
     public let versions: Array<String>
 
-    public init(item_id: String, name: String, versions: Array<String>) {
-        self.item_id = item_id
+    public init(id: String, name: String, versions: Array<String>) {
+        self.id = id
         self.name = name
         self.versions = versions
     }
@@ -43,7 +43,7 @@ extension CreateTagging: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/items/\(item_id)/taggings"
+        return "/api/v2/items/\(id)/taggings"
     }
 
     public var parameters: [String: AnyObject]? {

@@ -15,7 +15,7 @@ import Result
 */
 public struct UpdateItem {
     
-    public let item_id: String
+    public let id: String
     /// Markdown形式の本文
     /// example: # Example
     /// 
@@ -39,8 +39,8 @@ public struct UpdateItem {
     /// 
     public let title: String
 
-    public init(item_id: String, body: String, coediting: Bool, `private`: Bool, tags: Array<Tagging>, title: String) {
-        self.item_id = item_id
+    public init(id: String, body: String, coediting: Bool, `private`: Bool, tags: Array<Tagging>, title: String) {
+        self.id = id
         self.body = body
         self.coediting = coediting
         self.`private` = `private`
@@ -59,7 +59,7 @@ extension UpdateItem: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/items/\(item_id)"
+        return "/api/v2/items/\(id)"
     }
 
     public var parameters: [String: AnyObject]? {

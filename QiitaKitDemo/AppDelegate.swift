@@ -92,8 +92,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, APIDebugger {
         
         let item: [Item] = []
         
-        let fs = item.map { Qiita.request(GetItem(item_id: $0.id)) }
-        let ss = sequence(item.map { Qiita.request(GetItem(item_id: $0.id)) })
+        let fs = item.map { Qiita.request(GetItem(id: $0.id)) }
+        let ss = sequence(item.map { Qiita.request(GetItem(id: $0.id)) })
         
         return true
     }

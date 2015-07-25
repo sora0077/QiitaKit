@@ -15,10 +15,10 @@ import Result
 */
 public struct FollowUser {
     
-    public let user_id: String
+    public let id: String
     
-    public init(user_id: String) {
-        self.user_id = user_id
+    public init(id: String) {
+        self.id = id
     }
 }
 
@@ -32,7 +32,7 @@ extension FollowUser: RequestToken {
     }
     
     public var URL: String {
-        return "/api/v2/users/\(user_id)/following"
+        return "/api/v2/users/\(id)/following"
     }
 
     public var resonseEncoding: ResponseEncoding {

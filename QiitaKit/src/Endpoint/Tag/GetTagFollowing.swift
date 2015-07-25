@@ -15,10 +15,10 @@ import Result
 */
 public struct GetTagFollowing {
     
-    public let tag_id: String
+    public let id: String
     
-    public init(tag_id: String) {
-        self.tag_id = tag_id
+    public init(id: String) {
+        self.id = id
     }
 }
 
@@ -32,7 +32,7 @@ extension GetTagFollowing: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/tags/\(tag_id)/following"
+        return "/api/v2/tags/\(id)/following"
     }
 
     public var resonseEncoding: ResponseEncoding {

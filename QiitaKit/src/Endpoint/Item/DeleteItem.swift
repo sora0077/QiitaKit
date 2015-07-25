@@ -15,10 +15,10 @@ import Result
 */
 public struct DeleteItem {
     
-    public let item_id: String
+    public let id: String
     
-    public init(item_id: String) {
-        self.item_id = item_id
+    public init(id: String) {
+        self.id = id
     }
 }
 
@@ -32,7 +32,7 @@ extension DeleteItem: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/items/\(item_id)"
+        return "/api/v2/items/\(id)"
     }
 
     public var resonseEncoding: ResponseEncoding {

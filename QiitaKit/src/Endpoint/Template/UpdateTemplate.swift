@@ -15,7 +15,7 @@ import Result
 */
 public struct UpdateTemplate {
     
-    public let template_id: String
+    public let id: String
     /// テンプレートの本文
     /// example: Weekly MTG on %{Year}/%{month}/%{day}
     /// 
@@ -36,8 +36,8 @@ public struct UpdateTemplate {
     /// 
     public let title: String
 
-    public init(template_id: String, body: String, name: String, tags: Array<Tagging>, title: String) {
-        self.template_id = template_id
+    public init(id: String, body: String, name: String, tags: Array<Tagging>, title: String) {
+        self.id = id
         self.body = body
         self.name = name
         self.tags = tags
@@ -55,7 +55,7 @@ extension UpdateTemplate: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/templates/\(template_id)"
+        return "/api/v2/templates/\(id)"
     }
 
     public var parameters: [String: AnyObject]? {

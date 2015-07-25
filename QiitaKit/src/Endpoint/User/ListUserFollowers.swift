@@ -15,7 +15,7 @@ import Result
 */
 public struct ListUserFollowers {
     
-    public let user_id: String
+    public let id: String
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$
@@ -26,8 +26,8 @@ public struct ListUserFollowers {
     /// ^[0-9]+$
     public let per_page: String
 
-    public init(user_id: String, page: String, per_page: String) {
-        self.user_id = user_id
+    public init(id: String, page: String, per_page: String) {
+        self.id = id
         self.page = page
         self.per_page = per_page
     }
@@ -43,7 +43,7 @@ extension ListUserFollowers: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/users/\(user_id)/followers"
+        return "/api/v2/users/\(id)/followers"
     }
 
     public var parameters: [String: AnyObject]? {
@@ -70,7 +70,7 @@ extension ListUserFollowers: LinkProtocol {
         self.page = query["page"]!
         self.per_page = query["per_page"]!
         
-        self.user_id = url.pathComponents![url.pathComponents!.count - 2]
+        self.id = url.pathComponents![url.pathComponents!.count - 2]
     }
 }
 

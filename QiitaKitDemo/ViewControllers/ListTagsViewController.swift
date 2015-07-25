@@ -37,7 +37,7 @@ class ListTagsViewController: UIViewController {
             let row = UITableView.StyleDefaultRow(text: tag.id)
             row.didSelectAction = { [weak self] in
                 let vc = from_storyboard(TagViewController.self)
-                vc.tag_id = tag.id
+                vc.id = tag.id
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
             return row

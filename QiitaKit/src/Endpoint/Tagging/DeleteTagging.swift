@@ -15,13 +15,13 @@ import Result
 */
 public struct DeleteTagging {
     
-    public let item_id: String
+    public let id: String
     
     public let tagging_id: String
     
     
-    public init(item_id: String, tagging_id: String) {
-        self.item_id = item_id
+    public init(id: String, tagging_id: String) {
+        self.id = id
         self.tagging_id = tagging_id
     }
 }
@@ -36,7 +36,7 @@ extension DeleteTagging: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/items/\(item_id)/taggings/\(tagging_id)"
+        return "/api/v2/items/\(id)/taggings/\(tagging_id)"
     }
 
     public var resonseEncoding: ResponseEncoding {
