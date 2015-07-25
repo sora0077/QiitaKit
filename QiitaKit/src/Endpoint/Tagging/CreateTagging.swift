@@ -46,10 +46,6 @@ extension CreateTagging: RequestToken {
         return "/api/v2/items/\(item_id)/taggings"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
     public var parameters: [String: AnyObject]? {
         return [
             "name": name,

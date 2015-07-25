@@ -39,25 +39,7 @@ extension DeleteTagging: RequestToken {
         return "/api/v2/items/\(item_id)/taggings/\(tagging_id)"
     }
 
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
     public var resonseEncoding: ResponseEncoding {
         return .JSON(.AllowFragments)
-    }
-}
-
-extension DeleteTagging {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
     }
 }
