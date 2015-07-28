@@ -34,8 +34,4 @@ extension DeleteAccessToken: RequestToken {
     public var URL: String {
         return "/api/v2/access_tokens/\(access_token)"
     }
-
-    public var responseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }

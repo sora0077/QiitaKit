@@ -34,8 +34,4 @@ extension ThankComment: RequestToken {
     public var URL: String {
         return "/api/v2/comments/\(comment_id)/thank"
     }
-
-    public var responseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }

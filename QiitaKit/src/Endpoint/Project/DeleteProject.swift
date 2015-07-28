@@ -34,8 +34,4 @@ extension DeleteProject: RequestToken {
     public var URL: String {
         return "/api/v2/projects/\(project_id)"
     }
-
-    public var responseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }

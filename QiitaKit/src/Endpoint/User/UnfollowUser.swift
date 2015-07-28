@@ -34,8 +34,4 @@ extension UnfollowUser: RequestToken {
     public var URL: String {
         return "/api/v2/users/\(id)/following"
     }
-
-    public var responseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }

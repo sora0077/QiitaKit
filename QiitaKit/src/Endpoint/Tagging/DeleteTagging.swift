@@ -38,8 +38,4 @@ extension DeleteTagging: RequestToken {
     public var URL: String {
         return "/api/v2/items/\(id)/taggings/\(tagging_id)"
     }
-
-    public var responseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }

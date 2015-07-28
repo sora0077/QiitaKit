@@ -45,15 +45,15 @@ public enum QiitaKitError: APIKitErrorType {
     case OAuthStateMismatchError(String)
     case UnknownError
     
-    public static func NetworkError(error: ErrorType) -> QiitaKitError {
+    public static func networkError(error: ErrorType) -> QiitaKitError {
         return .UnknownError
     }
     
-    public static func SerializeError(error: ErrorType) -> QiitaKitError {
+    public static func serializeError(error: ErrorType) -> QiitaKitError {
         return .UnknownError
     }
     
-    public static func ValidationError(error: ErrorType) -> QiitaKitError {
+    public static func validationError(error: ErrorType) -> QiitaKitError {
         return .UnknownError
     }
 }
@@ -106,7 +106,7 @@ public class QiitaKit: API<QiitaKitError> {
             return nil
         }
         catch let error {
-            return .ValidationError(error)
+            return .validationError(error)
         }
         
     }

@@ -34,8 +34,4 @@ extension DeleteItem: RequestToken {
     public var URL: String {
         return "/api/v2/items/\(id)"
     }
-
-    public var responseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }

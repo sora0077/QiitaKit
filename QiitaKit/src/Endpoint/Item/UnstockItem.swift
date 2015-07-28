@@ -34,8 +34,4 @@ extension UnstockItem: RequestToken {
     public var URL: String {
         return "/api/v2/items/\(id)/stock"
     }
-    
-    public var responseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }

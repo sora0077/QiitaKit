@@ -34,8 +34,4 @@ extension GetTagFollowing: RequestToken {
     public var URL: String {
         return "/api/v2/tags/\(id)/following"
     }
-
-    public var responseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
