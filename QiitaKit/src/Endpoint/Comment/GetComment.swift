@@ -34,8 +34,4 @@ extension GetComment: RequestToken {
     public var URL: String {
         return "/api/v2/comments/\(comment_id)"
     }
-    
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }

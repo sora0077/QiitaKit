@@ -35,7 +35,7 @@ extension DeleteTemplate: RequestToken {
         return "/api/v2/templates/\(id)"
     }
 
-    public var resonseEncoding: ResponseEncoding {
+    public var responseEncoding: ResponseEncoding {
         return .JSON(.AllowFragments)
     }
 }

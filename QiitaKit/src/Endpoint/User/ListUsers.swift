@@ -49,10 +49,6 @@ extension ListUsers: RequestToken {
             "per_page": per_page
         ]
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
 extension ListUsers: LinkProtocol {

@@ -35,7 +35,7 @@ extension ThankComment: RequestToken {
         return "/api/v2/comments/\(comment_id)/thank"
     }
 
-    public var resonseEncoding: ResponseEncoding {
+    public var responseEncoding: ResponseEncoding {
         return .JSON(.AllowFragments)
     }
 }

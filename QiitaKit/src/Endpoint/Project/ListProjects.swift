@@ -49,10 +49,6 @@ extension ListProjects: RequestToken {
             "per_page": per_page
         ]
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
 extension ListProjects: LinkProtocol {

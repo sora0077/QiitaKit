@@ -35,7 +35,7 @@ extension FollowTag: RequestToken {
         return "/api/v2/tags/\(id)/following"
     }
 
-    public var resonseEncoding: ResponseEncoding {
+    public var responseEncoding: ResponseEncoding {
         return .JSON(.AllowFragments)
     }
 }

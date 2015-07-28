@@ -24,6 +24,8 @@ public struct CreateItemComment {
     public init(id: String, body: String) {
         self.id = id
         self.body = body
+        
+        CreateItemComment(id: "", body: "").responseEncoding
     }
 }
 
@@ -48,9 +50,5 @@ extension CreateItemComment: RequestToken {
 
     public var encoding: RequestEncoding {
         return .JSON
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
     }
 }

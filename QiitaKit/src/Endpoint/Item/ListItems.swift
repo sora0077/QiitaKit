@@ -56,10 +56,6 @@ extension ListItems: RequestToken {
             "query": query,
         ]
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
 extension ListItems: LinkProtocol {

@@ -34,10 +34,6 @@ extension GetUser: RequestToken {
     public var URL: String {
         return "/api/v2/users/\(id)"
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
 extension GetUser {

@@ -34,10 +34,6 @@ extension ListItemComments: RequestToken {
     public var URL: String {
         return "/api/v2/items/\(id)/comments"
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
 extension ListItemComments: LinkProtocol {

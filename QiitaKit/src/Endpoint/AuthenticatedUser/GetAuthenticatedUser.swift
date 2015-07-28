@@ -30,10 +30,6 @@ extension GetAuthenticatedUser: RequestToken {
     public var URL: String {
         return "/api/v2/authenticated_user"
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
 extension GetAuthenticatedUser {

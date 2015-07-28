@@ -30,10 +30,6 @@ extension ListTeams: RequestToken {
     public var URL: String {
         return "/api/v2/teams"
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
 extension ListTeams: LinkProtocol {

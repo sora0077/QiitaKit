@@ -35,7 +35,7 @@ extension UnstockItem: RequestToken {
         return "/api/v2/items/\(id)/stock"
     }
     
-    public var resonseEncoding: ResponseEncoding {
+    public var responseEncoding: ResponseEncoding {
         return .JSON(.AllowFragments)
     }
 }

@@ -52,10 +52,6 @@ extension ListItemStockers: RequestToken {
             "per_page": per_page
         ]
     }
-    
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
 extension ListItemStockers: LinkProtocol {

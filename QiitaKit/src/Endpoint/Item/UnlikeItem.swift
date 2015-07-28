@@ -35,7 +35,7 @@ extension UnlikeItem: RequestToken {
         return "/api/v2/items/\(id)/like"
     }
     
-    public var resonseEncoding: ResponseEncoding {
+    public var responseEncoding: ResponseEncoding {
         return .JSON(.AllowFragments)
     }
 }

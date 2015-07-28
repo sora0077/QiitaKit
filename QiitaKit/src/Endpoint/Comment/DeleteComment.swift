@@ -35,7 +35,7 @@ extension DeleteComment: RequestToken {
         return "/api/v2/comments/\(comment_id)"
     }
 
-    public var resonseEncoding: ResponseEncoding {
+    public var responseEncoding: ResponseEncoding {
         return .JSON(.AllowFragments)
     }
 }

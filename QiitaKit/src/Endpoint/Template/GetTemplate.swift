@@ -34,10 +34,6 @@ extension GetTemplate: RequestToken {
     public var URL: String {
         return "/api/v2/templates/\(id)"
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
 extension GetTemplate {

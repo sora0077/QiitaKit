@@ -34,8 +34,6 @@ extension AccessToken {
     }
 }
 
-public let QiitaKitErrorDomain = "jp.sora0077.QiitaKit.ErrorDomain"
-public let QiitaAPIErrorDomain = "jp.sora0077.QiitaAPI.ErrorDomain"
 
 public enum QiitaKitError: APIKitErrorType {
     
