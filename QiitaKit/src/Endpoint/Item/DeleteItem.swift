@@ -15,9 +15,9 @@ import Result
 */
 public struct DeleteItem {
     
-    public let id: String
+    public let id: Item.Identifier
     
-    public init(id: String) {
+    public init(id: Item.Identifier) {
         self.id = id
     }
 }

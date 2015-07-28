@@ -12,6 +12,8 @@ import Foundation
 *  現在のアクセストークンで認証中のユーザを表します。通常のユーザ情報よりも詳細な情報を含んでいます。
 */
 public struct AuthenticatedUser {
+    public typealias Identifier = String
+    
     /// 自己紹介文
     /// example: Hello, world.
     public let description: String?
@@ -34,7 +36,7 @@ public struct AuthenticatedUser {
 
     /// ユーザID
     /// example: yaotti
-    public let id: String
+    public let id: Identifier
 
     /// このユーザが qiita.com 上で公開している投稿の数 (Qiita:Teamでの投稿数は含まれません)
     /// example: 300

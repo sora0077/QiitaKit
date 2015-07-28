@@ -16,9 +16,9 @@ import Result
 */
 public struct StockItem {
     
-    public let id: String
+    public let id: Item.Identifier
     
-    public init(id: String) {
+    public init(id: Item.Identifier) {
         self.id = id
     }
 }

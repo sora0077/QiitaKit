@@ -15,12 +15,12 @@ import Result
 */
 public struct DeleteTagging {
     
-    public let id: String
+    public let id: Item.Identifier
     
-    public let tagging_id: String
+    public let tagging_id: Tagging.Identifier
     
     
-    public init(id: String, tagging_id: String) {
+    public init(id: Item.Identifier, tagging_id: Tagging.Identifier) {
         self.id = id
         self.tagging_id = tagging_id
     }

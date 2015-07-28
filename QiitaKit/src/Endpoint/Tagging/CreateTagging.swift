@@ -15,7 +15,7 @@ import Result
 */
 public struct CreateTagging {
     
-    public let id: String
+    public let id: Item.Identifier
     /// タグを特定するための一意な名前
     /// example: qiita
     /// 
@@ -26,7 +26,7 @@ public struct CreateTagging {
     /// 
     public let versions: Array<String>
 
-    public init(id: String, name: String, versions: Array<String>) {
+    public init(id: Item.Identifier, name: String, versions: Array<String>) {
         self.id = id
         self.name = name
         self.versions = versions

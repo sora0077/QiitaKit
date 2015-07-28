@@ -12,6 +12,8 @@ import Foundation
 *  Qiita:Team上でのプロジェクトを表します。Qiita:Teamでのみ有効です。
 */
 public struct Project {
+    public typealias Identifier = Int
+    
     /// HTML形式の本文
     /// example: <h1>Example</h1>
     public let rendered_body: String
@@ -29,7 +31,7 @@ public struct Project {
 
     /// プロジェクトのチーム上での一意なID
     /// example: 1
-    public let id: Int
+    public let id: Identifier
 
     /// プロジェクト名
     /// example: Kobiro Project

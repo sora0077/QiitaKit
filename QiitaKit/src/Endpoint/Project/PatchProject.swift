@@ -15,7 +15,7 @@ import Result
 */
 public struct PatchProject {
     
-    public let project_id: String
+    public let id: Project.Identifier
     
     /// このプロジェクトが進行中かどうか
     /// 
@@ -36,8 +36,8 @@ public struct PatchProject {
     /// 
     public let tags: Array<Tagging>
 
-    public init(project_id: String, archived: Bool, body: String, name: String, tags: Array<Tagging>) {
-        self.project_id = project_id
+    public init(id: Project.Identifier, archived: Bool, body: String, name: String, tags: Array<Tagging>) {
+        self.id = id
         self.archived = archived
         self.body = body
         self.name = name
@@ -55,7 +55,7 @@ extension PatchProject: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/projects/\(project_id)"
+        return "/api/v2/projects/\(id)"
     }
 
     public var parameters: [String: AnyObject]? {

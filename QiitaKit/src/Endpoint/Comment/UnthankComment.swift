@@ -15,10 +15,10 @@ import Result
 */
 public struct UnthankComment {
     
-    public let comment_id: String
+    public let id: Comment.Identifier
     
-    public init(comment_id: String) {
-        self.comment_id = comment_id
+    public init(id: Comment.Identifier) {
+        self.id = id
     }
 }
 
@@ -32,6 +32,6 @@ extension UnthankComment: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/comments/\(comment_id)/thank"
+        return "/api/v2/comments/\(id)/thank"
     }
 }

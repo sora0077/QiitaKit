@@ -15,9 +15,9 @@ import Result
 */
 public struct DeleteTemplate {
     
-    public let id: String
+    public let id: Template.Identifier
     
-    public init(id: String) {
+    public init(id: Template.Identifier) {
         self.id = id
     }
 }

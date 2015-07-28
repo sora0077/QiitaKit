@@ -15,9 +15,9 @@ import Result
 */
 public struct GetTag {
     
-    public let id: String
+    public let id: Tag.Identifier
     
-    public init(id: String) {
+    public init(id: Tag.Identifier) {
         self.id = id
     }
 }

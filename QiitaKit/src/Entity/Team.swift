@@ -12,13 +12,15 @@ import Foundation
 *  Qiita:Team上で所属しているチームを表します。Qiita:Teamでのみ有効です。
 */
 public struct Team {
+    public typealias Identifier = String
+    
     /// チームが利用可能な状態かどうか
     /// example: true
     public let active: Bool
 
     /// チームの一意なID
     /// example: increments
-    public let id: String
+    public let id: Identifier
 
     /// チームに設定されている名前を表します。
     /// example: Increments Inc.

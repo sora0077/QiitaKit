@@ -15,14 +15,14 @@ import Result
 */
 public struct UpdateComment {
     
-    public let comment_id: String
+    public let id: Comment.Identifier
     /// コメントの内容を表すMarkdown形式の文字列
     /// example: # Example
     /// 
     public let body: String
 
-    public init(comment_id: String, body: String) {
-        self.comment_id = comment_id
+    public init(id: Comment.Identifier, body: String) {
+        self.id = id
         self.body = body
     }
 }
@@ -37,7 +37,7 @@ extension UpdateComment: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/comments/\(comment_id)"
+        return "/api/v2/comments/\(id)"
     }
     
     public var parameters: [String: AnyObject]? {

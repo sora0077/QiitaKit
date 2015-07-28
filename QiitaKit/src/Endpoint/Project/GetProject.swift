@@ -15,10 +15,10 @@ import Result
 */
 public struct GetProject {
     
-    public let project_id: String
+    public let id: Project.Identifier
     
-    public init(project_id: String) {
-        self.project_id = project_id
+    public init(id: Project.Identifier) {
+        self.id = id
     }
 }
 
@@ -32,7 +32,7 @@ extension GetProject: RequestToken {
     }
 
     public var URL: String {
-        return "/api/v2/projects/\(project_id)"
+        return "/api/v2/projects/\(id)"
     }
 }
 

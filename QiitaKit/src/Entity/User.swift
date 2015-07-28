@@ -12,6 +12,8 @@ import Foundation
 *  Qiita上のユーザを表します。
 */
 public struct User {
+    public typealias Identifier = String
+    
     /// 自己紹介文
     /// example: Hello, world.
     public let description: String?
@@ -34,7 +36,7 @@ public struct User {
 
     /// ユーザID
     /// example: yaotti
-    public let id: String
+    public let id: Identifier
 
     /// このユーザが qiita.com 上で公開している投稿の数 (Qiita:Teamでの投稿数は含まれません)
     /// example: 300

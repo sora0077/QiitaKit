@@ -15,7 +15,7 @@ import Result
 */
 public struct UpdateTemplate {
     
-    public let id: String
+    public let id: Template.Identifier
     /// テンプレートの本文
     /// example: Weekly MTG on %{Year}/%{month}/%{day}
     /// 
@@ -36,7 +36,7 @@ public struct UpdateTemplate {
     /// 
     public let title: String
 
-    public init(id: String, body: String, name: String, tags: Array<Tagging>, title: String) {
+    public init(id: Template.Identifier, body: String, name: String, tags: Array<Tagging>, title: String) {
         self.id = id
         self.body = body
         self.name = name

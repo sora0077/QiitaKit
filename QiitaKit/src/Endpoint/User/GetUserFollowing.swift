@@ -15,9 +15,9 @@ import Result
 */
 public struct GetUserFollowing {
     
-    public let id: String
+    public let id: User.Identifier
     
-    public init(id: String) {
+    public init(id: User.Identifier) {
         self.id = id
     }
 }

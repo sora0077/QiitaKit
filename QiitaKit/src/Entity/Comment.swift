@@ -12,6 +12,8 @@ import Foundation
 *  投稿に付けられたコメントを表します。
 */
 public struct Comment {
+    public typealias Identifier = String
+    
     /// コメントの内容を表すMarkdown形式の文字列
     /// example: # Example
     public let body: String
@@ -22,7 +24,7 @@ public struct Comment {
 
     /// コメントの一意なID
     /// example: 3391f50c35f953abfc4f
-    public let id: String
+    public let id: Identifier
 
     /// コメントの内容を表すHTML形式の文字列
     /// example: <h1>Example</h1>

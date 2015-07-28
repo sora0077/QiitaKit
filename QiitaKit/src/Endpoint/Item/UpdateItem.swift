@@ -15,7 +15,7 @@ import Result
 */
 public struct UpdateItem {
     
-    public let id: String
+    public let id: Item.Identifier
     /// Markdown形式の本文
     /// example: # Example
     /// 
@@ -39,7 +39,7 @@ public struct UpdateItem {
     /// 
     public let title: String
 
-    public init(id: String, body: String, coediting: Bool, `private`: Bool, tags: Array<Tagging>, title: String) {
+    public init(id: Item.Identifier, body: String, coediting: Bool, `private`: Bool, tags: Array<Tagging>, title: String) {
         self.id = id
         self.body = body
         self.coediting = coediting

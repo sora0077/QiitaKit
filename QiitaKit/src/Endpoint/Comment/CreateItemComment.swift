@@ -15,13 +15,13 @@ import Result
 */
 public struct CreateItemComment {
     
-    public let id: String
+    public let id: Item.Identifier
     /// コメントの内容を表すMarkdown形式の文字列
     /// example: # Example
     /// 
     public let body: String
 
-    public init(id: String, body: String) {
+    public init(id: Item.Identifier, body: String) {
         self.id = id
         self.body = body
         
