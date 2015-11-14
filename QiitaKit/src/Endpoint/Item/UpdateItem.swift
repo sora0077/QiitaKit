@@ -52,13 +52,13 @@ public struct UpdateItem {
 extension UpdateItem: RequestToken {
     
     public typealias Response = Item
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .PATCH
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/items/\(id)"
     }
 

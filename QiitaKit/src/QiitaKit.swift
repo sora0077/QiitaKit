@@ -30,7 +30,7 @@ extension AccessToken {
     }
     
     private static func ScopeValues(scopes: [AccessToken.Scope]) -> String {
-        return "+".join(scopes.map({ $0.rawValue }))
+        return scopes.map({ $0.rawValue }).joinWithSeparator("+")
     }
 }
 
@@ -56,6 +56,21 @@ public enum QiitaKitError: APIKitErrorType {
     public static func validationError(error: ErrorType) -> QiitaKitError {
         return .UnknownError
     }
+    
+    public static func unsupportedError(error: ErrorType) -> QiitaKitError {
+        return .UnknownError
+    }
+}
+
+public func QiitaAPI(clientId: String, clientSecret: String, baseURL: NSURL! = NSURL(string: "https://qiita.com"), configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()) -> API<QiitaKitError> {
+    return API(baseURL: baseURL, configuration: configuration)
+}
+
+
+public struct QiitaKit {
+    
+    private let api: API<QiitaKitErrorType>
+    
 }
 
 
@@ -64,7 +79,7 @@ public enum QiitaKitError: APIKitErrorType {
 */
 public class QiitaKit: API<QiitaKitError> {
     
-    let baseURL: String
+    let basepath: String
     
     let clientId: String
     let clientSecret: String
@@ -74,7 +89,7 @@ public class QiitaKit: API<QiitaKitError> {
     
     public private(set) var accessToken: AccessToken?
     
-    public init(baseURL: String, clientId: String, clientSecret: String, configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration(), debugger: APIDebugger? = nil) {
+    public init(basepath: String, clientId: String, clientSecret: String, configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration(), debugger: APIDebugger? = nil) {
         self.baseURL = baseURL
         
         self.clientId = clientId

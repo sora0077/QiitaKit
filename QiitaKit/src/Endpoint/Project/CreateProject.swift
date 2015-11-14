@@ -44,13 +44,13 @@ public struct CreateProject {
 extension CreateProject: RequestToken {
 
     public typealias Response = Project
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .POST
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/projects"
     }
 
@@ -68,9 +68,9 @@ extension CreateProject: RequestToken {
     }
 }
 
-extension CreateProject {
+public extension CreateProject {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         let project = Project(
             rendered_body: object["rendered_body"] as! String,
@@ -80,7 +80,7 @@ extension CreateProject {
             id: object["id"] as! Int,
             name: object["name"] as! String,
             updated_at: object["updated_at"] as! String
-        
+            
         )
         return project
     }

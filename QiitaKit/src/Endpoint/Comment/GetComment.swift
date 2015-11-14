@@ -25,13 +25,13 @@ public struct GetComment {
 extension GetComment: RequestToken {
     
     public typealias Response = Comment
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/comments/\(id)"
     }
 }

@@ -25,13 +25,13 @@ public struct GetItem {
 extension GetItem: RequestToken {
     
     public typealias Response = Item
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/items/\(id)"
     }
 }

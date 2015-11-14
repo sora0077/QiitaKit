@@ -9,7 +9,7 @@
 import Foundation
 
 func _User(object: AnyObject!) -> User {
-    let object = object as! GetUser.SerializedType
+    let object = object as! GetUser.SerializedObject
     return User(
         description: object["description"] as? String,
         facebook_id: object["facebook_id"] as? String,
@@ -30,6 +30,6 @@ func _User(object: AnyObject!) -> User {
 }
 
 func _Users(object: AnyObject!) -> [User] {
-    let object = object as! [GetUser.SerializedType]
+    let object = object as! [GetUser.SerializedObject]
     return object.map { _User($0) }
 }

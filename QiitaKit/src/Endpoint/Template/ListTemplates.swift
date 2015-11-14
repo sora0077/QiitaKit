@@ -33,13 +33,13 @@ public struct ListTemplates {
 extension ListTemplates: RequestToken {
     
     public typealias Response = ([Template], LinkMeta<ListTemplates>)
-    public typealias SerializedType = [[String: AnyObject]]
+    public typealias SerializedObject = [[String: AnyObject]]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/templates"
     }
 
@@ -65,9 +65,9 @@ extension ListTemplates: LinkProtocol {
     }
 }
 
-extension ListTemplates {
+public extension ListTemplates {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         return (_Templates(object), LinkMeta<ListTemplates>(dict: response!.allHeaderFields))
     }

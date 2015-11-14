@@ -33,13 +33,13 @@ public struct ListProjects {
 extension ListProjects: RequestToken {
     
     public typealias Response = ([Project], LinkMeta<ListProjects>)
-    public typealias SerializedType = [[String: AnyObject]]
+    public typealias SerializedObject = [[String: AnyObject]]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/projects"
     }
 
@@ -65,9 +65,9 @@ extension ListProjects: LinkProtocol {
     }
 }
 
-extension ListProjects {
+public extension ListProjects {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         let projects = object.map { object in
             return Project(

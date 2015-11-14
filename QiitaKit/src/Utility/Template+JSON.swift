@@ -9,7 +9,7 @@
 import Foundation
 
 func _Template(object: AnyObject!) -> Template {
-    let object = object as! GetTemplate.SerializedType
+    let object = object as! GetTemplate.SerializedObject
     return Template(
         body: object["body"] as! String,
         id: object["id"] as! Int,
@@ -23,6 +23,6 @@ func _Template(object: AnyObject!) -> Template {
 }
 
 func _Templates(object: AnyObject!) -> [Template] {
-    let object = object as! [GetTemplate.SerializedType]
+    let object = object as! [GetTemplate.SerializedObject]
     return object.map { _Template($0) }
 }

@@ -48,13 +48,13 @@ public struct PatchProject {
 extension PatchProject: RequestToken {
     
     public typealias Response = Project
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .PATCH
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/projects/\(id)"
     }
 
@@ -72,9 +72,9 @@ extension PatchProject: RequestToken {
     }
 }
 
-extension PatchProject {
+public extension PatchProject {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         let project = Project(
             rendered_body: object["rendered_body"] as! String,

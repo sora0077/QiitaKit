@@ -39,13 +39,13 @@ public struct CreateAccessToken {
 extension CreateAccessToken: RequestToken {
 
     public typealias Response = AccessToken
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .POST
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/access_tokens"
     }
 
@@ -64,7 +64,7 @@ extension CreateAccessToken: RequestToken {
 
 extension CreateAccessToken {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         let accessToken = AccessToken(
             client_id: object["client_id"] as! String,

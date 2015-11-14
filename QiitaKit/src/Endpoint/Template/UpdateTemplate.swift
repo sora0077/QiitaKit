@@ -48,13 +48,13 @@ public struct UpdateTemplate {
 extension UpdateTemplate: RequestToken {
     
     public typealias Response = Template
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .PATCH
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/templates/\(id)"
     }
 
@@ -72,9 +72,9 @@ extension UpdateTemplate: RequestToken {
     }
 }
 
-extension UpdateTemplate {
+public extension UpdateTemplate {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         return _Template(object)
     }

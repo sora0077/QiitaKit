@@ -36,13 +36,13 @@ public struct CreateTagging {
 extension CreateTagging: RequestToken {
 
     public typealias Response = Tagging
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .POST
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/items/\(id)/taggings"
     }
 
@@ -58,9 +58,9 @@ extension CreateTagging: RequestToken {
     }
 }
 
-extension CreateTagging {
+public extension CreateTagging {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         return _Tagging(object)
     }

@@ -13,7 +13,7 @@ import APIKit
 
 
 func test<T: RequestToken, U>(token: T.Type, _ obj: U) -> Bool {
-    return (obj as? T.SerializedType) != nil
+    return (obj as? T.SerializedObject) != nil
 }
 
 class QiitaKitTests: XCTestCase {

@@ -36,13 +36,13 @@ public struct ListUserFollowers {
 extension ListUserFollowers: RequestToken {
     
     public typealias Response = ([User], LinkMeta<ListUserFollowers>)
-    public typealias SerializedType = [[String: AnyObject]]
+    public typealias SerializedObject = [[String: AnyObject]]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/users/\(id)/followers"
     }
 
@@ -70,9 +70,9 @@ extension ListUserFollowers: LinkProtocol {
     }
 }
 
-extension ListUserFollowers {
+public extension ListUserFollowers {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         return (_Users(object), LinkMeta<ListUserFollowers>(dict: response!.allHeaderFields))
     }

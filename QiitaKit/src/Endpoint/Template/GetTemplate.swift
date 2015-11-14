@@ -25,20 +25,20 @@ public struct GetTemplate {
 extension GetTemplate: RequestToken {
     
     public typealias Response = Template
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/templates/\(id)"
     }
 }
 
-extension GetTemplate {
+public extension GetTemplate {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         return _Template(object)
     }

@@ -25,13 +25,21 @@ public struct DeleteComment {
 extension DeleteComment: RequestToken {
 
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedObject = Any
 
     public var method: HTTPMethod {
         return .DELETE
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/comments/\(id)"
     }
 }
+
+public extension DeleteComment {
+    
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
+        
+    }
+}
+
