@@ -33,8 +33,6 @@ class QiitaKitTests: XCTestCase {
         XCTAssert(true, "Pass")
         
         
-        let object: AnyObject? = nil
-        
         XCTAssertTrue(test(DeleteComment.self, 1), "")
     }
     

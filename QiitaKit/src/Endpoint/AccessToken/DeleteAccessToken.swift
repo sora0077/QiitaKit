@@ -12,6 +12,7 @@ import Result
 
 /**
 *  指定されたアクセストークンを失効させ、それ以降利用できないようにします。
+*  Response = ()
 */
 public struct DeleteAccessToken {
     

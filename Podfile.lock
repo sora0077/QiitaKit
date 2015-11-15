@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (3.1.2)
-  - APIKit (2.0.0):
+  - APIKit (2.0.1):
     - Alamofire
     - BrightFutures
   - BrightFutures (3.1.2):
@@ -12,7 +12,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
-  APIKit: cb68c140a8be51a274bb1bda94a8154ed9bd4033
+  APIKit: 7b56642b44be4204e7de304795ecc73b125b512c
   BrightFutures: 6b4b299decee4c3775a9e7188d1ecec55262e09c
   Result: dc390d0b58f9ec43fcd536f1ebdd130803cc6cbc
 
