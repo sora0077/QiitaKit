@@ -12,6 +12,7 @@ import Result
 
 /**
 *  指定されたアクセストークンを失効させ、それ以降利用できないようにします。
+*  Response = ()
 */
 public struct DeleteAccessToken {
     
@@ -25,13 +26,20 @@ public struct DeleteAccessToken {
 extension DeleteAccessToken: RequestToken {
 
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedObject = Any
 
     public var method: HTTPMethod {
         return .DELETE
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/access_tokens/\(access_token)"
+    }
+}
+
+public extension DeleteAccessToken {
+    
+    public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
+        
     }
 }

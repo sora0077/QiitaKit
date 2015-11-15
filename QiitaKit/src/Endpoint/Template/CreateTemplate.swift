@@ -45,13 +45,13 @@ public struct CreateTemplate {
 extension CreateTemplate: RequestToken {
 
     public typealias Response = Template
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .POST
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/templates"
     }
 
@@ -69,9 +69,9 @@ extension CreateTemplate: RequestToken {
     }
 }
 
-extension CreateTemplate {
+public extension CreateTemplate {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         return _Template(object)
     }

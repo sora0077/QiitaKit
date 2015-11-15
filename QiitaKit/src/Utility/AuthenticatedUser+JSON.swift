@@ -9,7 +9,7 @@
 import Foundation
 
 func _AuthenticatedUser(object: AnyObject!) -> AuthenticatedUser {
-    let object = object as! GetAuthenticatedUser.SerializedType
+    let object = object as! GetAuthenticatedUser.SerializedObject
     return AuthenticatedUser(
         description: object["description"] as? String,
         facebook_id: object["facebook_id"] as? String,

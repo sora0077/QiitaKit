@@ -25,13 +25,20 @@ public struct ThankComment {
 extension ThankComment: RequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedObject = Any
 
     public var method: HTTPMethod {
         return .PUT
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/comments/\(id)/thank"
+    }
+}
+
+public extension ThankComment {
+    
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
+        
     }
 }

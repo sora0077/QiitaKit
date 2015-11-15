@@ -25,13 +25,13 @@ public struct UnthankComment {
 extension UnthankComment: RequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedObject = Any
 
     public var method: HTTPMethod {
         return .DELETE
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/comments/\(id)/thank"
     }
 }

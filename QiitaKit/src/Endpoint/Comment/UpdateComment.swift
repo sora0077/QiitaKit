@@ -30,13 +30,13 @@ public struct UpdateComment {
 extension UpdateComment: RequestToken {
     
     public typealias Response = Comment
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .PATCH
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/comments/\(id)"
     }
     

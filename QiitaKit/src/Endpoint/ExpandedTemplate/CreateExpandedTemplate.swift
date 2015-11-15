@@ -38,13 +38,13 @@ public struct CreateExpandedTemplate {
 extension CreateExpandedTemplate: RequestToken {
 
     public typealias Response = ExpandedTemplate
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .POST
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/expanded_templates"
     }
     
@@ -61,9 +61,9 @@ extension CreateExpandedTemplate: RequestToken {
     }
 }
 
-extension CreateExpandedTemplate {
+public extension CreateExpandedTemplate {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         return _ExpandedTemplate(object)
     }

@@ -39,13 +39,13 @@ public struct ListItems {
 extension ListItems: RequestToken {
     
     public typealias Response = ([Item], LinkMeta<ListItems>)
-    public typealias SerializedType = [[String: AnyObject]]
+    public typealias SerializedObject = [[String: AnyObject]]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/items"
     }
 
@@ -73,9 +73,9 @@ extension ListItems: LinkProtocol {
     }
 }
 
-extension ListItems {
+public extension ListItems {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         return (_Items(object), LinkMeta<ListItems>(dict: response!.allHeaderFields))
     }

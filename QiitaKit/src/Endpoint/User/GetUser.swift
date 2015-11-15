@@ -25,20 +25,20 @@ public struct GetUser {
 extension GetUser: RequestToken {
     
     public typealias Response = User
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/users/\(id)"
     }
 }
 
-extension GetUser {
+public extension GetUser {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         return _User(object)
     }

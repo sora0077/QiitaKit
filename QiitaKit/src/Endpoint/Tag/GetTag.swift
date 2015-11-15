@@ -25,21 +25,22 @@ public struct GetTag {
 extension GetTag: RequestToken {
     
     public typealias Response = Tag
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/tags/\(id)"
     }
 }
 
-extension GetTag {
+public extension GetTag {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
-                let tag = Tag(
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
+        
+        let tag = Tag(
             followers_count: object["followers_count"] as! Int,
             icon_url: object["icon_url"] as? String,
             id: object["id"] as! String,

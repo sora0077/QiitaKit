@@ -10,7 +10,7 @@ import Foundation
 import APIKit
 
 func _Comment(object: AnyObject!) -> Comment {
-    let object = object as! GetComment.SerializedType
+    let object = object as! GetComment.SerializedObject
     return Comment(
         body: object["body"] as! String,
         created_at: object["created_at"] as! String,
@@ -22,13 +22,13 @@ func _Comment(object: AnyObject!) -> Comment {
 }
 
 func _Comments(object: AnyObject!) -> [Comment] {
-    let object = object as! [GetComment.SerializedType]
+    let object = object as! [GetComment.SerializedObject]
     return object.map { _Comment($0) }
 }
 
-extension RequestToken where Response == Comment, SerializedType == [String: AnyObject] {
+extension RequestToken where Response == Comment, SerializedObject == [String: AnyObject] {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         return _Comment(object)
     }

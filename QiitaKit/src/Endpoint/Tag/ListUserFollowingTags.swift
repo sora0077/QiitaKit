@@ -37,13 +37,13 @@ public struct ListUserFollowingTags {
 extension ListUserFollowingTags: RequestToken {
     
     public typealias Response = ([Tag], LinkMeta<ListUserFollowingTags>)
-    public typealias SerializedType = [[String: AnyObject]]
+    public typealias SerializedObject = [[String: AnyObject]]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/users/\(id)/following_tags"
     }
 
@@ -71,9 +71,9 @@ extension ListUserFollowingTags: LinkProtocol {
     }
 }
 
-extension ListUserFollowingTags {
+public extension ListUserFollowingTags {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+    public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         let tags = object.map { object in
             Tag(

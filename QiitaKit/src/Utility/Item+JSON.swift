@@ -10,7 +10,7 @@ import Foundation
 import APIKit
 
 func _Item(object: AnyObject!) -> Item {
-    let object = object as! GetItem.SerializedType
+    let object = object as! GetItem.SerializedObject
     return Item(
         rendered_body: object["rendered_body"] as! String,
         body: object["body"] as! String,
@@ -27,14 +27,14 @@ func _Item(object: AnyObject!) -> Item {
 }
 
 func _Items(object: AnyObject!) -> [Item] {
-    let object = object as! [GetItem.SerializedType]
+    let object = object as! [GetItem.SerializedObject]
     return object.map { _Item($0) }
 }
 
 
-extension RequestToken where Response == Item, SerializedType == [String: AnyObject] {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Response {
+public extension RequestToken where Response == Item, SerializedObject == [String: AnyObject] {
+
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         return _Item(object)
     }

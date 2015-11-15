@@ -9,7 +9,7 @@
 import Foundation
 
 func _ExpandedTemplate(object: AnyObject!) -> ExpandedTemplate {
-    let object = object as! CreateExpandedTemplate.SerializedType
+    let object = object as! CreateExpandedTemplate.SerializedObject
     return ExpandedTemplate(
         expanded_body: object["expanded_body"] as! String,
         expanded_tags: _Taggings(object["expanded_tags"]),

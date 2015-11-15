@@ -25,13 +25,13 @@ public struct UnfollowTag {
 extension UnfollowTag: RequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedObject = Any
 
     public var method: HTTPMethod {
         return .DELETE
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/tags/\(id)/following"
     }
 }
