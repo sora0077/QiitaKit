@@ -74,6 +74,6 @@ public extension ListTagItems {
     
     func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return (_Items(object), LinkMeta<ListTagItems>(dict: response!.allHeaderFields))
+        return (try _Items(object), LinkMeta<ListTagItems>(dict: response!.allHeaderFields))
     }
 }

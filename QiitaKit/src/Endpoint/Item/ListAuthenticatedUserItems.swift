@@ -69,6 +69,6 @@ public extension ListAuthenticatedUserItems {
     
     func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return (_Items(object), LinkMeta<ListAuthenticatedUserItems>(dict: response!.allHeaderFields))
+        return (try _Items(object), LinkMeta<ListAuthenticatedUserItems>(dict: response!.allHeaderFields))
     }
 }

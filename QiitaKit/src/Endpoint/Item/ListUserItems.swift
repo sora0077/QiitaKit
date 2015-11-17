@@ -74,6 +74,6 @@ public extension ListUserItems {
     
     func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return (_Items(object), LinkMeta<ListUserItems>(dict: response!.allHeaderFields))
+        return (try _Items(object), LinkMeta<ListUserItems>(dict: response!.allHeaderFields))
     }
 }

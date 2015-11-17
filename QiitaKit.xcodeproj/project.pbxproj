@@ -186,14 +186,14 @@
 		D924E26C1B2741F50025C5E9 /* GetTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GetTemplate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D924E26D1B2741F50025C5E9 /* ListTemplates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTemplates.swift; sourceTree = "<group>"; };
 		D924E26E1B2741F50025C5E9 /* UpdateTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UpdateTemplate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		D924E2701B2741F50025C5E9 /* FollowUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FollowUser.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		D924E2701B2741F50025C5E9 /* FollowUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FollowUser.swift; sourceTree = "<group>"; };
 		D924E2711B2741F50025C5E9 /* GetUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GetUser.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		D924E2721B2741F50025C5E9 /* GetUserFollowing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GetUserFollowing.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		D924E2721B2741F50025C5E9 /* GetUserFollowing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GetUserFollowing.swift; sourceTree = "<group>"; };
 		D924E2731B2741F50025C5E9 /* ListItemStockers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ListItemStockers.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D924E2741B2741F50025C5E9 /* ListUserFollowees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ListUserFollowees.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D924E2751B2741F50025C5E9 /* ListUserFollowers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ListUserFollowers.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D924E2761B2741F50025C5E9 /* ListUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUsers.swift; sourceTree = "<group>"; };
-		D924E2771B2741F50025C5E9 /* UnfollowUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UnfollowUser.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		D924E2771B2741F50025C5E9 /* UnfollowUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UnfollowUser.swift; sourceTree = "<group>"; };
 		D924E2AB1B27420F0025C5E9 /* CreateAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccessToken.swift; sourceTree = "<group>"; };
 		D9807F281B39C0A20031BD71 /* User+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+JSON.swift"; sourceTree = "<group>"; };
 		D9807F2A1B39C18C0031BD71 /* Tagging+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tagging+JSON.swift"; sourceTree = "<group>"; };
@@ -203,6 +203,7 @@
 		D9807F321B3B1ADD0031BD71 /* ExpandedTemplate+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpandedTemplate+JSON.swift"; sourceTree = "<group>"; };
 		D9807F341B3B1C950031BD71 /* Template+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Template+JSON.swift"; sourceTree = "<group>"; };
 		D9807F361B3C526A0031BD71 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		D98370241BF8ABAB00E37598 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
 		D9EB34CA1B4977DC00CA9C57 /* Meta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,6 +239,7 @@
 		D924E1D01B25E1960025C5E9 = {
 			isa = PBXGroup;
 			children = (
+				D98370241BF8ABAB00E37598 /* Playground.playground */,
 				D924E1DC1B25E1970025C5E9 /* QiitaKit */,
 				D924E1E91B25E1970025C5E9 /* QiitaKitTests */,
 				D924E1FA1B25E4A20025C5E9 /* Frameworks */,

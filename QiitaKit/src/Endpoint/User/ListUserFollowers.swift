@@ -74,6 +74,6 @@ public extension ListUserFollowers {
     
     public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return (_Users(object), LinkMeta<ListUserFollowers>(dict: response!.allHeaderFields))
+        return (try _Users(object), LinkMeta<ListUserFollowers>(dict: response!.allHeaderFields))
     }
 }

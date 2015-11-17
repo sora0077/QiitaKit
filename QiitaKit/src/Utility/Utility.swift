@@ -1,4 +1,4 @@
-//
+ //
 //  Utility.swift
 //  QiitaKit
 //
@@ -21,4 +21,16 @@ public extension RequestToken where Response == () {
     }
 }
 
+func validation(object: AnyObject?) throws {
+    
+    guard let object = object as? [String: AnyObject] else {
+        return
+    }
+    
+    if  let message = object["message"] as? String,
+        let type = object["type"] as? String
+    {
+        throw QiitaKitError.QiitaAPIError(message: message, type: type)
+    }
+}
 

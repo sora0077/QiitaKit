@@ -9,7 +9,10 @@
 import Foundation
 import APIKit
 
-func _Item(object: AnyObject!) -> Item {
+func _Item(object: AnyObject!) throws -> Item {
+    
+    try validation(object)
+    
     let object = object as! GetItem.SerializedObject
     return Item(
         rendered_body: object["rendered_body"] as! String,
@@ -22,13 +25,16 @@ func _Item(object: AnyObject!) -> Item {
         title: object["title"] as! String,
         updated_at: object["updated_at"] as! String,
         url: object["url"] as! String,
-        user: _User(object["user"])
+        user: try _User(object["user"])
     )
 }
 
-func _Items(object: AnyObject!) -> [Item] {
+func _Items(object: AnyObject!) throws -> [Item] {
+    
+    try validation(object)
+    
     let object = object as! [GetItem.SerializedObject]
-    return object.map { _Item($0) }
+    return try object.map { try _Item($0) }
 }
 
 
@@ -36,6 +42,6 @@ public extension RequestToken where Response == Item, SerializedObject == [Strin
 
     func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return _Item(object)
+        return try _Item(object)
     }
 }

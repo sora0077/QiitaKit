@@ -28,39 +28,38 @@ extension AccessToken {
     }
 }
 
+public protocol QiitaRequestToken: RequestToken {}
+
 
 public enum QiitaKitError: APIKitErrorType {
     
-    case QiitaAPIError(type: String, message: String, code: Int)
-//    case ValidationError(ErrorType)
+    case QiitaAPIError(message: String, type: String)
+    
+    case NetworkError(ErrorType)
     
     case NonAccessToken
     
     case OAuthStateMismatchError(String)
-    case UnknownError
+    case UnknownError(ErrorType?)
     
     public static func networkError(error: ErrorType) -> QiitaKitError {
-        return .UnknownError
+        return .NetworkError(error)
     }
     
     public static func serializeError(error: ErrorType) -> QiitaKitError {
-        return .UnknownError
+        return .NetworkError(error)
     }
     
     public static func validationError(error: ErrorType) -> QiitaKitError {
-        return .UnknownError
+        return .NetworkError(error)
     }
     
     public static func unsupportedError(error: ErrorType) -> QiitaKitError {
-        return .UnknownError
+        return .UnknownError(error)
     }
 }
 
-public func QiitaAPI(clientId: String, clientSecret: String, baseURL: NSURL! = NSURL(string: "https://qiita.com"), configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()) -> API<QiitaKitError> {
-    return API(baseURL: baseURL, configuration: configuration)
-}
-
-
+/// QiitaKit
 public final class QiitaKit {
     
     private let clientId: String
@@ -112,7 +111,8 @@ public final class QiitaKit {
         assert(scopes.count > 0, "where scopes.count > 0")
         
         let app = UIApplication.sharedApplication()
-        var string = baseURL.URLByAppendingPathComponent("/api/v2/oauth/authorize?client_id=\(clientId)&scope=\(AccessToken.ScopeValues(scopes))").absoluteString
+        var string = baseURL.URLByAppendingPathComponent("/api/v2/oauth/authorize").absoluteString
+        string += "?client_id=\(clientId)&scope=\(AccessToken.ScopeValues(scopes))"
         if let state = state {
             string += "&state=\(state)"
         }

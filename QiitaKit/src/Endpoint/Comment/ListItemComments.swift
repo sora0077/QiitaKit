@@ -48,6 +48,6 @@ extension ListItemComments {
     
     public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return (_Comments(object), LinkMeta<ListItemComments>(dict: response!.allHeaderFields))
+        return (try _Comments(object), LinkMeta<ListItemComments>(dict: response!.allHeaderFields))
     }
 }

@@ -40,6 +40,6 @@ public extension GetUser {
     
     func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return _User(object)
+        return try _User(object)
     }
 }

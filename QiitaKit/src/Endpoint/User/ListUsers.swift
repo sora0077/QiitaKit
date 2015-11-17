@@ -69,6 +69,6 @@ public extension ListUsers {
     
     func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return (_Users(object), LinkMeta<ListUsers>(dict: response!.allHeaderFields))
+        return (try _Users(object), LinkMeta<ListUsers>(dict: response!.allHeaderFields))
     }
 }
