@@ -38,7 +38,7 @@ func _Items(object: AnyObject!) throws -> [Item] {
 }
 
 
-public extension RequestToken where Response == Item, SerializedObject == [String: AnyObject] {
+public extension QiitaRequestToken where Response == Item, SerializedObject == [String: AnyObject] {
 
     func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         

@@ -32,7 +32,7 @@ func _Comments(object: AnyObject!) throws -> [Comment] {
     return try object.map { try _Comment($0) }
 }
 
-extension RequestToken where Response == Comment, SerializedObject == [String: AnyObject] {
+extension QiitaRequestToken where Response == Comment, SerializedObject == [String: AnyObject] {
     
     public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         

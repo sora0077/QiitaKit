@@ -26,7 +26,7 @@ public struct DeleteTagging {
     }
 }
 
-extension DeleteTagging: RequestToken {
+extension DeleteTagging: QiitaRequestToken {
     
     public typealias Response = ()
     public typealias SerializedObject = Any

@@ -45,7 +45,7 @@ public struct UpdateTemplate {
     }
 }
 
-extension UpdateTemplate: RequestToken {
+extension UpdateTemplate: QiitaRequestToken {
     
     public typealias Response = Template
     public typealias SerializedObject = [String: AnyObject]

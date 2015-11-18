@@ -33,7 +33,7 @@ public struct CreateTagging {
     }
 }
 
-extension CreateTagging: RequestToken {
+extension CreateTagging: QiitaRequestToken {
 
     public typealias Response = Tagging
     public typealias SerializedObject = [String: AnyObject]

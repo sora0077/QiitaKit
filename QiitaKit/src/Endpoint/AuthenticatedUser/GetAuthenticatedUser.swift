@@ -18,7 +18,7 @@ public struct GetAuthenticatedUser {
     }
 }
 
-extension GetAuthenticatedUser: RequestToken {
+extension GetAuthenticatedUser: QiitaRequestToken {
 
     public typealias Response = AuthenticatedUser
     public typealias SerializedObject = [String: AnyObject]
@@ -36,6 +36,6 @@ public extension GetAuthenticatedUser {
 
     public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return _AuthenticatedUser(object)
+        return try _AuthenticatedUser(object)
     }
 }

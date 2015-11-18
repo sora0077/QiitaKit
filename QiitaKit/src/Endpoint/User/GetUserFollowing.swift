@@ -22,7 +22,7 @@ public struct GetUserFollowing {
     }
 }
 
-extension GetUserFollowing: RequestToken {
+extension GetUserFollowing: QiitaRequestToken {
     
     public typealias Response = ()
     public typealias SerializedObject = Any

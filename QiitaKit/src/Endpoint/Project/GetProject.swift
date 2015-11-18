@@ -22,7 +22,7 @@ public struct GetProject {
     }
 }
 
-extension GetProject: RequestToken {
+extension GetProject: QiitaRequestToken {
     
     public typealias Response = Project
     public typealias SerializedObject = [String: AnyObject]

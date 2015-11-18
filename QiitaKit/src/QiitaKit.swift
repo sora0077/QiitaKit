@@ -37,8 +37,6 @@ public enum QiitaKitError: APIKitErrorType {
     
     case NetworkError(ErrorType)
     
-    case NonAccessToken
-    
     case OAuthStateMismatchError(String)
     case UnknownError(ErrorType?)
     
@@ -79,6 +77,8 @@ public final class QiitaKit {
         self.clientSecret = clientSecret
         self.baseURL = baseURL
         self.api = API(baseURL: baseURL, configuration: configuration)
+        
+        self.api.delegate = self
     }
     
     /**
@@ -174,7 +174,7 @@ public final class QiitaKit {
      
      - returns: <#return value description#>
      */
-    public func oauthDelete() throws -> Future<(), Error> {
+    public func oauthDelete() -> Future<(), Error> {
         if let accessToken = accessToken {
             let deleteAccessToken = DeleteAccessToken(access_token: accessToken.token)
             return request(deleteAccessToken).map { [weak self] t in
@@ -182,7 +182,17 @@ public final class QiitaKit {
                 return t
             }
         }
-        throw Error.NonAccessToken
+        return Future(value: ())
+    }
+}
+
+extension QiitaKit: APICustomizableDelegate {
+    
+    public func customHeaders(var tokenHeader: [String: String]) -> [String: String] {
+        if let accessToken = accessToken {
+            tokenHeader["Authorization"] = "Bearer \(accessToken.token)"
+        }
+        return tokenHeader
     }
 }
 

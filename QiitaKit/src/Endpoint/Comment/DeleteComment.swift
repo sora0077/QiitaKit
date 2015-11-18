@@ -22,7 +22,7 @@ public struct DeleteComment {
     }
 }
 
-extension DeleteComment: RequestToken {
+extension DeleteComment: QiitaRequestToken {
 
     public typealias Response = ()
     public typealias SerializedObject = Any

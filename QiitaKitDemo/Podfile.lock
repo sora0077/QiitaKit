@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (3.1.2)
-  - APIKit (2.0.2):
+  - APIKit (2.0.3):
     - Alamofire
     - BrightFutures
   - BrightFutures (3.1.2):
@@ -44,7 +44,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
-  APIKit: ca5efaca0d3e9f116e0d754ac0deda9360f6215b
+  APIKit: 086b443ef5a577106fef6c30bab1db2055d81896
   BrightFutures: 6b4b299decee4c3775a9e7188d1ecec55262e09c
   LayoutKit: 539c73d8ef266d68f348cd1516f928d9e7460bd8
   QiitaKit: bba66bb339130ac8f2f93a4271625559560f257c

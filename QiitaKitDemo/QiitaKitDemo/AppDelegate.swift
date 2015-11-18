@@ -38,6 +38,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Qiita.setAccessToken(clientId, scopes: scopes, token: token)
         }
         
+        Qiita.request(GetAuthenticatedUser())
+            .onSuccess { v in
+         
+                print(v)
+            }
+            .onFailure { e in
+                print(e)
+            }
+        
         return true
     }
     

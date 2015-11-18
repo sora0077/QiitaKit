@@ -22,7 +22,7 @@ public struct UnfollowUser {
     }
 }
 
-extension UnfollowUser: RequestToken {
+extension UnfollowUser: QiitaRequestToken {
     
     public typealias Response = ()
     public typealias SerializedObject = Any

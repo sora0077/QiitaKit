@@ -34,7 +34,7 @@ public struct ListUserFollowingTags {
     }
 }
 
-extension ListUserFollowingTags: RequestToken {
+extension ListUserFollowingTags: QiitaRequestToken {
     
     public typealias Response = ([Tag], LinkMeta<ListUserFollowingTags>)
     public typealias SerializedObject = [[String: AnyObject]]

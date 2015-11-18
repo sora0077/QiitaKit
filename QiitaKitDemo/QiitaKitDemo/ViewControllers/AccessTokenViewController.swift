@@ -9,6 +9,7 @@
 import UIKit
 import QiitaKit
 import ToysBoxKit
+import BrightFutures
 
 class AccessTokenViewController: UIViewController {
     
@@ -72,18 +73,13 @@ class AccessTokenViewController: UIViewController {
     @IBAction
     private func deleteAccessTokenAction() {
         
-        do {
-            try Qiita.oauthDelete().onSuccess { [weak self] _ in
-                async_after(0.5) {
-                    UIView.animateWithDuration(0.3, animations: {
-                        self?.accessTokenLabel.alpha = 0
-                        self?.deleteAccessTokenButton.alpha = 0
-                    })
-                }
-            }
-        }
-        catch {
+        Qiita.oauthDelete().onSuccess(ImmediateOnMainExecutionContext) { [weak self] _ in
             
+            UIView.animateWithDuration(0.3, animations: {
+                self?.accessTokenLabel.alpha = 0
+                self?.deleteAccessTokenButton.alpha = 0
+                self?.deleteAccessToken()
+            })
         }
     }
     
@@ -95,6 +91,13 @@ class AccessTokenViewController: UIViewController {
             "scopes": accessToken.scopes,
             "client_id": accessToken.client_id
             ], forKey: "AccessToken")
+        
+        defaults.synchronize()
+    }
+    
+    private func deleteAccessToken() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.removeObjectForKey("AccessToken")
         
         defaults.synchronize()
     }

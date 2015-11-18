@@ -22,7 +22,7 @@ public struct GetUser {
     }
 }
 
-extension GetUser: RequestToken {
+extension GetUser: QiitaRequestToken {
     
     public typealias Response = User
     public typealias SerializedObject = [String: AnyObject]

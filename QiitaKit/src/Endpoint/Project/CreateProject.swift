@@ -41,7 +41,7 @@ public struct CreateProject {
     }
 }
 
-extension CreateProject: RequestToken {
+extension CreateProject: QiitaRequestToken {
 
     public typealias Response = Project
     public typealias SerializedObject = [String: AnyObject]

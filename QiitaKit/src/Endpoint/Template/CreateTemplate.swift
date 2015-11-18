@@ -42,7 +42,7 @@ public struct CreateTemplate {
     }
 }
 
-extension CreateTemplate: RequestToken {
+extension CreateTemplate: QiitaRequestToken {
 
     public typealias Response = Template
     public typealias SerializedObject = [String: AnyObject]

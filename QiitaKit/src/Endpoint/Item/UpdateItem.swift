@@ -49,7 +49,7 @@ public struct UpdateItem {
     }
 }
 
-extension UpdateItem: RequestToken {
+extension UpdateItem: QiitaRequestToken {
     
     public typealias Response = Item
     public typealias SerializedObject = [String: AnyObject]

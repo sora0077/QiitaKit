@@ -22,7 +22,7 @@ public struct UnstockItem {
     }
 }
 
-extension UnstockItem: RequestToken {
+extension UnstockItem: QiitaRequestToken {
     
     public typealias Response = ()
     public typealias SerializedObject = Any

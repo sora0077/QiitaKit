@@ -22,7 +22,7 @@ public struct UnfollowTag {
     }
 }
 
-extension UnfollowTag: RequestToken {
+extension UnfollowTag: QiitaRequestToken {
     
     public typealias Response = ()
     public typealias SerializedObject = Any

@@ -22,7 +22,7 @@ public struct UnlikeItem {
     }
 }
 
-extension UnlikeItem: RequestToken {
+extension UnlikeItem: QiitaRequestToken {
     
     public typealias Response = ()
     public typealias SerializedObject = Any

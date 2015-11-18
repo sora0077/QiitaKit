@@ -27,7 +27,7 @@ public struct CreateItemComment {
     }
 }
 
-extension CreateItemComment: RequestToken {
+extension CreateItemComment: QiitaRequestToken {
 
     public typealias Response = Comment
     public typealias SerializedObject = [String: AnyObject]

@@ -36,7 +36,7 @@ public struct CreateAccessToken {
     }
 }
 
-extension CreateAccessToken: RequestToken {
+extension CreateAccessToken: QiitaRequestToken {
 
     public typealias Response = AccessToken
     public typealias SerializedObject = [String: AnyObject]

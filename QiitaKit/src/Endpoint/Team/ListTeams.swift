@@ -18,7 +18,7 @@ public struct ListTeams {
     }
 }
 
-extension ListTeams: RequestToken {
+extension ListTeams: QiitaRequestToken {
 
     public typealias Response = ([Team], LinkMeta<ListTeams>)
     public typealias SerializedObject = [[String: AnyObject]]

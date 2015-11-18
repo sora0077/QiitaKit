@@ -14,7 +14,7 @@ func ..<(left: Int, right: Int) -> Set<Int> {
     return Set(Range(start: left, end: right))
 }
 
-public extension RequestToken where Response == () {
+public extension QiitaRequestToken where Response == () {
     
     func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         

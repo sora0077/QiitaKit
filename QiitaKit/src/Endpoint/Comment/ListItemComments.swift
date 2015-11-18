@@ -22,7 +22,7 @@ public struct ListItemComments {
     }
 }
 
-extension ListItemComments: RequestToken {
+extension ListItemComments: QiitaRequestToken {
 
     public typealias Response = ([Comment], LinkMeta<ListItemComments>)
     public typealias SerializedObject = [[String: AnyObject]]

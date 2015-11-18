@@ -22,7 +22,7 @@ public struct ThankComment {
     }
 }
 
-extension ThankComment: RequestToken {
+extension ThankComment: QiitaRequestToken {
     
     public typealias Response = ()
     public typealias SerializedObject = Any

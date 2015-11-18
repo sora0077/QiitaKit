@@ -55,7 +55,7 @@ public struct CreateItem {
     }
 }
 
-extension CreateItem: RequestToken {
+extension CreateItem: QiitaRequestToken {
 
     public typealias Response = Item
     public typealias SerializedObject = [String: AnyObject]

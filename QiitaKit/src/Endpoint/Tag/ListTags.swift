@@ -30,7 +30,7 @@ public struct ListTags {
     }
 }
 
-extension ListTags: RequestToken {
+extension ListTags: QiitaRequestToken {
     
     public typealias Response = ([Tag], LinkMeta<ListTags>)
     public typealias SerializedObject = [[String: AnyObject]]

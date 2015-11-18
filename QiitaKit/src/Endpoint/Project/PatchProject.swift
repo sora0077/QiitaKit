@@ -45,7 +45,7 @@ public struct PatchProject {
     }
 }
 
-extension PatchProject: RequestToken {
+extension PatchProject: QiitaRequestToken {
     
     public typealias Response = Project
     public typealias SerializedObject = [String: AnyObject]

@@ -22,7 +22,7 @@ public struct DeleteProject {
     }
 }
 
-extension DeleteProject: RequestToken {
+extension DeleteProject: QiitaRequestToken {
     
     public typealias Response = ()
     public typealias SerializedObject = Any

@@ -23,7 +23,7 @@ public struct DeleteAccessToken {
     }
 }
 
-extension DeleteAccessToken: RequestToken {
+extension DeleteAccessToken: QiitaRequestToken {
 
     public typealias Response = ()
     public typealias SerializedObject = Any

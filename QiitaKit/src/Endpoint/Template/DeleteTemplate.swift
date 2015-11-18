@@ -22,7 +22,7 @@ public struct DeleteTemplate {
     }
 }
 
-extension DeleteTemplate: RequestToken {
+extension DeleteTemplate: QiitaRequestToken {
     
     public typealias Response = ()
     public typealias SerializedObject = Any

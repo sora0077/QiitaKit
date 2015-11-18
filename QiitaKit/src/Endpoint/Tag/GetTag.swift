@@ -22,7 +22,7 @@ public struct GetTag {
     }
 }
 
-extension GetTag: RequestToken {
+extension GetTag: QiitaRequestToken {
     
     public typealias Response = Tag
     public typealias SerializedObject = [String: AnyObject]

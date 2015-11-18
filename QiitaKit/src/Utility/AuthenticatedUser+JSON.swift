@@ -8,7 +8,10 @@
 
 import Foundation
 
-func _AuthenticatedUser(object: AnyObject!) -> AuthenticatedUser {
+func _AuthenticatedUser(object: AnyObject!) throws -> AuthenticatedUser {
+    
+    try validation(object)
+    
     let object = object as! GetAuthenticatedUser.SerializedObject
     return AuthenticatedUser(
         description: object["description"] as? String,
