@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.platform = :ios
   s.ios.deployment_target = '8.0'
   s.name         = "QiitaKit"
-  s.version      = "1.1.1"
+  s.version      = "1.1.2"
   s.summary      = "QiitaKit."
 
   s.description  = <<-DESC

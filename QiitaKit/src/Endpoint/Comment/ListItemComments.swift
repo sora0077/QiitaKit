@@ -17,10 +17,12 @@ public struct ListItemComments {
     
     public let id: Item.Identifier
     public let page: Int
+    public let per_page: Int
     
-    public init(id: Item.Identifier, page: Int = 1) {
+    public init(id: Item.Identifier, page: Int = 1, per_page: Int = 20) {
         self.id = id
         self.page = page
+        self.per_page = per_page
     }
 }
 
@@ -36,6 +38,13 @@ extension ListItemComments: QiitaRequestToken {
     public var path: String {
         return "/api/v2/items/\(id)/comments"
     }
+    
+    public var parameters: [String: AnyObject]? {
+        return [
+            "page": page,
+            "per_page": per_page
+        ]
+    }
 }
 
 extension ListItemComments: LinkProtocol {
@@ -46,6 +55,14 @@ extension ListItemComments: LinkProtocol {
         
         self.id = url.pathComponents![url.pathComponents!.count - 2]
         self.page = Int(find(comps?.queryItems ?? [], name: "page")!.value!)!
+        
+        if let value = find(comps?.queryItems ?? [], name: "page")?.value,
+            let per_page = Int(value)
+        {
+            self.per_page = per_page
+        } else {
+            self.per_page = 20
+        }
     }
 }
 
