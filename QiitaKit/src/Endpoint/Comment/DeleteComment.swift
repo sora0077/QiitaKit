@@ -12,6 +12,7 @@ import Result
 
 /**
 *  コメントを削除します。
+*  Response = ()
 */
 public struct DeleteComment {
     
