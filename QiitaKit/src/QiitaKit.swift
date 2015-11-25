@@ -58,7 +58,7 @@ public enum QiitaKitError: APIKitErrorType {
 }
 
 /// QiitaKit
-public final class QiitaKit {
+public final class QiitaSession {
     
     private let clientId: String
     private let clientSecret: String
@@ -186,7 +186,7 @@ public final class QiitaKit {
     }
 }
 
-extension QiitaKit: APICustomizableDelegate {
+extension QiitaSession: APICustomizableDelegate {
     
     public func customHeaders(var tokenHeader: [String: String]) -> [String: String] {
         if let accessToken = accessToken {
@@ -196,7 +196,7 @@ extension QiitaKit: APICustomizableDelegate {
     }
 }
 
-extension QiitaKit: APIKitProtocol {
+extension QiitaSession: APIKitProtocol {
     
     public typealias Error = QiitaKitError
     

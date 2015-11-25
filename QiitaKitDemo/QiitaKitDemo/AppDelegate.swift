@@ -11,7 +11,7 @@ import QiitaKit
 import APIKit
 
 
-let Qiita = QiitaKit(clientId: ENV.DEMO_QIITA_CLIENT_ID, clientSecret: ENV.DEMO_QIITA_CLIENT_SECRET)
+let Qiita = QiitaSession(clientId: ENV.DEMO_QIITA_CLIENT_ID, clientSecret: ENV.DEMO_QIITA_CLIENT_SECRET)
 
 extension GetUser: DebugRequestToken {}
 
