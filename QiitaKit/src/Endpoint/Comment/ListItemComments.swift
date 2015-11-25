@@ -16,9 +16,11 @@ import Result
 public struct ListItemComments {
     
     public let id: Item.Identifier
+    public let page: Int
     
-    public init(id: Item.Identifier) {
+    public init(id: Item.Identifier, page: Int = 1) {
         self.id = id
+        self.page = page
     }
 }
 
@@ -40,7 +42,10 @@ extension ListItemComments: LinkProtocol {
     
     public init!(url: NSURL!) {
         
+        let comps = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
+        
         self.id = url.pathComponents![url.pathComponents!.count - 2]
+        self.page = Int(find(comps?.queryItems ?? [], name: "page")!.value!)!
     }
 }
 

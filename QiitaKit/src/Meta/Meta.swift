@@ -13,6 +13,10 @@ private func toInt(key: String, _ dict: [NSObject: AnyObject]) -> Int {
     return Int(s)!
 }
 
+func find(items: [NSURLQueryItem], name: String) -> NSURLQueryItem? {
+    return items.filter { $0.name == name }.first
+}
+
 public class Meta {
     
     public let rateLimit: Int
