@@ -22,7 +22,7 @@ extension Tag {
 
 class TagViewController: UIViewController {
     
-    var tag_id: String!
+    var id: String!
     
     @IBOutlet private weak var followBarButton: UIBarButtonItem!
     @IBOutlet private weak var tableView: UITableView! {
@@ -36,7 +36,7 @@ class TagViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        let getTag = GetTag(tag_id: tag_id)
+        let getTag = GetTag(id: id)
         Qiita.request(getTag).onSuccess { [weak self] in
             self?.refreshGetTag($0)
         }
@@ -59,7 +59,7 @@ class TagViewController: UIViewController {
             section.extend(rows)
         }
         
-        let getTagFollowing = GetTagFollowing(tag_id: tag.id)
+        let getTagFollowing = GetTagFollowing(id: tag.id)
         Qiita.request(getTagFollowing)
             .onSuccess { [weak self] _ in
                 self?.refreshGetTagFollowing(true)
@@ -91,12 +91,12 @@ class TagViewController: UIViewController {
         if let title = followBarButton.title {
             switch title {
             case "unfollow":
-                let unfollowTag = UnfollowTag(tag_id: tag_id)
+                let unfollowTag = UnfollowTag(id: id)
                 Qiita.request(unfollowTag).onSuccess { [weak self] _ in
                     self?.refreshUnfollowTag()
                 }
             case "follow":
-                let followTag = FollowTag(tag_id: tag_id)
+                let followTag = FollowTag(id: id)
                 Qiita.request(followTag).onSuccess { [weak self] _ in
                     self?.refreshFollowTag()
                 }

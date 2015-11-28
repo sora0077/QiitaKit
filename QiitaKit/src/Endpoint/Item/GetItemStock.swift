@@ -15,47 +15,23 @@ import Result
 */
 public struct GetItemStock {
     
-    public let item_id: String
+    public let id: Item.Identifier
     
-    public init(item_id: String) {
-        self.item_id = item_id
+    public init(id: Item.Identifier) {
+        self.id = id
     }
 }
 
-extension GetItemStock: RequestToken {
+extension GetItemStock: QiitaRequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedObject = Any
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
-        return "/api/v2/items/\(item_id)/stock"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
-}
-
-extension GetItemStock {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        
-        return Result(())
+    public var path: String {
+        return "/api/v2/items/\(id)/stock"
     }
 }

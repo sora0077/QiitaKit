@@ -7,9 +7,13 @@
 //
 
 import Foundation
+import APIKit
 
-func _Item(object: AnyObject!) -> Item {
-    let object = object as! GetItem.SerializedType
+func _Item(object: AnyObject!) throws -> Item {
+    
+    try validation(object)
+    
+    let object = object as! GetItem.SerializedObject
     return Item(
         rendered_body: object["rendered_body"] as! String,
         body: object["body"] as! String,
@@ -21,11 +25,23 @@ func _Item(object: AnyObject!) -> Item {
         title: object["title"] as! String,
         updated_at: object["updated_at"] as! String,
         url: object["url"] as! String,
-        user: _User(object["user"])
+        user: try _User(object["user"])
     )
 }
 
-func _Items(object: AnyObject!) -> [Item] {
-    let object = object as! [GetItem.SerializedType]
-    return object.map { _Item($0) }
+func _Items(object: AnyObject!) throws -> [Item] {
+    
+    try validation(object)
+    
+    let object = object as! [GetItem.SerializedObject]
+    return try object.map { try _Item($0) }
+}
+
+
+public extension QiitaRequestToken where Response == Item, SerializedObject == [String: AnyObject] {
+
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
+        
+        return try _Item(object)
+    }
 }

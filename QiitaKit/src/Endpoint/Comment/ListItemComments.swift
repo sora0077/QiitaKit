@@ -15,40 +15,35 @@ import Result
 */
 public struct ListItemComments {
     
-    public let item_id: String
+    public let id: Item.Identifier
+    public let page: Int
+    public let per_page: Int
     
-    public init(item_id: String) {
-        self.item_id = item_id
+    public init(id: Item.Identifier, page: Int = 1, per_page: Int = 20) {
+        self.id = id
+        self.page = page
+        self.per_page = per_page
     }
 }
 
-extension ListItemComments: RequestToken {
+extension ListItemComments: QiitaRequestToken {
 
     public typealias Response = ([Comment], LinkMeta<ListItemComments>)
-    public typealias SerializedType = [[String: AnyObject]]
+    public typealias SerializedObject = [[String: AnyObject]]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
-        return "/api/v2/items/\(item_id)/comments"
+    public var path: String {
+        return "/api/v2/items/\(id)/comments"
     }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
+    
     public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
+        return [
+            "page": page,
+            "per_page": per_page
+        ]
     }
 }
 
@@ -56,14 +51,25 @@ extension ListItemComments: LinkProtocol {
     
     public init!(url: NSURL!) {
         
-        self.item_id = url.pathComponents?[url.pathComponents!.count - 2] as! String
+        let comps = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
+        
+        self.id = url.pathComponents![url.pathComponents!.count - 2]
+        self.page = Int(find(comps?.queryItems ?? [], name: "page")!.value!)!
+        
+        if let value = find(comps?.queryItems ?? [], name: "per_page")?.value,
+            let per_page = Int(value)
+        {
+            self.per_page = per_page
+        } else {
+            self.per_page = 20
+        }
     }
 }
 
 extension ListItemComments {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return Result(_Comments(object), LinkMeta<ListItemComments>(dict: response!.allHeaderFields))
+        return (try _Comments(object), LinkMeta<ListItemComments>(dict: response!.allHeaderFields))
     }
 }

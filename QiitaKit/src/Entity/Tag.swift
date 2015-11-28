@@ -12,6 +12,8 @@ import Foundation
 *  投稿に付けられた個々のタグを表します。
 */
 public struct Tag {
+    public typealias Identifier = String
+    
     /// このタグをフォローしているユーザの数
     /// example: 100
     public let followers_count: Int
@@ -22,7 +24,7 @@ public struct Tag {
 
     /// タグを特定するための一意な名前
     /// example: qiita
-    public let id: String
+    public let id: Identifier
 
     /// このタグが付けられた投稿の数
     /// example: 200

@@ -15,47 +15,31 @@ import Result
 */
 public struct GetTemplate {
     
-    public let template_id: String
+    public let id: Template.Identifier
     
-    public init(template_id: String) {
-        self.template_id = template_id
+    public init(id: Template.Identifier) {
+        self.id = id
     }
 }
 
-extension GetTemplate: RequestToken {
+extension GetTemplate: QiitaRequestToken {
     
     public typealias Response = Template
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
-        return "/api/v2/templates/\(template_id)"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
+    public var path: String {
+        return "/api/v2/templates/\(id)"
     }
 }
 
-extension GetTemplate {
+public extension GetTemplate {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return Result(_Template(object))
+        return _Template(object)
     }
 }

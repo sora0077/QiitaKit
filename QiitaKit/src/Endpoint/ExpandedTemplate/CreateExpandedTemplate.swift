@@ -8,7 +8,6 @@
 
 import Foundation
 import APIKit
-import Result
 
 /**
 *  受け取ったテンプレート用文字列の変数を展開して返します。
@@ -36,23 +35,19 @@ public struct CreateExpandedTemplate {
     }
 }
 
-extension CreateExpandedTemplate: RequestToken {
+extension CreateExpandedTemplate: QiitaRequestToken {
 
     public typealias Response = ExpandedTemplate
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .POST
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/expanded_templates"
     }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
+    
     public var parameters: [String: AnyObject]? {
         return [
             "body": body,
@@ -64,16 +59,12 @@ extension CreateExpandedTemplate: RequestToken {
     public var encoding: RequestEncoding {
         return .JSON
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
-extension CreateExpandedTemplate {
+public extension CreateExpandedTemplate {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return Result(_ExpandedTemplate(object))
+        return _ExpandedTemplate(object)
     }
 }

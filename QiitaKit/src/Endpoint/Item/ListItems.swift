@@ -17,40 +17,36 @@ public struct ListItems {
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$
-    public let page: String
+    public let page: Int
 
     /// 1ページあたりに含まれる要素数 (1から100まで)
     /// example: 20
     /// ^[0-9]+$
-    public let per_page: String
+    public let per_page: Int
 
     /// 検索クエリ
     /// example: qiita user:yaotti
     /// 
     public let query: String
 
-    public init(page: String, per_page: String, query: String) {
+    public init(page: Int, per_page: Int, query: String) {
         self.page = page
         self.per_page = per_page
         self.query = query
     }
 }
 
-extension ListItems: RequestToken {
+extension ListItems: QiitaRequestToken {
     
     public typealias Response = ([Item], LinkMeta<ListItems>)
-    public typealias SerializedType = [[String: AnyObject]]
+    public typealias SerializedObject = [[String: AnyObject]]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/items"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
     }
 
     public var parameters: [String: AnyObject]? {
@@ -60,35 +56,34 @@ extension ListItems: RequestToken {
             "query": query,
         ]
     }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
 extension ListItems: LinkProtocol {
     
     public init(url: NSURL!) {
         
-        let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        let comps = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
         var query: [String: String] = [:]
-        for i in component?.queryItems as! [NSURLQueryItem] {
+        for i in comps?.queryItems ?? [] {
             query[i.name] = i.value
         }
-        self.page = query["page"]!
-        self.per_page = query["per_page"]!
-        self.query = query["query"]!
+        self.query = find(comps?.queryItems ?? [], name: "query")!.value!
+        self.page = Int(find(comps?.queryItems ?? [], name: "page")!.value!)!
+        
+        if let value = find(comps?.queryItems ?? [], name: "per_page")?.value,
+            let per_page = Int(value)
+        {
+            self.per_page = per_page
+        } else {
+            self.per_page = 20
+        }
     }
 }
 
-extension ListItems {
+public extension ListItems {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return Result(_Items(object), LinkMeta<ListItems>(dict: response!.allHeaderFields))
+        return (try _Items(object), LinkMeta<ListItems>(dict: response!.allHeaderFields))
     }
 }

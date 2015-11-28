@@ -12,9 +12,11 @@ import Foundation
 *  投稿とタグとの関連を表します。
 */
 public struct Tagging {
+    public typealias Identifier = String
+    
     /// タグを特定するための一意な名前
     /// example: qiita
-    public let name: String
+    public let name: Identifier
 
     /// 
     /// example: ["0.0.1"]

@@ -9,16 +9,9 @@
 import Foundation
 import UIKit
 import APIKit
+import Alamofire
 import BrightFutures
 import Result
-import Box
-
-extension Result {
-
-    init(_ value: T) {
-        self = .Success(Box(value))
-    }
-}
 
 extension AccessToken {
     
@@ -31,70 +24,86 @@ extension AccessToken {
     }
     
     private static func ScopeValues(scopes: [AccessToken.Scope]) -> String {
-        return join("+", scopes.map({ $0.rawValue }))
+        return scopes.map({ $0.rawValue }).joinWithSeparator("+")
     }
 }
 
-public let QiitaKitErrorDomain = "jp.sora0077.QiitaKit.ErrorDomain"
-public let QiitaAPIErrorDomain = "jp.sora0077.QiitaAPI.ErrorDomain"
+public protocol QiitaRequestToken: RequestToken {}
 
-/**
-*  <#Description#>
-*/
-public class QiitaKit: API {
+
+public enum QiitaKitError: APIKitErrorType {
     
-    let baseURL: String
+    case QiitaAPIError(message: String, type: String)
     
-    let clientId: String
-    let clientSecret: String
+    case NetworkError(ErrorType)
+    
+    case OAuthStateMismatchError(String)
+    case UnknownError(ErrorType?)
+    
+    public static func networkError(error: ErrorType) -> QiitaKitError {
+        return .NetworkError(error)
+    }
+    
+    public static func serializeError(error: ErrorType) -> QiitaKitError {
+        return .NetworkError(error)
+    }
+    
+    public static func validationError(error: ErrorType) -> QiitaKitError {
+        return .NetworkError(error)
+    }
+    
+    public static func unsupportedError(error: ErrorType) -> QiitaKitError {
+        return .UnknownError(error)
+    }
+}
+
+/// QiitaKit
+public final class QiitaSession {
+    
+    private let clientId: String
+    private let clientSecret: String
+    private let baseURL: NSURL
+    
+    private let api: API<Error>
     
     private var callbackScheme: String?
-    private var oauthPromise: Promise<AccessToken, NSError>?
+    private var oauthPromise: Promise<AccessToken, Error>?
     
     public private(set) var accessToken: AccessToken?
     
-    public init(baseURL: String, clientId: String, clientSecret: String, configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration(), debugger: APIDebugger? = nil) {
-        self.baseURL = baseURL
+    public init(clientId: String, clientSecret: String, baseURL: NSURL! = NSURL(string: "https://qiita.com"), configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()) {
         
         self.clientId = clientId
         self.clientSecret = clientSecret
+        self.baseURL = baseURL
+        self.api = API(baseURL: baseURL, configuration: configuration)
         
-        super.init(baseURL: baseURL, configuration: configuration, debugger: debugger)
+        self.api.delegate = self
     }
     
-    public override func additionalHeaders() -> [String : AnyObject]? {
-        if let accessToken = accessToken {
-            return [
-                "Authorization": "Bearer \(accessToken.token)"
-            ]
-        }
-        return nil
-    }
-    
-    public override func validate(request URLRequest: NSURLRequest, response: NSHTTPURLResponse, object: AnyObject?) -> NSError? {
-        
-        let (JSON, error) = json_encode_dictionary(object)
-        
-        if let e = error {
-            return e
-        }
-        
-        if  let type = JSON?["type"] as? String,
-            let message = JSON?["message"] as? String
-        {
-            let code = response.statusCode
-            return NSError(domain: QiitaAPIErrorDomain, code: code, userInfo: JSON)
-        }
-        return nil
-    }
-    
+    /**
+     <#Description#>
+     
+     - parameter clientId: <#clientId description#>
+     - parameter scopes:   <#scopes description#>
+     - parameter token:    <#token description#>
+     */
     public func setAccessToken(clientId: String, scopes: [String], token: String) {
         accessToken = AccessToken(client_id: clientId, scopes: scopes, token: token)
     }
     
-    public func oauthAuthorize(scopes: [AccessToken.Scope], scheme: String, state: String? = nil) -> Future<AccessToken, NSError> {
+    /**
+     <#Description#>
+     
+     - parameter scopes: <#scopes description#>
+     - parameter scheme: <#scheme description#>
+     - parameter state:  <#state description#>
+     
+     - returns: <#return value description#>
+     */
+    public func oauthAuthorize(scopes: [AccessToken.Scope], scheme: String, state: String? = nil) -> Future<AccessToken, Error> {
         
-        let promise = Promise<AccessToken, NSError>()
+        let promise = Promise<AccessToken, Error>()
         
         callbackScheme = scheme
         oauthPromise = promise
@@ -102,7 +111,8 @@ public class QiitaKit: API {
         assert(scopes.count > 0, "where scopes.count > 0")
         
         let app = UIApplication.sharedApplication()
-        var string = "\(baseURL)/api/v2/oauth/authorize?client_id=\(clientId)&scope=\(AccessToken.ScopeValues(scopes))"
+        var string = baseURL.URLByAppendingPathComponent("/api/v2/oauth/authorize").absoluteString
+        string += "?client_id=\(clientId)&scope=\(AccessToken.ScopeValues(scopes))"
         if let state = state {
             string += "&state=\(state)"
         }
@@ -112,29 +122,34 @@ public class QiitaKit: API {
         return promise.future
     }
     
+    /**
+     <#Description#>
+     
+     - parameter state:             <#state description#>
+     - parameter url:               <#url description#>
+     - parameter sourceApplication: <#sourceApplication description#>
+     - parameter annotation:        <#annotation description#>
+     
+     - returns: <#return value description#>
+     */
     public func oauthCallback(state: String? = nil, url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         
-        func query(items: [NSURLQueryItem], name: String) -> String? {
+        func query(items: [NSURLQueryItem], _ name: String) -> String? {
             return items.filter({ $0.name == name }).first?.value
         }
         
+        let urlString = url.absoluteString
         if  let scheme = callbackScheme,
             let promise = oauthPromise,
-            let urlString = url.absoluteString,
             let components = NSURLComponents(string: urlString),
-            let items = components.queryItems as? [NSURLQueryItem],
+            let items = components.queryItems,
             let code = query(items, "code")
             where urlString.hasPrefix(scheme)
         {
+            
             let returnedState = query(items, "state")
-            if state != returnedState {
-                promise.failure(NSError(
-                    domain: QiitaKitErrorDomain,
-                    code: -1,
-                    userInfo: [
-                        NSLocalizedDescriptionKey: "The operation couldn’t be completed. state:\(returnedState) mismatch."
-                    ])
-                )
+            if let returnedState = returnedState where state != returnedState {
+                promise.failure(.OAuthStateMismatchError(returnedState))
                 return false
             }
             
@@ -143,7 +158,7 @@ public class QiitaKit: API {
             request(createAccessToken).onComplete { [weak self] result in
                 switch result {
                 case .Success(let accessToken):
-                    self?.accessToken = accessToken.value
+                    self?.accessToken = accessToken
                 default:
                     break
                 }
@@ -154,7 +169,12 @@ public class QiitaKit: API {
         return false
     }
     
-    public func oauthDelete() -> Future<(), NSError> {
+    /**
+     <#Description#>
+     
+     - returns: <#return value description#>
+     */
+    public func oauthDelete() -> Future<(), Error> {
         if let accessToken = accessToken {
             let deleteAccessToken = DeleteAccessToken(access_token: accessToken.token)
             return request(deleteAccessToken).map { [weak self] t in
@@ -162,65 +182,48 @@ public class QiitaKit: API {
                 return t
             }
         }
-        return Future.failed(NSError(
-            domain: QiitaKitErrorDomain,
-            code: -1,
-            userInfo: [
-                NSLocalizedDescriptionKey: "The operation couldn’t be completed."
-            ])
-        )
+        return Future(value: ())
     }
-    
-    public func flatMap<T, U>(v: T, _ transform: T -> Future<U, NSError>) -> Future<U, NSError> {
-        return transform(v)
-    }
-    
-    public func flatMap<U>(transform: () -> Future<U, NSError>) -> Future<U, NSError> {
-        return transform()
-    }
-    
-//    public func flatMap<T, U: RequestToken>(v: T, _ transform: T -> U) -> RequestChain<U> {
-//        
-//        return RequestChain(api: self, future: self.request(transform(v)))
-//    }
 }
 
-//public final class RequestChain<T: RequestToken> {
-//    
-//    let api: API
-//    let future: Future<T.Response>
-//    
-//    init(api: API, future: Future<T.Response>) {
-//        self.api = api
-//        self.future = future
-//    }
-//    
-//    public func flatMap<U: RequestToken>(transform: T.Response -> U) -> RequestChain<U> {
-//        
-//        let a = api
-//        
-//        let u = future.flatMap {
-//            a.request(transform($0))
-//        }
-//        
-//        return RequestChain<U>(api: a, future: u)
-//    }
-//}
+extension QiitaSession: APICustomizableDelegate {
+    
+    public func customHeaders(var tokenHeader: [String: String]) -> [String: String] {
+        if let accessToken = accessToken {
+            tokenHeader["Authorization"] = "Bearer \(accessToken.token)"
+        }
+        return tokenHeader
+    }
+}
 
-private func json_encode_dictionary(data: AnyObject?) -> ([String: AnyObject]?, NSError?) {
+extension QiitaSession: APIKitProtocol {
     
-    if let data = data as? NSData {
-        var error: NSError?
-        let f = NSJSONSerialization.JSONObjectWithData
-        let JSON = f(data, options: .AllowFragments, error: &error) as? [String: AnyObject]
-        
-        return (JSON, error)
+    public typealias Error = QiitaKitError
+    
+    
+    public func cancel<T : RequestToken>(clazz: T.Type) {
+        api.cancel(clazz)
     }
     
-    if let JSON = data as? [String: AnyObject] {
-        return (JSON, nil)
+    public func cancel<T : RequestToken>(clazz: T.Type, _ f: T -> Bool) {
+        api.cancel(clazz, f)
     }
     
-    return (nil, nil)
+    public func request<T: RequestToken>(token: T) -> Future<T.Response, Error> {
+        return api.request(token)
+    }
+    
+    public func request<T: RequestToken, S: ResponseSerializerType>(token: T, serializer: S) -> Future<T.Response, Error> {
+        return api.request(token, serializer: serializer)
+    }
+    
+    public func request<T: MultipartRequestToken>(token: T) -> Future<T.Response, Error> {
+        return api.request(token)
+    }
+    
+    public func request<T: MultipartRequestToken, S: ResponseSerializerType>(token: T, serializer: S) -> Future<T.Response, Error> {
+        return api.request(token, serializer: serializer)
+    }
+    
 }
 

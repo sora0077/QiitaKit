@@ -15,47 +15,23 @@ import Result
 */
 public struct FollowUser {
     
-    public let user_id: String
+    public let id: User.Identifier
     
-    public init(user_id: String) {
-        self.user_id = user_id
+    public init(id: User.Identifier) {
+        self.id = id
     }
 }
 
-extension FollowUser: RequestToken {
+extension FollowUser: QiitaRequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedObject = Any
 
     public var method: HTTPMethod {
         return .PUT
     }
     
-    public var URL: String {
-        return "/api/v2/users/\(user_id)/following"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
-}
-
-extension FollowUser {
-
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        
-        return Result(())
+    public var path: String {
+        return "/api/v2/users/\(id)/following"
     }
 }

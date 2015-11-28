@@ -15,47 +15,31 @@ import Result
 */
 public struct GetUser {
     
-    public let user_id: String
+    public let id: User.Identifier
     
-    public init(user_id: String) {
-        self.user_id = user_id
+    public init(id: User.Identifier) {
+        self.id = id
     }
 }
 
-extension GetUser: RequestToken {
+extension GetUser: QiitaRequestToken {
     
     public typealias Response = User
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
-        return "/api/v2/users/\(user_id)"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
+    public var path: String {
+        return "/api/v2/users/\(id)"
     }
 }
 
-extension GetUser {
+public extension GetUser {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return Result(_User(object))
+        return try _User(object)
     }
 }

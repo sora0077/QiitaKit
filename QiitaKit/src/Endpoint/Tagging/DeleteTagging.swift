@@ -15,51 +15,27 @@ import Result
 */
 public struct DeleteTagging {
     
-    public let item_id: String
+    public let id: Item.Identifier
     
-    public let tagging_id: String
+    public let tagging_id: Tagging.Identifier
     
     
-    public init(item_id: String, tagging_id: String) {
-        self.item_id = item_id
+    public init(id: Item.Identifier, tagging_id: Tagging.Identifier) {
+        self.id = id
         self.tagging_id = tagging_id
     }
 }
 
-extension DeleteTagging: RequestToken {
+extension DeleteTagging: QiitaRequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedObject = Any
 
     public var method: HTTPMethod {
         return .DELETE
     }
 
-    public var URL: String {
-        return "/api/v2/items/\(item_id)/taggings/\(tagging_id)"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
-}
-
-extension DeleteTagging {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        
-        return Result(())
+    public var path: String {
+        return "/api/v2/items/\(id)/taggings/\(tagging_id)"
     }
 }

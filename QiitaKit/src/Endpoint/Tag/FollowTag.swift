@@ -15,47 +15,23 @@ import Result
 */
 public struct FollowTag {
     
-    public let tag_id: String
+    public let id: Tag.Identifier
     
-    public init(tag_id: String) {
-        self.tag_id = tag_id
+    public init(id: Tag.Identifier) {
+        self.id = id
     }
 }
 
-extension FollowTag: RequestToken {
+extension FollowTag: QiitaRequestToken {
 
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedObject = Any
 
     public var method: HTTPMethod {
         return .PUT
     }
 
-    public var URL: String {
-        return "/api/v2/tags/\(tag_id)/following"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
-}
-
-extension FollowTag {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        
-        return Result(())
+    public var path: String {
+        return "/api/v2/tags/\(id)/following"
     }
 }

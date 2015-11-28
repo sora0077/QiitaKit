@@ -15,35 +15,31 @@ import Result
 */
 public struct UpdateComment {
     
-    public let comment_id: String
+    public let id: Comment.Identifier
     /// コメントの内容を表すMarkdown形式の文字列
     /// example: # Example
     /// 
     public let body: String
 
-    public init(comment_id: String, body: String) {
-        self.comment_id = comment_id
+    public init(id: Comment.Identifier, body: String) {
+        self.id = id
         self.body = body
     }
 }
 
-extension UpdateComment: RequestToken {
+extension UpdateComment: QiitaRequestToken {
     
     public typealias Response = Comment
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .PATCH
     }
 
-    public var URL: String {
-        return "/api/v2/comments/\(comment_id)"
+    public var path: String {
+        return "/api/v2/comments/\(id)"
     }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
+    
     public var parameters: [String: AnyObject]? {
         return [
             "body": body
@@ -52,17 +48,5 @@ extension UpdateComment: RequestToken {
 
     public var encoding: RequestEncoding {
         return .JSON
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
-}
-
-extension UpdateComment {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        
-        return Result(_Comment(object))
     }
 }

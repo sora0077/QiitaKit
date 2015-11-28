@@ -15,47 +15,23 @@ import Result
 */
 public struct DeleteProject {
     
-    public let project_id: String
+    public let id: Project.Identifier
     
-    public init(project_id: String) {
-        self.project_id = project_id
+    public init(id: Project.Identifier) {
+        self.id = id
     }
 }
 
-extension DeleteProject: RequestToken {
+extension DeleteProject: QiitaRequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedObject = Any
 
     public var method: HTTPMethod {
         return .DELETE
     }
 
-    public var URL: String {
-        return "/api/v2/projects/\(project_id)"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
-}
-
-extension DeleteProject {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        
-        return Result(())
+    public var path: String {
+        return "/api/v2/projects/\(id)"
     }
 }

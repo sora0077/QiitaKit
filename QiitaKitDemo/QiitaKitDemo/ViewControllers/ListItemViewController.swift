@@ -40,7 +40,7 @@ class ListItemViewController: UIViewController {
             let row = UITableView.StyleSubtitleRow(text: item.title, detailText: item.body)
             row.didSelectAction = { [weak self] in
                 let vc = from_storyboard(ItemViewController.self)
-                vc.item_id = item.id
+                vc.id = item.id
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
             return row

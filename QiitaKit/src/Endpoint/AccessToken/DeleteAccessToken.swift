@@ -12,6 +12,7 @@ import Result
 
 /**
 *  指定されたアクセストークンを失効させ、それ以降利用できないようにします。
+*  Response = ()
 */
 public struct DeleteAccessToken {
     
@@ -22,39 +23,23 @@ public struct DeleteAccessToken {
     }
 }
 
-extension DeleteAccessToken: RequestToken {
+extension DeleteAccessToken: QiitaRequestToken {
 
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedObject = Any
 
     public var method: HTTPMethod {
         return .DELETE
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/access_tokens/\(access_token)"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
     }
 }
 
-extension DeleteAccessToken {
+public extension DeleteAccessToken {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        return Result(())
+    public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
+        
     }
 }

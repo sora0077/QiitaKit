@@ -15,7 +15,7 @@ import Result
 */
 public struct PatchProject {
     
-    public let project_id: String
+    public let id: Project.Identifier
     
     /// このプロジェクトが進行中かどうか
     /// 
@@ -36,8 +36,8 @@ public struct PatchProject {
     /// 
     public let tags: Array<Tagging>
 
-    public init(project_id: String, archived: Bool, body: String, name: String, tags: Array<Tagging>) {
-        self.project_id = project_id
+    public init(id: Project.Identifier, archived: Bool, body: String, name: String, tags: Array<Tagging>) {
+        self.id = id
         self.archived = archived
         self.body = body
         self.name = name
@@ -45,21 +45,17 @@ public struct PatchProject {
     }
 }
 
-extension PatchProject: RequestToken {
+extension PatchProject: QiitaRequestToken {
     
     public typealias Response = Project
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .PATCH
     }
 
-    public var URL: String {
-        return "/api/v2/projects/\(project_id)"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
+    public var path: String {
+        return "/api/v2/projects/\(id)"
     }
 
     public var parameters: [String: AnyObject]? {
@@ -74,15 +70,11 @@ extension PatchProject: RequestToken {
     public var encoding: RequestEncoding {
         return .JSON
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
-extension PatchProject {
+public extension PatchProject {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         let project = Project(
             rendered_body: object["rendered_body"] as! String,
@@ -94,6 +86,6 @@ extension PatchProject {
             updated_at: object["updated_at"] as! String
             
         )
-        return Result(project)
+        return project
     }
 }

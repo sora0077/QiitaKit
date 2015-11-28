@@ -14,37 +14,25 @@ import Result
 *  ユーザが所属している全てのチームを、チーム作成日時の降順で返します。
 */
 public struct ListTeams {
+    
+    public let page: Int = 0
+    public let per_page: Int = 0
+    
     public init() {
     }
 }
 
-extension ListTeams: RequestToken {
+extension ListTeams: QiitaRequestToken {
 
     public typealias Response = ([Team], LinkMeta<ListTeams>)
-    public typealias SerializedType = [[String: AnyObject]]
+    public typealias SerializedObject = [[String: AnyObject]]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/teams"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
     }
 }
 
@@ -54,9 +42,9 @@ extension ListTeams: LinkProtocol {
     }
 }
 
-extension ListTeams {
+public extension ListTeams {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         let teams = object.map { object in
             Team(
@@ -65,6 +53,6 @@ extension ListTeams {
                 name: object["name"] as! String
             )
         }
-        return Result(teams, LinkMeta<ListTeams>(dict: response!.allHeaderFields))
+        return (teams, LinkMeta<ListTeams>(dict: response!.allHeaderFields))
     }
 }

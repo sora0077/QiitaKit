@@ -7,20 +7,35 @@
 //
 
 import Foundation
+import APIKit
 
-func _Comment(object: AnyObject!) -> Comment {
-    let object = object as! GetComment.SerializedType
+func _Comment(object: AnyObject!) throws -> Comment {
+    
+    try validation(object)
+    
+    let object = object as! GetComment.SerializedObject
     return Comment(
         body: object["body"] as! String,
         created_at: object["created_at"] as! String,
         id: object["id"] as! String,
         rendered_body: object["rendered_body"] as! String,
         updated_at: object["updated_at"] as! String,
-        user: _User(object["user"])
+        user: try _User(object["user"])
     )
 }
 
-func _Comments(object: AnyObject!) -> [Comment] {
-    let object = object as! [GetComment.SerializedType]
-    return object.map { _Comment($0) }
+func _Comments(object: AnyObject!) throws -> [Comment] {
+    
+    try validation(object)
+    
+    let object = object as! [GetComment.SerializedObject]
+    return try object.map { try _Comment($0) }
+}
+
+extension QiitaRequestToken where Response == Comment, SerializedObject == [String: AnyObject] {
+    
+    public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
+        
+        return try _Comment(object)
+    }
 }

@@ -15,39 +15,35 @@ import Result
 */
 public struct ListItemStockers {
     
-    public let item_id: String
+    public let id: Item.Identifier
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$
-    public let page: String
+    public let page: Int
 
     /// 1ページあたりに含まれる要素数 (1から100まで)
     /// example: 20
     /// ^[0-9]+$
-    public let per_page: String
+    public let per_page: Int
 
-    public init(item_id: String, page: String, per_page: String) {
-        self.item_id = item_id
+    public init(id: Item.Identifier, page: Int = 1, per_page: Int = 20) {
+        self.id = id
         self.page = page
         self.per_page = per_page
     }
 }
 
-extension ListItemStockers: RequestToken {
+extension ListItemStockers: QiitaRequestToken {
     
     public typealias Response = ([User], LinkMeta<ListItemStockers>)
-    public typealias SerializedType = [[String: AnyObject]]
+    public typealias SerializedObject = [[String: AnyObject]]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
-        return "/api/v2/items/\(item_id)/stockers"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
+    public var path: String {
+        return "/api/v2/items/\(id)/stockers"
     }
 
     public var parameters: [String: AnyObject]? {
@@ -56,36 +52,30 @@ extension ListItemStockers: RequestToken {
             "per_page": per_page
         ]
     }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
 extension ListItemStockers: LinkProtocol {
     
     public init(url: NSURL!) {
         
-        let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
-        var query: [String: String] = [:]
-        for i in component?.queryItems as! [NSURLQueryItem] {
-            query[i.name] = i.value
-        }
-        self.page = query["page"]!
-        self.per_page = query["per_page"]!
+        let comps = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        self.page = Int(find(comps?.queryItems ?? [], name: "page")!.value!)!
         
-        self.item_id = url.pathComponents?[url.pathComponents!.count - 2] as! String
+        if let value = find(comps?.queryItems ?? [], name: "per_page")?.value,
+            let per_page = Int(value)
+        {
+            self.per_page = per_page
+        } else {
+            self.per_page = 20
+        }
+        self.id = url.pathComponents![url.pathComponents!.count - 2]
     }
 }
 
-extension ListItemStockers {
+public extension ListItemStockers {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return Result(_Users(object), LinkMeta<ListItemStockers>(dict: response!.allHeaderFields))
+        return (try _Users(object), LinkMeta<ListItemStockers>(dict: response!.allHeaderFields))
     }
 }

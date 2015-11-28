@@ -12,13 +12,15 @@ import Foundation
 *  投稿のひな形に利用できるテンプレートを表します。Qiita:Teamでのみ有効です。
 */
 public struct Template {
+    public typealias Identifier = Int
+    
     /// テンプレートの本文
     /// example: Weekly MTG on %{Year}/%{month}/%{day}
     public let body: String
 
     /// テンプレートの一意なID
     /// example: 1
-    public let id: Int
+    public let id: Identifier
 
     /// テンプレートを判別するための名前
     /// example: Weekly MTG

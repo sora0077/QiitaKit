@@ -1,4 +1,4 @@
-//
+ //
 //  Utility.swift
 //  QiitaKit
 //
@@ -7,8 +7,30 @@
 //
 
 import Foundation
+import APIKit
 
 infix operator ..< { associativity left precedence 140 }
 func ..<(left: Int, right: Int) -> Set<Int> {
     return Set(Range(start: left, end: right))
 }
+
+public extension QiitaRequestToken where Response == () {
+    
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
+        
+    }
+}
+
+func validation(object: AnyObject?) throws {
+    
+    guard let object = object as? [String: AnyObject] else {
+        return
+    }
+    
+    if  let message = object["message"] as? String,
+        let type = object["type"] as? String
+    {
+        throw QiitaKitError.QiitaAPIError(message: message, type: type)
+    }
+}
+

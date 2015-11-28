@@ -17,34 +17,30 @@ public struct ListAuthenticatedUserItems {
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$
-    public let page: String
+    public let page: Int
 
     /// 1ページあたりに含まれる要素数 (1から100まで)
     /// example: 20
     /// ^[0-9]+$
-    public let per_page: String
+    public let per_page: Int
 
-    public init(page: String, per_page: String) {
+    public init(page: Int, per_page: Int = 20) {
         self.page = page
         self.per_page = per_page
     }
 }
 
-extension ListAuthenticatedUserItems: RequestToken {
+extension ListAuthenticatedUserItems: QiitaRequestToken {
     
     public typealias Response = ([Item], LinkMeta<ListAuthenticatedUserItems>)
-    public typealias SerializedType = [[String: AnyObject]]
+    public typealias SerializedObject = [[String: AnyObject]]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/authenticated_user/items"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
     }
 
     public var parameters: [String: AnyObject]? {
@@ -53,34 +49,29 @@ extension ListAuthenticatedUserItems: RequestToken {
             "per_page": per_page
         ]
     }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
 extension ListAuthenticatedUserItems: LinkProtocol {
     
     public init!(url: NSURL!) {
         
-        let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
-        var query: [String: String] = [:]
-        for i in component?.queryItems as! [NSURLQueryItem] {
-            query[i.name] = i.value
+        let comps = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        self.page = Int(find(comps?.queryItems ?? [], name: "page")!.value!)!
+        
+        if let value = find(comps?.queryItems ?? [], name: "per_page")?.value,
+            let per_page = Int(value)
+        {
+            self.per_page = per_page
+        } else {
+            self.per_page = 20
         }
-        self.page = query["page"]!
-        self.per_page = query["per_page"]!
     }
 }
 
-extension ListAuthenticatedUserItems {
+public extension ListAuthenticatedUserItems {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return Result(_Items(object), LinkMeta<ListAuthenticatedUserItems>(dict: response!.allHeaderFields))
+        return (try _Items(object), LinkMeta<ListAuthenticatedUserItems>(dict: response!.allHeaderFields))
     }
 }

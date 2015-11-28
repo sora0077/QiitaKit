@@ -15,33 +15,29 @@ import Result
 */
 public struct CreateItemComment {
     
-    public let item_id: String
+    public let id: Item.Identifier
     /// コメントの内容を表すMarkdown形式の文字列
     /// example: # Example
     /// 
     public let body: String
 
-    public init(item_id: String, body: String) {
-        self.item_id = item_id
+    public init(id: Item.Identifier, body: String) {
+        self.id = id
         self.body = body
     }
 }
 
-extension CreateItemComment: RequestToken {
+extension CreateItemComment: QiitaRequestToken {
 
     public typealias Response = Comment
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .POST
     }
 
-    public var URL: String {
-        return "/api/v2/items/\(item_id)/comments"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
+    public var path: String {
+        return "/api/v2/items/\(id)/comments"
     }
 
     public var parameters: [String: AnyObject]? {
@@ -52,17 +48,5 @@ extension CreateItemComment: RequestToken {
 
     public var encoding: RequestEncoding {
         return .JSON
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
-}
-
-extension CreateItemComment {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        
-        return Result(_Comment(object))
     }
 }

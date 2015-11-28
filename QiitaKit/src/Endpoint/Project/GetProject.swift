@@ -15,46 +15,30 @@ import Result
 */
 public struct GetProject {
     
-    public let project_id: String
+    public let id: Project.Identifier
     
-    public init(project_id: String) {
-        self.project_id = project_id
+    public init(id: Project.Identifier) {
+        self.id = id
     }
 }
 
-extension GetProject: RequestToken {
+extension GetProject: QiitaRequestToken {
     
     public typealias Response = Project
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
-        return "/api/v2/projects/\(project_id)"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
+    public var path: String {
+        return "/api/v2/projects/\(id)"
     }
 }
 
-extension GetProject {
+public extension GetProject {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         let project = Project(
             rendered_body: object["rendered_body"] as! String,
@@ -66,6 +50,6 @@ extension GetProject {
             updated_at: object["updated_at"] as! String
             
         )
-        return Result(project)
+        return project
     }
 }

@@ -15,7 +15,7 @@ import Result
 */
 public struct UpdateItem {
     
-    public let item_id: String
+    public let id: Item.Identifier
     /// Markdown形式の本文
     /// example: # Example
     /// 
@@ -39,8 +39,8 @@ public struct UpdateItem {
     /// 
     public let title: String
 
-    public init(item_id: String, body: String, coediting: Bool, `private`: Bool, tags: Array<Tagging>, title: String) {
-        self.item_id = item_id
+    public init(id: Item.Identifier, body: String, coediting: Bool, `private`: Bool, tags: Array<Tagging>, title: String) {
+        self.id = id
         self.body = body
         self.coediting = coediting
         self.`private` = `private`
@@ -49,21 +49,17 @@ public struct UpdateItem {
     }
 }
 
-extension UpdateItem: RequestToken {
+extension UpdateItem: QiitaRequestToken {
     
     public typealias Response = Item
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .PATCH
     }
 
-    public var URL: String {
-        return "/api/v2/items/\(item_id)"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
+    public var path: String {
+        return "/api/v2/items/\(id)"
     }
 
     public var parameters: [String: AnyObject]? {
@@ -78,17 +74,5 @@ extension UpdateItem: RequestToken {
 
     public var encoding: RequestEncoding {
         return .JSON
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
-}
-
-extension UpdateItem {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        
-        return Result(_Item(object))
     }
 }

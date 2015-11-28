@@ -15,7 +15,7 @@ import Result
 */
 public struct UpdateTemplate {
     
-    public let template_id: String
+    public let id: Template.Identifier
     /// テンプレートの本文
     /// example: Weekly MTG on %{Year}/%{month}/%{day}
     /// 
@@ -36,8 +36,8 @@ public struct UpdateTemplate {
     /// 
     public let title: String
 
-    public init(template_id: String, body: String, name: String, tags: Array<Tagging>, title: String) {
-        self.template_id = template_id
+    public init(id: Template.Identifier, body: String, name: String, tags: Array<Tagging>, title: String) {
+        self.id = id
         self.body = body
         self.name = name
         self.tags = tags
@@ -45,21 +45,17 @@ public struct UpdateTemplate {
     }
 }
 
-extension UpdateTemplate: RequestToken {
+extension UpdateTemplate: QiitaRequestToken {
     
     public typealias Response = Template
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .PATCH
     }
 
-    public var URL: String {
-        return "/api/v2/templates/\(template_id)"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
+    public var path: String {
+        return "/api/v2/templates/\(id)"
     }
 
     public var parameters: [String: AnyObject]? {
@@ -74,16 +70,12 @@ extension UpdateTemplate: RequestToken {
     public var encoding: RequestEncoding {
         return .JSON
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
-extension UpdateTemplate {
+public extension UpdateTemplate {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return Result(_Template(object))
+        return _Template(object)
     }
 }

@@ -8,8 +8,11 @@
 
 import Foundation
 
-func _User(object: AnyObject!) -> User {
-    let object = object as! GetUser.SerializedType
+func _User(object: AnyObject!) throws -> User {
+    let object = object as! GetUser.SerializedObject
+    
+    try validation(object)
+    
     return User(
         description: object["description"] as? String,
         facebook_id: object["facebook_id"] as? String,
@@ -29,7 +32,10 @@ func _User(object: AnyObject!) -> User {
     )
 }
 
-func _Users(object: AnyObject!) -> [User] {
-    let object = object as! [GetUser.SerializedType]
-    return object.map { _User($0) }
+func _Users(object: AnyObject!) throws -> [User] {
+    
+    try validation(object)
+    
+    let object = object as! [GetUser.SerializedObject]
+    return try object.map { try _User($0) }
 }

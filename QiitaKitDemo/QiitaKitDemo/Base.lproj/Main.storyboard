@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xjo-Ks-KO8">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="QiitaKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIo-Rj-3Ft">
+                                <rect key="frame" x="156" y="174" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="apm-OM-B6r" kind="show" id="N2o-rQ-Qex"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xKH-Tn-9V5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="998" y="458"/>
+        </scene>
+        <!--Access Token View Controller-->
+        <scene sceneID="1cg-l3-LSB">
+            <objects>
+                <viewController storyboardIdentifier="AccessTokenViewController" id="apm-OM-B6r" customClass="AccessTokenViewController" customModule="QiitaKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Hc-Ou-7Ts"/>
+                        <viewControllerLayoutGuide type="bottom" id="DOK-uk-FFZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Ru-VS-V6R">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGB-Xd-uID">
+                                <rect key="frame" x="221" y="88" width="158" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Get New Access Token"/>
+                                <connections>
+                                    <action selector="getNewAccessTokenAction:" destination="apm-OM-B6r" eventType="touchUpInside" id="uCA-tM-G9f"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7v-Fb-5eI">
+                                <rect key="frame" x="229" y="171" width="143" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Delete Access Token"/>
+                                <connections>
+                                    <action selector="deleteAccessTokenAction" destination="apm-OM-B6r" eventType="touchUpInside" id="7sX-Ew-CB2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kH-9C-2u5">
+                                <rect key="frame" x="279" y="248" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="S7v-Fb-5eI" firstAttribute="top" secondItem="pGB-Xd-uID" secondAttribute="bottom" constant="53" id="GGx-qv-UWW"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1kH-9C-2u5" secondAttribute="trailing" constant="8" id="cqS-YK-8qX"/>
+                            <constraint firstItem="S7v-Fb-5eI" firstAttribute="centerX" secondItem="7Ru-VS-V6R" secondAttribute="centerX" id="dxp-7P-4Kr"/>
+                            <constraint firstItem="1kH-9C-2u5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Ru-VS-V6R" secondAttribute="leading" constant="8" id="imf-wA-30v"/>
+                            <constraint firstItem="1kH-9C-2u5" firstAttribute="centerX" secondItem="7Ru-VS-V6R" secondAttribute="centerX" id="mNr-ZM-JkZ"/>
+                            <constraint firstItem="pGB-Xd-uID" firstAttribute="top" secondItem="0Hc-Ou-7Ts" secondAttribute="bottom" constant="24" id="qRl-wx-ogj"/>
+                            <constraint firstItem="1kH-9C-2u5" firstAttribute="top" secondItem="S7v-Fb-5eI" secondAttribute="bottom" constant="47" id="wuT-Vh-uXJ"/>
+                            <constraint firstItem="pGB-Xd-uID" firstAttribute="centerX" secondItem="7Ru-VS-V6R" secondAttribute="centerX" id="xPG-Vd-1z4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="accessTokenLabel" destination="1kH-9C-2u5" id="Bcf-01-f9H"/>
+                        <outlet property="deleteAccessTokenButton" destination="S7v-Fb-5eI" id="bPI-Lq-vn6"/>
+                        <outlet property="getNewAccessTokenButton" destination="pGB-Xd-uID" id="bVB-OR-20z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s2d-sf-vrW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1727" y="300"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ydb-jG-Di5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xjo-Ks-KO8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="hdZ-Gj-bIo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="barTintColor" red="0.42352941176470588" green="0.7686274509803922" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="6L8-6A-0aO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u2H-hf-5b6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="307" y="-392"/>
+        </scene>
+    </scenes>
+</document>

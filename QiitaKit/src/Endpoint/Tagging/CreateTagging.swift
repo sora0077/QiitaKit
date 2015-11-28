@@ -15,7 +15,7 @@ import Result
 */
 public struct CreateTagging {
     
-    public let item_id: String
+    public let id: Item.Identifier
     /// タグを特定するための一意な名前
     /// example: qiita
     /// 
@@ -26,28 +26,24 @@ public struct CreateTagging {
     /// 
     public let versions: Array<String>
 
-    public init(item_id: String, name: String, versions: Array<String>) {
-        self.item_id = item_id
+    public init(id: Item.Identifier, name: String, versions: Array<String>) {
+        self.id = id
         self.name = name
         self.versions = versions
     }
 }
 
-extension CreateTagging: RequestToken {
+extension CreateTagging: QiitaRequestToken {
 
     public typealias Response = Tagging
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .POST
     }
 
-    public var URL: String {
-        return "/api/v2/items/\(item_id)/taggings"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
+    public var path: String {
+        return "/api/v2/items/\(id)/taggings"
     }
 
     public var parameters: [String: AnyObject]? {
@@ -60,16 +56,12 @@ extension CreateTagging: RequestToken {
     public var encoding: RequestEncoding {
         return .JSON
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
-extension CreateTagging {
+public extension CreateTagging {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return Result(_Tagging(object))
+        return _Tagging(object)
     }
 }

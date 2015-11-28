@@ -15,47 +15,23 @@ import Result
 */
 public struct GetComment {
     
-    public let comment_id: String
+    public let id: Comment.Identifier
     
-    public init(comment_id: String) {
-        self.comment_id = comment_id
+    public init(id: Comment.Identifier) {
+        self.id = id
     }
 }
 
-extension GetComment: RequestToken {
+extension GetComment: QiitaRequestToken {
     
     public typealias Response = Comment
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .GET
     }
 
-    public var URL: String {
-        return "/api/v2/comments/\(comment_id)"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
-}
-
-extension GetComment {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        
-        return Result(_Comment(object))
+    public var path: String {
+        return "/api/v2/comments/\(id)"
     }
 }

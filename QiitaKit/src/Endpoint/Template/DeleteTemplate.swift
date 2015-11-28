@@ -15,47 +15,23 @@ import Result
 */
 public struct DeleteTemplate {
     
-    public let template_id: String
+    public let id: Template.Identifier
     
-    public init(template_id: String) {
-        self.template_id = template_id
+    public init(id: Template.Identifier) {
+        self.id = id
     }
 }
 
-extension DeleteTemplate: RequestToken {
+extension DeleteTemplate: QiitaRequestToken {
     
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedObject = Any
 
     public var method: HTTPMethod {
         return .DELETE
     }
     
-    public var URL: String {
-        return "/api/v2/templates/\(template_id)"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
-}
-
-extension DeleteTemplate {
-    
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
-        
-        return Result(())
+    public var path: String {
+        return "/api/v2/templates/\(id)"
     }
 }

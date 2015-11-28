@@ -36,21 +36,17 @@ public struct CreateAccessToken {
     }
 }
 
-extension CreateAccessToken: RequestToken {
+extension CreateAccessToken: QiitaRequestToken {
 
     public typealias Response = AccessToken
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .POST
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/access_tokens"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
     }
 
     public var parameters: [String: AnyObject]? {
@@ -64,21 +60,17 @@ extension CreateAccessToken: RequestToken {
     public var encoding: RequestEncoding {
         return .JSON
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
 extension CreateAccessToken {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    public func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
         let accessToken = AccessToken(
             client_id: object["client_id"] as! String,
             scopes: object["scopes"] as! Array<String>,
             token: object["token"] as! String
         )
-        return Result(accessToken)
+        return accessToken
     }
 }

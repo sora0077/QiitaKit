@@ -12,50 +12,35 @@ import Result
 
 /**
 *  コメントを削除します。
+*  Response = ()
 */
 public struct DeleteComment {
     
-    public let comment_id: String
+    public let id: String
     
-    public init(comment_id: String) {
-        self.comment_id = comment_id
+    public init(id: Comment.Identifier) {
+        self.id = id
     }
 }
 
-extension DeleteComment: RequestToken {
+extension DeleteComment: QiitaRequestToken {
 
     public typealias Response = ()
-    public typealias SerializedType = Any
+    public typealias SerializedObject = Any
 
     public var method: HTTPMethod {
         return .DELETE
     }
 
-    public var URL: String {
-        return "/api/v2/comments/\(comment_id)"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
-    }
-
-    public var parameters: [String: AnyObject]? {
-        return nil
-    }
-
-    public var encoding: RequestEncoding {
-        return .URL
-    }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
+    public var path: String {
+        return "/api/v2/comments/\(id)"
     }
 }
 
-extension DeleteComment {
+public extension DeleteComment {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return Result(())
     }
 }
+

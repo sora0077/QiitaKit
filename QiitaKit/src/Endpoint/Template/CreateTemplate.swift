@@ -42,21 +42,17 @@ public struct CreateTemplate {
     }
 }
 
-extension CreateTemplate: RequestToken {
+extension CreateTemplate: QiitaRequestToken {
 
     public typealias Response = Template
-    public typealias SerializedType = [String: AnyObject]
+    public typealias SerializedObject = [String: AnyObject]
 
     public var method: HTTPMethod {
         return .POST
     }
 
-    public var URL: String {
+    public var path: String {
         return "/api/v2/templates"
-    }
-
-    public var headers: [String: AnyObject]? {
-        return nil
     }
 
     public var parameters: [String: AnyObject]? {
@@ -71,16 +67,12 @@ extension CreateTemplate: RequestToken {
     public var encoding: RequestEncoding {
         return .JSON
     }
-
-    public var resonseEncoding: ResponseEncoding {
-        return .JSON(.AllowFragments)
-    }
 }
 
-extension CreateTemplate {
+public extension CreateTemplate {
     
-    public static func transform(request: NSURLRequest, response: NSHTTPURLResponse?, object: SerializedType) -> Result<Response, NSError> {
+    func transform(request: NSURLRequest?, response: NSHTTPURLResponse?, object: SerializedObject) throws -> Response {
         
-        return Result(_Template(object))
+        return _Template(object)
     }
 }

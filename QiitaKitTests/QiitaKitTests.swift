@@ -12,8 +12,8 @@ import QiitaKit
 import APIKit
 
 
-func test<T: RequestToken, U>(token: T.Type, obj: U) -> Bool {
-    return (obj as? T.SerializedType) != nil
+func test<T: RequestToken, U>(token: T.Type, _ obj: U) -> Bool {
+    return (obj as? T.SerializedObject) != nil
 }
 
 class QiitaKitTests: XCTestCase {
@@ -32,8 +32,6 @@ class QiitaKitTests: XCTestCase {
         // This is an example of a functional test case.
         XCTAssert(true, "Pass")
         
-        
-        let object: AnyObject? = nil
         
         XCTAssertTrue(test(DeleteComment.self, 1), "")
     }

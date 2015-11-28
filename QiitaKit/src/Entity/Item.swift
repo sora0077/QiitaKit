@@ -12,6 +12,8 @@ import Foundation
 *  ユーザからの投稿を表します。
 */
 public struct Item {
+    public typealias Identifier = String
+    
     /// HTML形式の本文
     /// example: <h1>Example</h1>
     public let rendered_body: String
@@ -29,7 +31,7 @@ public struct Item {
 
     /// 投稿の一意なID
     /// example: 4bd431809afb1bb99e4f
-    public let id: String
+    public let id: Identifier
 
     /// 限定共有状態かどうかを表すフラグ (Qiita:Teamでは無効)
     public let `private`: Bool
