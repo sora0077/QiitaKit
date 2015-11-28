@@ -56,7 +56,7 @@ extension ListItemComments: LinkProtocol {
         self.id = url.pathComponents![url.pathComponents!.count - 2]
         self.page = Int(find(comps?.queryItems ?? [], name: "page")!.value!)!
         
-        if let value = find(comps?.queryItems ?? [], name: "page")?.value,
+        if let value = find(comps?.queryItems ?? [], name: "per_page")?.value,
             let per_page = Int(value)
         {
             self.per_page = per_page

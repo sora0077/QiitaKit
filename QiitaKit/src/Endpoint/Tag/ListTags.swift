@@ -17,14 +17,14 @@ public struct ListTags {
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$
-    public let page: String
+    public let page: Int
 
     /// 1ページあたりに含まれる要素数 (1から100まで)
     /// example: 20
     /// ^[0-9]+$
-    public let per_page: String
+    public let per_page: Int
 
-    public init(page: String, per_page: String) {
+    public init(page: Int, per_page: Int) {
         self.page = page
         self.per_page = per_page
     }
@@ -55,13 +55,16 @@ extension ListTags: LinkProtocol {
     
     public init(url: NSURL!) {
         
-        let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
-        var query: [String: String] = [:]
-        for i in component?.queryItems ?? [] {
-            query[i.name] = i.value
+        let comps = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        self.page = Int(find(comps?.queryItems ?? [], name: "page")!.value!)!
+        
+        if let value = find(comps?.queryItems ?? [], name: "per_page")?.value,
+            let per_page = Int(value)
+        {
+            self.per_page = per_page
+        } else {
+            self.per_page = 20
         }
-        self.page = query["page"]!
-        self.per_page = query["per_page"]!
     }
 }
 

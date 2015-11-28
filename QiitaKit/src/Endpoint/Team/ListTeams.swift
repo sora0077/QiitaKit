@@ -14,6 +14,10 @@ import Result
 *  ユーザが所属している全てのチームを、チーム作成日時の降順で返します。
 */
 public struct ListTeams {
+    
+    public let page: Int = 0
+    public let per_page: Int = 0
+    
     public init() {
     }
 }

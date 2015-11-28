@@ -17,19 +17,19 @@ public struct ListItems {
     /// ページ番号 (1から100まで)
     /// example: 1
     /// ^[0-9]+$
-    public let page: String
+    public let page: Int
 
     /// 1ページあたりに含まれる要素数 (1から100まで)
     /// example: 20
     /// ^[0-9]+$
-    public let per_page: String
+    public let per_page: Int
 
     /// 検索クエリ
     /// example: qiita user:yaotti
     /// 
     public let query: String
 
-    public init(page: String, per_page: String, query: String) {
+    public init(page: Int, per_page: Int, query: String) {
         self.page = page
         self.per_page = per_page
         self.query = query
@@ -62,14 +62,21 @@ extension ListItems: LinkProtocol {
     
     public init(url: NSURL!) {
         
-        let component = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        let comps = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
         var query: [String: String] = [:]
-        for i in component?.queryItems ?? [] {
+        for i in comps?.queryItems ?? [] {
             query[i.name] = i.value
         }
-        self.page = query["page"]!
-        self.per_page = query["per_page"]!
-        self.query = query["query"]!
+        self.query = find(comps?.queryItems ?? [], name: "query")!.value!
+        self.page = Int(find(comps?.queryItems ?? [], name: "page")!.value!)!
+        
+        if let value = find(comps?.queryItems ?? [], name: "per_page")?.value,
+            let per_page = Int(value)
+        {
+            self.per_page = per_page
+        } else {
+            self.per_page = 20
+        }
     }
 }
 

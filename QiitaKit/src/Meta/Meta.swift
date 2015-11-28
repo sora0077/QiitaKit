@@ -35,6 +35,9 @@ public class Meta {
 
 public protocol LinkProtocol {
     
+    var page: Int { get }
+    var per_page: Int { get }
+    
     init!(url: NSURL!)
 }
 
