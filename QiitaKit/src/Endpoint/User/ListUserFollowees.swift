@@ -26,7 +26,7 @@ public struct ListUserFollowees {
     /// ^[0-9]+$
     public let per_page: Int
 
-    public init(id: User.Identifier, page: Int, per_page: Int) {
+    public init(id: User.Identifier, page: Int, per_page: Int = 20) {
         self.id = id
         self.page = page
         self.per_page = per_page
